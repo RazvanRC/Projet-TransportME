@@ -7,15 +7,11 @@ import java.util.*;
  */
 public class Client extends Utilisateur {
 
-   /**
-    * Default constructor
-    */
+
    public Client() {
    }
 
-   /**
-    * 
-    */
+
    private int noCBCli;
 
    /**
