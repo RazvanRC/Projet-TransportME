@@ -1,6 +1,5 @@
 package fr.transportME.model;
 
-import java.util.*;
 
 public class Comments {
 
@@ -14,64 +13,38 @@ public class Comments {
 
    private String texteComment;
 
-   /**
-    * @return
-    */
-   public int getIdComment() {
-      // TODO implement here
-      return 0;
-   }
+public int getIdComment() {
+	return idComment;
+}
 
-   /**
-    * @param value
-    */
-   public void setIdComment(int value) {
-      // TODO implement here
-   }
+public void setIdComment(int idComment) {
+	this.idComment = idComment;
+}
 
-   /**
-    * @return
-    */
-   public int getIdUtil() {
-      // TODO implement here
-      return 0;
-   }
+public int getIdUtil() {
+	return idUtil;
+}
 
-   /**
-    * @param value
-    */
-   public void setIdUtil(int value) {
-      // TODO implement here
-   }
+public void setIdUtil(int idUtil) {
+	this.idUtil = idUtil;
+}
 
-   /**
-    * @return
-    */
-   public int getNoteComment() {
-      // TODO implement here
-      return 0;
-   }
+public int getNoteComment() {
+	return noteComment;
+}
 
-   /**
-    * @param value
-    */
-   public void setNoteComment(int value) {
-      // TODO implement here
-   }
+public void setNoteComment(int noteComment) {
+	this.noteComment = noteComment;
+}
 
-   /**
-    * @return
-    */
-   public String getTexteComment() {
-      // TODO implement here
-      return "";
-   }
+public String getTexteComment() {
+	return texteComment;
+}
 
-   /**
-    * @param value
-    */
-   public void setTexteComment(String value) {
-      // TODO implement here
-   }
+public void setTexteComment(String texteComment) {
+	this.texteComment = texteComment;
+}
+
+   
 
 }

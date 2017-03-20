@@ -48,109 +48,61 @@ public class Utilisateur {
     */
    private Date dateNaissanceUtil;
 
-     /**
-    * @return
-    */
-   public int getIdUtil() {
-      // TODO implement here
-      return 0;
-   }
+public int getIdUtil() {
+	return idUtil;
+}
 
-   /**
-    * @param value
-    */
-   public void setIdUtil(int value) {
-      // TODO implement here
-   }
+public void setIdUtil(int idUtil) {
+	this.idUtil = idUtil;
+}
 
-   /**
-    * @return
-    */
-   public String getNomUtil() {
-      // TODO implement here
-      return "";
-   }
+public String getNomUtil() {
+	return nomUtil;
+}
 
-   /**
-    * @param value
-    */
-   public void setNomUtil(String value) {
-      // TODO implement here
-   }
+public void setNomUtil(String nomUtil) {
+	this.nomUtil = nomUtil;
+}
 
-   /**
-    * @return
-    */
-   public String getPrenomUtil() {
-      // TODO implement here
-      return "";
-   }
+public String getPrenomUtil() {
+	return prenomUtil;
+}
 
-   /**
-    * @param value
-    */
-   public void setPrenomUtil(String value) {
-      // TODO implement here
-   }
+public void setPrenomUtil(String prenomUtil) {
+	this.prenomUtil = prenomUtil;
+}
 
-   /**
-    * @return
-    */
-   public String getLoginUtil() {
-      // TODO implement here
-      return "";
-   }
+public String getLoginUtil() {
+	return loginUtil;
+}
 
-   /**
-    * @param value
-    */
-   public void setLoginUtil(String value) {
-      // TODO implement here
-   }
+public void setLoginUtil(String loginUtil) {
+	this.loginUtil = loginUtil;
+}
 
-   /**
-    * @return
-    */
-   public String getMdpUtil() {
-      // TODO implement here
-      return "";
-   }
+public String getMdpUtil() {
+	return mdpUtil;
+}
 
-   /**
-    * @param value
-    */
-   public void setMdpUtil(String value) {
-      // TODO implement here
-   }
+public void setMdpUtil(String mdpUtil) {
+	this.mdpUtil = mdpUtil;
+}
 
-   /**
-    * @return
-    */
-   public int getTelephoneUtil() {
-      // TODO implement here
-      return 0;
-   }
+public int getTelephoneUtil() {
+	return telephoneUtil;
+}
 
-   /**
-    * @param value
-    */
-   public void setTelephoneUtil(int value) {
-      // TODO implement here
-   }
+public void setTelephoneUtil(int telephoneUtil) {
+	this.telephoneUtil = telephoneUtil;
+}
 
-   /**
-    * @return
-    */
-   public Date getDateNaissanceUtil() {
-      // TODO implement here
-      return null;
-   }
+public Date getDateNaissanceUtil() {
+	return dateNaissanceUtil;
+}
 
-   /**
-    * @param value
-    */
-   public void setDateNaissanceUtil(Date value) {
-      // TODO implement here
-   }
+public void setDateNaissanceUtil(Date dateNaissanceUtil) {
+	this.dateNaissanceUtil = dateNaissanceUtil;
+}
 
+    
 }

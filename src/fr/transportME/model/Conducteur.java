@@ -1,6 +1,6 @@
 package fr.transportME.model;
 
-import java.util.*;
+//import java.util.*;
 
 /**
  * 
@@ -43,95 +43,55 @@ public class Conducteur extends Utilisateur {
     */
    private int idCond;
 
+public int getAnneePermis() {
+	return anneePermis;
+}
+
+public void setAnneePermis(int anneePermis) {
+	this.anneePermis = anneePermis;
+}
+
+public float getPosActuelleLong() {
+	return posActuelleLong;
+}
+
+public void setPosActuelleLong(float posActuelleLong) {
+	this.posActuelleLong = posActuelleLong;
+}
+
+public float getPosActuelleLat() {
+	return posActuelleLat;
+}
+
+public void setPosActuelleLat(float posActuelleLat) {
+	this.posActuelleLat = posActuelleLat;
+}
+
+public boolean isStatut() {
+	return statut;
+}
+
+public void setStatut(boolean statut) {
+	this.statut = statut;
+}
+
+public int getIdVoiture() {
+	return idVoiture;
+}
+
+public void setIdVoiture(int idVoiture) {
+	this.idVoiture = idVoiture;
+}
+
+public int getIdCond() {
+	return idCond;
+}
+
+public void setIdCond(int idCond) {
+	this.idCond = idCond;
+}
+
   
-   /**
-    * @return
-    */
-   public int getAnneePermis() {
-      // TODO implement here
-      return 0;
-   }
-
-   /**
-    * @param value
-    */
-   public void setAnneePermis(int value) {
-      // TODO implement here
-   }
-
-   /**
-    * @return
-    */
-   public float getPosActuelleLong() {
-      // TODO implement here
-      return 0.0f;
-   }
-
-   /**
-    * @param value
-    */
-   public void setPosActuelleLong(float value) {
-      // TODO implement here
-   }
-
-   /**
-    * @return
-    */
-   public float getPosActuelleLat() {
-      // TODO implement here
-      return 0.0f;
-   }
-
-   /**
-    * @param value
-    */
-   public void setPosActuelleLat(float value) {
-      // TODO implement here
-   }
-
-   /**
-    * @return
-    */
-   public boolean getStatut() {
-      // TODO implement here
-      return false;
-   }
-
-   /**
-    * @param value
-    */
-   public void setStatut(boolean value) {
-      // TODO implement here
-   }
-
-   /**
-    * @return
-    */
-   public int getIdVoiture() {
-      // TODO implement here
-      return 0;
-   }
-
-   /**
-    * @param value
-    */
-   public void setIdVoiture(int value) {
-      // TODO implement here
-   }
-
-   /**
-    * @return
-    */
-   public int getIdCond() {
-      // TODO implement here
-      return 0;
-   }
-
-   /**
-    * @param value
-    */
-   public void setIdCond(int value) {
-      // TODO implement here
-   }
+   
 
 }

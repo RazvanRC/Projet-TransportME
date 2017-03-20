@@ -58,139 +58,77 @@ public class Trajet {
     */
    private float prixEstime;
 
-   /**
-    * @return
-    */
-   public int getIdCond() {
-      // TODO implement here
-      return 0;
-   }
+public int getIdCond() {
+	return idCond;
+}
 
-   /**
-    * @param value
-    */
-   public void setIdCond(int value) {
-      // TODO implement here
-   }
+public void setIdCond(int idCond) {
+	this.idCond = idCond;
+}
 
-   /**
-    * @return
-    */
-   public int getIdTrajet() {
-      // TODO implement here
-      return 0;
-   }
+public int getIdTrajet() {
+	return idTrajet;
+}
 
-   /**
-    * @param value
-    */
-   public void setIdTrajet(int value) {
-      // TODO implement here
-   }
+public void setIdTrajet(int idTrajet) {
+	this.idTrajet = idTrajet;
+}
 
-   /**
-    * @return
-    */
-   public float getPosDepartLong() {
-      // TODO implement here
-      return 0.0f;
-   }
+public float getPosDepartLong() {
+	return posDepartLong;
+}
 
-   /**
-    * @param value
-    */
-   public void setPosDepartLong(float value) {
-      // TODO implement here
-   }
+public void setPosDepartLong(float posDepartLong) {
+	this.posDepartLong = posDepartLong;
+}
 
-   /**
-    * @return
-    */
-   public float getPosDepartLat() {
-      // TODO implement here
-      return 0.0f;
-   }
+public float getPosDepartLat() {
+	return posDepartLat;
+}
 
-   /**
-    * @param value
-    */
-   public void setPosDepartLat(float value) {
-      // TODO implement here
-   }
+public void setPosDepartLat(float posDepartLat) {
+	this.posDepartLat = posDepartLat;
+}
 
-   /**
-    * @return
-    */
-   public float getPosArretLong() {
-      // TODO implement here
-      return 0.0f;
-   }
+public float getPosArretLong() {
+	return posArretLong;
+}
 
-   /**
-    * @param value
-    */
-   public void setPosArretLong(float value) {
-      // TODO implement here
-   }
+public void setPosArretLong(float posArretLong) {
+	this.posArretLong = posArretLong;
+}
 
-   /**
-    * @return
-    */
-   public float getPosArretLat() {
-      // TODO implement here
-      return 0.0f;
-   }
+public float getPosArretLat() {
+	return posArretLat;
+}
 
-   /**
-    * @param value
-    */
-   public void setPosArretLat(float value) {
-      // TODO implement here
-   }
+public void setPosArretLat(float posArretLat) {
+	this.posArretLat = posArretLat;
+}
 
-   /**
-    * @return
-    */
-   public Date getDateDepart() {
-      // TODO implement here
-      return null;
-   }
+public Date getDateDepart() {
+	return dateDepart;
+}
 
-   /**
-    * @param value
-    */
-   public void setDateDepart(Date value) {
-      // TODO implement here
-   }
+public void setDateDepart(Date dateDepart) {
+	this.dateDepart = dateDepart;
+}
 
-   /**
-    * @return
-    */
-   public Date getDateArrive() {
-      // TODO implement here
-      return null;
-   }
+public Date getDateArrive() {
+	return dateArrive;
+}
 
-   /**
-    * @param value
-    */
-   public void setDateArrive(Date value) {
-      // TODO implement here
-   }
+public void setDateArrive(Date dateArrive) {
+	this.dateArrive = dateArrive;
+}
 
-   /**
-    * @return
-    */
-   public float getPrixEstime() {
-      // TODO implement here
-      return 0.0f;
-   }
+public float getPrixEstime() {
+	return prixEstime;
+}
 
-   /**
-    * @param value
-    */
-   public void setPrixEstime(float value) {
-      // TODO implement here
-   }
+public void setPrixEstime(float prixEstime) {
+	this.prixEstime = prixEstime;
+}
 
+   
 }
