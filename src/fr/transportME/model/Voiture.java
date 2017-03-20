@@ -13,14 +13,9 @@ public class Voiture {
    public Voiture() {
    }
 
-   /**
-    * 
-    */
+   
    private int idVoiture;
 
-   /**
-    * 
-    */
    private String marqueVoiture;
 
    /**
