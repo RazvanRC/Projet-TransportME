@@ -23,14 +23,8 @@ public class Voiture {
     */
    private String modeleVoiture;
 
-   /**
-    * 
-    */
    private int nbrPassagers;
 
-   /**
-    * 
-    */
    private String immatriculation;
 
 public int getIdVoiture() {
