@@ -25,6 +25,7 @@
     </plugins>
   </build>
   <dependencies>
+  
   	<dependency>
   		<groupId>org.springframework</groupId>
   		<artifactId>spring-aop</artifactId>

@@ -1,26 +1,31 @@
 package fr.transportME.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
 //import java.util.*;
 
+@Entity
+@Table(name="conducteur")
+@PrimaryKeyJoinColumn(name="cond_id", referencedColumnName="uti_id")
 public class Conducteur extends Utilisateur {
 
-   /**
-    * Default constructor
-    */
-   public Conducteur() {
-   }
+	private static final long serialVersionUID = 1L;
 
-   private int anneePermis;
+	@Column(name="cond_anneePermis")
+	private int anneePermis;
 
-   private float posActuelleLong;
+	private float posActuelleLong;
 
-   private float posActuelleLat;
+	private float posActuelleLat;
 
-   private boolean statut;
+	private boolean statut;
 
-   private int idVoiture;
-
-   private int idCond;
+	@OneToOne
+	private int idVoiture;
 
 	public int getAnneePermis() {
 		return anneePermis;
@@ -62,14 +67,10 @@ public class Conducteur extends Utilisateur {
 		this.idVoiture = idVoiture;
 	}
 
-	public int getIdCond() {
-		return idCond;
-	}
-
-	public void setIdCond(int idCond) {
-		this.idCond = idCond;
-	}
-  
-   
+	/**
+	    * Default constructor
+	    */
+	   public Conducteur() {
+	   }
 
 }

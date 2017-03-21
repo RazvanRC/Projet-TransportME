@@ -19,6 +19,7 @@
 	<mvc:annotation-driven />
 
 
+
 	<!-- On précise les ressources -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
