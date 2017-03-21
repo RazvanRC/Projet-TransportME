@@ -1,28 +1,47 @@
 package fr.transportME.model;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Utilisateur {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
-   /**
-    * Default constructor
-    */
-   public Utilisateur() {
-   }
+@Entity
+@Table(name="utilisateur")
+@Inheritance(strategy=InheritanceType.JOINED)
+public class Utilisateur implements Serializable {
 
-   private int idUtil;
+	private static final long serialVersionUID = 1L;
 
-   private String nomUtil;
 
-   private String prenomUtil;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="uti_id")
+	private int idUtil;
 
-   private String loginUtil;
+	@Column(name="uti_nom")
+	private String nomUtil;
 
-   private String mdpUtil;
+	@Column(name="uti_prenom")
+	private String prenomUtil;
 
-   private int telephoneUtil;
+	@Column(name="uti_login")
+	private String loginUtil;
 
-   private Date dateNaissanceUtil;
+	@Column(name="uti_mdp")
+	private String mdpUtil;
+
+	@Column(name="uti_telephone")
+	private int telephoneUtil;
+
+	@Column(name="uti_dateNaissance")
+	private Date dateNaissanceUtil;
 
 	public int getIdUtil() {
 		return idUtil;
@@ -79,5 +98,11 @@ public class Utilisateur {
 	public void setDateNaissanceUtil(Date dateNaissanceUtil) {
 		this.dateNaissanceUtil = dateNaissanceUtil;
 	}
+	
+	/**
+	    * Default constructor
+	    */
+	   public Utilisateur() {
+	   }
     
 }
