@@ -1,0 +1,194 @@
+.nav-wrapper{
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+body {
+	background-color: #ffe0b2; /*orange lighten-4*/
+}
+
+.input-field input[type=text]:focus {
+     border-bottom: 1px solid #e65100;
+     box-shadow: 0 1px 0 0 #e65100;
+}
+
+.input-field input[type=text]:focus + label {
+     color: #e65100;
+}
+
+.input-field .prefix.active {
+     color: #e65100;
+}
+
+.card-action .material-icons {
+     color: #e65100;
+}
+   
+.input-field input[type=password]:focus {
+     border-bottom: 1px solid #e65100;
+     box-shadow: 0 1px 0 0 #e65100;
+}
+
+.input-field input[type=password]:focus + label {
+     color: #e65100
+}
+   
+.input-field input[type=email]:focus {
+     border-bottom: 1px solid #e65100;
+     box-shadow: 0 1px 0 0 #e65100;
+}
+
+.input-field input[type=email]:focus + label {
+     color: #e65100
+}
+   
+.input-field textarea[class=materialize-textarea]:focus {
+	border-bottom: 1px solid #e65100;
+	box-shadow: 0 1px 0 0 #e65100;
+}
+
+#loginPanel .input-field {
+	width: 400px;
+}
+
+.inputLogin {
+	width: 400px;
+	margin: auto;
+	text-align: center;
+	
+}
+
+#loginPanel {
+	
+	padding-top: 300px;
+}
+
+nav {
+	background-color: #e65100; /*orange darken-4*/
+}
+
+#loginCenter {
+	width: 600px;
+	height: 300px;
+	background-color: #fff3e0 /*orange lighten-5*/;
+	margin: auto;
+	border-radius: 15px;
+	padding-top: 50px;
+}
+
+#btnLogin {
+	width: 100%;
+}
+
+.errorMsg {
+	color: red;
+	font-weight: bold;
+	text-align: center;
+}
+
+.card h3 {
+	margin: auto;
+}
+
+.card-reveal {
+	height: 200px;
+}
+
+.card-panel {
+	width: 300px;
+	padding:0px;
+	margin: 0px;
+}
+
+.card-image {
+	height: 300px;
+	width: 300px;
+}
+
+.card-action {
+	height: 60px;
+}
+
+.card-content {
+	width: auto;
+	height: auto;
+}
+
+.tetriminoPanel .row {
+	float:left;
+	width: 100%;
+}
+
+.addBtn {
+	position: absolute;
+	padding: 50px;
+	bottom: 0;
+	right: 0;
+}
+
+.tetrimino {
+	float:left;
+	padding: 30px;
+}
+
+.tetriminoPanel {
+	float:left;
+	display: inline-block,
+}
+
+#editPanel .input-field {
+	width: 400px;
+}
+
+#forColor {
+	width: 300px;
+	height: 50px;
+}
+
+#editPanel {
+	
+	padding-top: 300px;
+}
+
+.inputEdit {
+	width: 400px;
+	margin: auto;
+	text-align: center;
+	
+}
+
+
+.tetrimino .col {
+	width: 400px;
+}
+
+#editCenter {
+	width: 500px;
+	height: 400px;
+	background-color: #fff3e0 /*orange lighten-5*/;
+	margin: auto;
+	border-radius: 15px;
+	padding-top: 50px;
+}
+
+#userPanel .input-field {
+	width: 400px;
+}
+
+#userPanel {
+	
+	padding-top: 150px;
+}
+#userCenter {
+	width: 500px;
+	height: 550px;
+	background-color: #fff3e0 /*orange lighten-5*/;
+	margin: auto;
+	border-radius: 15px;
+	padding-top: 50px;
+}
+
+
+.collapsible .material-icons {
+     color: #e65100;
+}
