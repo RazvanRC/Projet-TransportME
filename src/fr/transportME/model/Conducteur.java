@@ -2,9 +2,6 @@ package fr.transportME.model;
 
 //import java.util.*;
 
-/**
- * 
- */
 public class Conducteur extends Utilisateur {
 
    /**
@@ -13,84 +10,65 @@ public class Conducteur extends Utilisateur {
    public Conducteur() {
    }
 
-   /**
-    * 
-    */
    private int anneePermis;
 
-   /**
-    * 
-    */
    private float posActuelleLong;
 
-   /**
-    * 
-    */
    private float posActuelleLat;
 
-   /**
-    * 
-    */
    private boolean statut;
 
-   /**
-    * 
-    */
    private int idVoiture;
 
-   /**
-    * 
-    */
    private int idCond;
 
-public int getAnneePermis() {
-	return anneePermis;
-}
+	public int getAnneePermis() {
+		return anneePermis;
+	}
 
-public void setAnneePermis(int anneePermis) {
-	this.anneePermis = anneePermis;
-}
+	public void setAnneePermis(int anneePermis) {
+		this.anneePermis = anneePermis;
+	}
 
-public float getPosActuelleLong() {
-	return posActuelleLong;
-}
+	public float getPosActuelleLong() {
+		return posActuelleLong;
+	}
 
-public void setPosActuelleLong(float posActuelleLong) {
-	this.posActuelleLong = posActuelleLong;
-}
+	public void setPosActuelleLong(float posActuelleLong) {
+		this.posActuelleLong = posActuelleLong;
+	}
 
-public float getPosActuelleLat() {
-	return posActuelleLat;
-}
+	public float getPosActuelleLat() {
+		return posActuelleLat;
+	}
 
-public void setPosActuelleLat(float posActuelleLat) {
-	this.posActuelleLat = posActuelleLat;
-}
+	public void setPosActuelleLat(float posActuelleLat) {
+		this.posActuelleLat = posActuelleLat;
+	}
 
-public boolean isStatut() {
-	return statut;
-}
+	public boolean isStatut() {
+		return statut;
+	}
 
-public void setStatut(boolean statut) {
-	this.statut = statut;
-}
+	public void setStatut(boolean statut) {
+		this.statut = statut;
+	}
 
-public int getIdVoiture() {
-	return idVoiture;
-}
+	public int getIdVoiture() {
+		return idVoiture;
+	}
 
-public void setIdVoiture(int idVoiture) {
-	this.idVoiture = idVoiture;
-}
+	public void setIdVoiture(int idVoiture) {
+		this.idVoiture = idVoiture;
+	}
 
-public int getIdCond() {
-	return idCond;
-}
+	public int getIdCond() {
+		return idCond;
+	}
 
-public void setIdCond(int idCond) {
-	this.idCond = idCond;
-}
-
+	public void setIdCond(int idCond) {
+		this.idCond = idCond;
+	}
   
    
 
