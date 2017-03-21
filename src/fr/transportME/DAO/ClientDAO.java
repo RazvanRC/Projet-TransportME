@@ -21,6 +21,13 @@ public class ClientDAO extends DAO<Client>{
 	@Override
 	public Client find(int id) {
 		return this.em.find(Client.class, id);
+		try {
+			TypedQuery<Client> myQuery = em.createQuery("FROM Client WHERE SELECT c FROM Client c", Client.class);
+			return myQuery.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override

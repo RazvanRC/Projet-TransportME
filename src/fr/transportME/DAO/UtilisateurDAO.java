@@ -44,5 +44,25 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 	public Utilisateur save(Utilisateur object) {
 		return this.em.merge(object);
 	}
+	
+
+	public Utilisateur auth(String login, String mdp) {
+		Utilisateur myUtilisateur = null;
+		try {
+			myUtilisateur =  em.createQuery("FROM Utilisateur WHERE login = :uti_login AND mdp = :uti_mdp", Utilisateur.class)
+					.setParameter("uti_login", login)
+					.setParameter("uti_mdp", mdp)
+					.getSingleResult();
+			
+		}
+		
+		catch (Exception e)  {
+			
+		}
+		
+		
+		
+		return myUtilisateur;
+	}
 
 }
