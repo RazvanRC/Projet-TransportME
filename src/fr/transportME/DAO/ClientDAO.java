@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mysql.fabric.xmlrpc.Client;
 
-
 @Repository
 @Transactional
 public class ClientDAO extends DAO<Client>{
