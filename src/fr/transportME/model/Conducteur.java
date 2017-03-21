@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.ColumnDefault;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,6 +24,7 @@ public class Conducteur extends Utilisateur {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="cond_anneePermis")
+	@NotNull
 	private int anneePermis;
 
 	@Column(name="cond_posActuelleLong")
@@ -30,21 +34,27 @@ public class Conducteur extends Utilisateur {
 	private float posActuelleLat;
 
 	@Column(name="cond_statut")
+	@ColumnDefault("false")
 	private boolean statut;
 	
 	@Column(name="cond_marque")
+	@NotNull
 	private String marqueVoiture;
 
-	@Column(name = "co,d_modele")
+	@Column(name = "cond_modele")
+	@NotNull
 	private String modeleVoiture;
 
 	@Column(name = "cond_nbrPassagers")
+	@NotNull
 	private int nbrPassagers;
 
 	@Column(name = "cond_immatriculation")
+	@Size(min=7, max=7)
+	@NotNull
 	private String immatriculation;
 	
-	@OneToMany(mappedBy="conducteur", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="conducteur")
 	@JsonIgnore
 	private List<Course> courses;
 

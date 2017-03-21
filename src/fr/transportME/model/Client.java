@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -19,23 +21,30 @@ public class Client extends Utilisateur {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="cli_noCB")
-	private int noCBCli;
+	@Size(min=16, max=16)
+	@NotNull
+	private String noCBCli;
 
 	@Column(name="cli_dateExpiration")
+	@NotNull
 	private Date dateExpirationCli;
 
 	@Column(name="cli_cryptogramme")
-	private int cryptogrammeCli;
+	@Size(min=3, max=3)
+	@NotNull
+	private String cryptogrammeCli;
 	
 	@OneToMany(mappedBy="client", fetch=FetchType.EAGER)
 	@JsonIgnore
 	private List<Course> courses;
 
-	public int getNoCBCli() {
+	
+
+	public String getNoCBCli() {
 		return noCBCli;
 	}
 
-	public void setNoCBCli(int noCBCli) {
+	public void setNoCBCli(String noCBCli) {
 		this.noCBCli = noCBCli;
 	}
 
@@ -47,15 +56,16 @@ public class Client extends Utilisateur {
 		this.dateExpirationCli = dateExpirationCli;
 	}
 
-	public int getCryptogrammeCli() {
+	
+	
+	public String getCryptogrammeCli() {
 		return cryptogrammeCli;
 	}
 
-	public void setCryptogrammeCli(int cryptogrammeCli) {
+	public void setCryptogrammeCli(String cryptogrammeCli) {
 		this.cryptogrammeCli = cryptogrammeCli;
 	}
-	
-	
+
 	public List<Course> getCourses() {
 		return courses;
 	}

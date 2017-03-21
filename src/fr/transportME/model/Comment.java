@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="comment")
@@ -20,10 +21,11 @@ public class Comment {
 	private int idComment;
 
 	@ManyToOne
-	@JoinColumn(name="com_util_id")
-	private int idUtil;
+	@JoinColumn(name="com_utilisateur")
+	private Utilisateur utilisateur;
 	
 	@Column(name="com_note")
+	@NotNull
 	private int noteComment;
 
 	@Column(name="com_texte")
@@ -52,6 +54,20 @@ public class Comment {
 	public void setTexteComment(String texteComment) {
 		this.texteComment = texteComment;
 	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public Comment() {
+		super();
+	}
+	
+	
    
 
 }
