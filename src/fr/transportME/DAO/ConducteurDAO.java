@@ -39,4 +39,10 @@ public class ConducteurDAO extends DAO<Conducteur>{
 		return this.em.merge(object);
 	}
 
+	@Override
+	public Conducteur auth(String login, String mdp) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

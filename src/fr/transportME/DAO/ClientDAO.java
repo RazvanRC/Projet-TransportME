@@ -46,4 +46,10 @@ public class ClientDAO extends DAO<Client>{
 		return this.em.merge(object);
 	}
 
+	@Override
+	public Client auth(String login, String mdp) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

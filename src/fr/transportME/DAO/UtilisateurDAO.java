@@ -45,7 +45,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 		return this.em.merge(object);
 	}
 	
-
+	@Override
 	public Utilisateur auth(String login, String mdp) {
 		Utilisateur myUtilisateur = null;
 		try {

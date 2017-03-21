@@ -12,5 +12,5 @@ public abstract class DAO<T>
 	public abstract T find(int id);
 	public abstract List<T> findAll();
 	public abstract T save(T object);
-	
+	public abstract T auth(String login, String mdp);
 }
