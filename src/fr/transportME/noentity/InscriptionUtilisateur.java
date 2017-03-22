@@ -1,8 +1,8 @@
 package fr.transportME.noentity;
 
+import fr.transportME.model.Utilisateur;
 
-
-public class InscriptionUtilisateur extends Administrateur {
+public class InscriptionUtilisateur extends Utilisateur {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -23,11 +23,11 @@ public class InscriptionUtilisateur extends Administrateur {
 		this.passwordCheck = passwordCheck;
 	}
 	
-	public void setProperties(Administrateur util) {
-		util.setNom(this.getNom());
-		util.setPrenom(this.getPrenom());
-		util.setPassAdmin(this.getPassAdmin());
-		util.setLoginAdmin(this.getLoginAdmin());
+	public void setProperties(Utilisateur util) {
+		util.setNomUtil(this.getNomUtil());
+		util.setPrenomUtil(this.getPrenomUtil());
+		util.setMdpUtil(this.getMdpUtil());
+		util.setLoginUtil(this.getLoginUtil());
 	}
 
 }

@@ -18,7 +18,7 @@ public class PasswordCheckValidator implements Validator{
 		public void validate(Object obj, Errors e) {
 			InscriptionUtilisateur myInscriptionUtilisateur = (InscriptionUtilisateur)obj;
 
-			if (!myInscriptionUtilisateur.getPassAdmin().equals(myInscriptionUtilisateur.getPasswordCheck())) {
+			if (!myInscriptionUtilisateur.getMdpUtil().equals(myInscriptionUtilisateur.getPasswordCheck())) {
 				e.rejectValue("password", "pwdcheck", "Les mots de passe ne correspondent pas.");
 			}
 		}

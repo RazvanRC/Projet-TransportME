@@ -40,4 +40,10 @@ public class CommentDAO extends DAO<Comment>{
 		return null;
 	}
 
+	@Override
+	public Comment auth(String login, String mdp) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
