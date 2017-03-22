@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.transportME.model.Comment;
 import fr.transportME.model.Conducteur;
 import fr.transportME.model.Utilisateur;
+import fr.transportME.validation.WrongUsernameOrPasswordException;
 
 @Repository
 @Transactional
@@ -46,7 +47,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 	}
 	
 	@Override
-	public Utilisateur auth(String login, String mdp) {
+	public Utilisateur auth(String login, String mdp) throws WrongUsernameOrPasswordException {
 		Utilisateur myUtilisateur = null;
 		try {
 			myUtilisateur =  em.createQuery("FROM Utilisateur WHERE login = :uti_login AND mdp = :uti_mdp", Utilisateur.class)
@@ -57,10 +58,12 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 		}
 		
 		catch (Exception e)  {
+			throw new WrongUsernameOrPasswordException();
 			
 		}
 		
-		
+		if (myUtilisateur == null) 
+			throw new WrongUsernameOrPasswordException();
 		
 		return myUtilisateur;
 	}
