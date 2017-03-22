@@ -36,8 +36,7 @@ public class CourseDAO extends DAO<Course>{
 
 	@Override
 	public Course save(Course object) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.em.merge(object);
 	}
 
 	@Override

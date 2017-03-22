@@ -36,8 +36,7 @@ public class CommentDAO extends DAO<Comment>{
 
 	@Override
 	public Comment save(Comment object) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.em.merge(object);
 	}
 
 	@Override
