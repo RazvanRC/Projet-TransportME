@@ -1,0 +1,16 @@
+/* BASIC RESET */
+ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input{margin:0; padding:0;}
+
+/* HTML ELEMENTS */
+body {font-family:Georgia,serif; }
+a { color:black; }
+a:hover { color:grey; }
+a img { border:none; }
+h1 { margin: 20px 0px; padding:15px; border-left-width:10px; border-left-color:white; border-left-style:solid; }
+p { margin: 10px 0; }
+
+/* COMMON CLASSES */
+.break { clear:both; }
+
+/* WRAPPER */
+#wrapper { width:800px; margin:0 auto; }

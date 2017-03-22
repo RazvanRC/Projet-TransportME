@@ -1,0 +1,11 @@
+/* SLICK MENU */
+#slickmenu { margin-top:50px; height:150px; /* Need to define the height to control the HTML flow */ }
+#slickmenu ul { list-style:none; }
+#slickmenu ul li { display:block; position:absolute; }
+#slickmenu ul li a { text-decoration:none; }
+#slickmenu ul li a img { border: 3px solid #EEE; }
+
+.infobox { display:none; background-color:#111111; position:absolute; text-decoration: none !important;
+	background-color:#eeeeee; padding:3px; width:163px; font-size:12px; border-style:none; border:1px solid #eee; }
+.infobox-arrow { display:none; width:40px; height:10px; margin-left:65px; position:absolute;
+	background-image:url('../images/arrow.png'); background-position:center; background-repeat:no-repeat; }
