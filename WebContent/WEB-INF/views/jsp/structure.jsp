@@ -19,6 +19,13 @@
 	<link rel="stylesheet" type="text/css" href="resources/css/style1.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/slickmenu1.css">
 	
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		rel="stylesheet" />
+<!-- 	<link rel="stylesheet" type="text/css" -->
+<%-- 		href="${ pageContext.request.contextPath }/resources/css/materialize.css" /> --%>
+	<link rel="stylesheet" type="text/css"
+		href="${ pageContext.request.contextPath }/resources/css/style.css" />
+	
 	<script type="text/javascript" src="resources/js/jquery.jslickmenu.js"></script>
 	<script type="text/javascript" src="resources/js/script.js"></script>
 
@@ -30,13 +37,6 @@
 	<tiles:insertAttribute name="navigation" />
 	<tiles:insertAttribute name="body" />
 
-
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-		rel="stylesheet" />
-	<link rel="stylesheet" type="text/css"
-		href="${ pageContext.request.contextPath }/resources/css/materialize.css" />
-	<link rel="stylesheet" type="text/css"
-		href="${ pageContext.request.contextPath }/resources/css/style.css" />
 	<script
 		src="${ pageContext.request.contextPath }/resources/js/materialize.min.js"></script>
 
