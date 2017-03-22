@@ -5,9 +5,12 @@
 		<nav>
     		<div class="nav-wrapper">
 				<a href="#" class="brand-logo">Bienvenue</a>
-				<ul id="nav-mobile" class="right">
-      					<li><a href="${ pageContext.request.contextPath }/logout">Deconnexion</a></li>
-   		  		</ul>
+				<img src="resources/images/logo.PNG">
+				<c:if test="${ utilisateur != null }">
+					<ul id="nav-mobile" class="right">
+	      					<li><a href="${ pageContext.request.contextPath }/logout">Deconnexion</a></li>
+	   		  		</ul>
+   		  		</c:if>
    		 	</div>
  		 </nav>	
 </header>

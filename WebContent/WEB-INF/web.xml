@@ -16,7 +16,7 @@
 	<load-on-startup>1</load-on-startup>
 </servlet>
 
-<!-- Mapping de dispatcher sur toutes les ressources -->
+<!-- Mapping de dispatcher sur toutes les ressources --> 
 <servlet-mapping>
 	<servlet-name>dispatcher</servlet-name>
 	<url-pattern>/</url-pattern>
