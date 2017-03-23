@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
     
 <html>
 <body>
@@ -15,12 +15,11 @@
             <div id="leftcolumn">
                 <div id="sidebar_bg">
                     <!-- Menu secondaire -->
-                    <div id="menu2"></div>
+                    <div id="menu1"></div>
                     <!-- Contenu intermédiaire -->
                 </div>
             </div>
             <!-- Contenu principal -->
-            <p> ESSAI </p>
             <div id="content">
                 <center>
                     <h2 contenteditable="true">Bienvenue sur notre site

@@ -98,7 +98,7 @@ body {
 /* MENU 1 */
 
 #menu1 {
-	background: url(Ressources/images/Menu2.png) no-repeat 0% 0%;
+	background: url(resources/images/menu2.png) no-repeat 0% 0%;
 	float: left;
 	height: 42px;
 	margin: 0 0 18px 0;

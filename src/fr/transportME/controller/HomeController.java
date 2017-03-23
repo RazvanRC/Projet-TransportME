@@ -27,8 +27,9 @@ public class HomeController {
 	DAO<Utilisateur> utilisateurDao;
 
 	// accès page Accueil
-	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
-	public String accGet() {
+	@RequestMapping(value = {"/","/accueil"}, method = RequestMethod.GET)
+	public String accGet(Model model) {
+		model.addAttribute("page", "accueil");
 		return "accueil";	
 	}
 	
@@ -36,6 +37,7 @@ public class HomeController {
 	public String loginGet(Model model, HttpSession session) {
 		model.addAttribute("formLogin", new Utilisateur());
 		model.addAttribute("utilisateur", null);
+		model.addAttribute("page", "login");
 		
 		if (session.getAttribute("user") == null && errorLogin == false) {
 			model.addAttribute("errormessage", null);
@@ -76,10 +78,18 @@ public class HomeController {
 	
 	@RequestMapping(value = "/inscription", method = RequestMethod.GET)
 	public String inscGet(Model model, HttpSession session) {
-		
+			model.addAttribute("page", "inscription");
+			
 			System.out.println("inscriptionnnn");
 			return "inscription";
 			
 
 		}
+	
+	@RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
+	public String logoutGet(Model model, HttpSession session) {
+		System.out.println("déconnexion");
+		session.invalidate();
+		return "redirect:login";
+	}
 }
