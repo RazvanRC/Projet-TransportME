@@ -9,7 +9,8 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mysql.fabric.xmlrpc.Client;
+import fr.transportME.model.Client;
+
 
 @Repository
 @Transactional

@@ -1,61 +1,52 @@
 
 <body>
- <div id="wrapper">
-            <div class="header">
-                <div class="header2">
-                   
-                    <img src="css/img/logo.PNG">
-                  
-                </div>
-                <div></div>
-            </div>
+	 <div id="wrapper">
+		<div class="header">
+		    <div class="header2">                  
+		        <img src="css/img/logo.PNG">                  
+		    </div>
+		    
+		</div>
        
-            <div id="menu1">
-                <ul>
-                    <li>
-                        <a href="index.html">Acceuil</a>
-                    </li>
-                 
-                </ul>
+        <div id="menu1">
+            <ul>
+                <li>
+                    <a href="index.html">Acceuil</a>
+                </li>
+             
+            </ul>
+        </div>
+        <div id="leftcolumn">
+            <div id="sidebar_bg">
+               
+                <div id="menu2"></div>
+               
             </div>
-            <div id="leftcolumn">
-                <div id="sidebar_bg">
-                   
-                    <div id="menu2"></div>
-                   
-                </div>
-            </div>
-            <!-- Contenu principal -->
-            <div id="content">
-                <center>
+        </div>
+        <!-- Contenu principal -->
+                       
                     <br>
                         <br>
                         <br>
                         <br>
                         <br>
                         <br>
-                    </h2>
-                </center>
 
-
-
-
-                <div class="presentation">
+	<div class="presentation">
     <h3 class="titre">L'inscription ne prend que quelques secondes...
-    </p></h3>
+    </h3>
    
    
     <form method="post" class="inscription" id="inscription">
   
         <fieldset >
-           <br>
-           <br>
-           <label for="utilisateur">Utilisateur*:   </label>
-           <select>
-  <option value="client">Client</option>
-  <option value="conducteur">Conducteur</option>
- 
-</select>
+           	<br>
+           	<br>
+           	<label for="utilisateur">Utilisateur*:   </label>
+           	<select>
+				<option value="client">Client</option>
+				<option value="conducteur">Conducteur</option> 
+			</select>
 <br>
 <br>
              <label for="pseudo">  Votre Login*:   </label>
@@ -93,27 +84,27 @@
                 <input class="form-text" type="email" name="email" id="email" required>
                 <br>
                 <br>
-                 <div class="inputLogin">
-                        <div class="reset">
-                            <button id="reset" class="btn waves-effect waves-light orange darken-4" type="reset" name="Réinitialiser">Réinitialiser
-                                <i class="material-icons right">send</i>
-                            </button>
-                        </div>
-                         <div class="reset">
-                        <div class="btnLogin">
-                            <button id="submit" class="btn waves-effect waves-light orange darken-4" type="submit" name="Envoyer">Envoyer
-                                <i class="material-icons right">send</i>
-                            </button>
-                        </div>
-<!--                 <div> -->
+                <div class="inputLogin">
+	                <div class="reset">
+	                    <button id="reset" class="btn waves-effect waves-light orange darken-4" type="reset" name="Réinitialiser">Réinitialiser
+	                        <i class="material-icons right">send</i>
+	                    </button>
+	                </div>
+	        	</div>
+                <div class="reset">
+	                <div class="btnLogin">
+	                    <button id="submit" class="btn waves-effect waves-light orange darken-4" type="submit" name="Envoyer">Envoyer
+	                        <i class="material-icons right">send</i>
+	                    </button>
+	                </div>
+                </div>
 <!--                   <input type="reset" value="Réinitialiser"> -->
 <!--         <input type="submit" value="Envoyer" id="submit"> -->
-<!--         </div> -->
 
         </fieldset>
         </form>
       
-            </div>
+	</div>
            
 
 </body>

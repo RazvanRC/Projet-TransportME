@@ -9,5 +9,16 @@
 		<put-attribute name="title" value="Login" />
 		<put-attribute name="body" value="/WEB-INF/views/jsp/account/login.jsp" />
 	</definition>
-	
+	<definition name="inscription" extends="base.definition">
+		<put-attribute name="title" value="Inscription" />
+		<put-attribute name="body" value="/WEB-INF/views/jsp/account/inscription.jsp" />
+	</definition>	
+	<definition name="profilConducteur" extends="base.definition">
+		<put-attribute name="title" value="ProfilConducteur" />
+		<put-attribute name="body" value="/WEB-INF/views/jsp/account/profilConducteur.jsp" />
+	</definition>	
+	<definition name="profilClient" extends="base.definition">
+		<put-attribute name="title" value="ProfilClient" />
+		<put-attribute name="body" value="/WEB-INF/views/jsp/account/profilClient.jsp" />
+	</definition>	
 </tiles-definitions>

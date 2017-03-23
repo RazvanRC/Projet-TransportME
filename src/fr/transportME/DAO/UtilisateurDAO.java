@@ -50,7 +50,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 	public Utilisateur auth(String login, String mdp) throws WrongUsernameOrPasswordException {
 		Utilisateur myUtilisateur = null;
 		try {
-			myUtilisateur =  em.createQuery("FROM Utilisateur WHERE login = :uti_login AND mdp = :uti_mdp", Utilisateur.class)
+			myUtilisateur =  em.createQuery("FROM Utilisateur u WHERE u.loginUtil = :uti_login AND u.mdpUtil = :uti_mdp", Utilisateur.class)
 					.setParameter("uti_login", login)
 					.setParameter("uti_mdp", mdp)
 					.getSingleResult();
@@ -58,12 +58,18 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 		}
 		
 		catch (Exception e)  {
+			System.out.println("pbe select from Utilisateur "+e);
 			throw new WrongUsernameOrPasswordException();
 			
 		}
 		
 		if (myUtilisateur == null) 
+			
+		{
+			System.out.println("pbe myUtilisateur est null ");
 			throw new WrongUsernameOrPasswordException();
+		}
+			
 		
 		return myUtilisateur;
 	}

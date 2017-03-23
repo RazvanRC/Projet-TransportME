@@ -4,7 +4,12 @@
 <header>
 		<nav>
     		<div class="nav-wrapper">
-				<a href="#" class="brand-logo">Bienvenue</a>
+				<c:if test="${ page == 'inscription' or page == 'accueil' }">
+					<a href="${ pageContext.request.contextPath }/login" class="brand-logo">Login</a>
+				</c:if>
+				<c:if test="${ page == 'login' }">
+					<a href="${ pageContext.request.contextPath }/accueil" class="brand-logo">Accueil</a>
+				</c:if>
 				<img src="resources/images/logo.PNG">
 				<c:if test="${ utilisateur != null }">
 					<ul id="nav-mobile" class="right">

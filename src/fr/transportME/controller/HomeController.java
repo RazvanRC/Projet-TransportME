@@ -5,6 +5,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,8 +27,9 @@ public class HomeController {
 	DAO<Utilisateur> utilisateurDao;
 
 	// accès page Accueil
-	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
-	public String accGet() {
+	@RequestMapping(value = {"/","/accueil"}, method = RequestMethod.GET)
+	public String accGet(Model model) {
+		model.addAttribute("page", "accueil");
 		return "accueil";	
 	}
 	
@@ -34,6 +37,7 @@ public class HomeController {
 	public String loginGet(Model model, HttpSession session) {
 		model.addAttribute("formLogin", new Utilisateur());
 		model.addAttribute("utilisateur", null);
+		model.addAttribute("page", "login");
 		
 		if (session.getAttribute("user") == null && errorLogin == false) {
 			model.addAttribute("errormessage", null);
@@ -52,28 +56,40 @@ public class HomeController {
 	@RequestMapping(value = {"/login"}, method = RequestMethod.POST)
 	public String loginPost(Model model, HttpSession session,
 			@RequestParam(value = "loginUtil", required = false) String loginUtil,
-			@RequestParam(value = "mdpUtil", required = false) String mdpUtil) {
+			@RequestParam(value = "mdpUtil", required = false) String mdpUtil,
+			@RequestParam(value = "typeUtilisateur") String typeUtilisateur
+			) {
 		
-		
-		Utilisateur user= null;
-		try {
-			user = utilisateurDao.auth(loginUtil, mdpUtil);
-		} catch (WrongUsernameOrPasswordException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if (user.equals(null)) {
-			model.addAttribute("errormessage", "utilisateur non trouvé");
-			return "login";
-		}
-		else {
+			System.out.println("connection type utilisateur "+typeUtilisateur);
+			try {
+				utilisateurDao.auth(loginUtil, mdpUtil);
+			} catch (WrongUsernameOrPasswordException e) {
+				model.addAttribute("errormessage", "utilisateur non trouvé");
+				return "login";
+			}
 			model.addAttribute("utilisateur", loginUtil);
-			return "profil";
+			if (typeUtilisateur.equals("Client"))  {
+				return "profilClient";	
+			}
+			else
+				return "profilConducteur";	
+				
 		}
-		
-		}
-		
 	
-	
+	@RequestMapping(value = "/inscription", method = RequestMethod.GET)
+	public String inscGet(Model model, HttpSession session) {
+			model.addAttribute("page", "inscription");
+			
+			System.out.println("inscriptionnnn");
+			return "inscription";
+			
 
+		}
+	
+	@RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
+	public String logoutGet(Model model, HttpSession session) {
+		System.out.println("déconnexion");
+		session.invalidate();
+		return "redirect:login";
+	}
 }
