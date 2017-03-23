@@ -6,14 +6,6 @@
 		<form class="col s6" method="POST">
 			<div class="row">
 			
-			<div class="inputLogin">
-				<select name="typeUtilisateur" id="typeUtilisateur">
-		           <optgroup label="type Utilisateur">
-		               <option value="Conducteur">Conducteur</option>
-		               <option value="Client" selected="selected">Client</option>
-		           </optgroup>
-	       		</select>
-       		</div>
 				<div class="inputLogin">
 					<div class="input-field col s6">
 						<i class="material-icons prefix">account_box</i> <input
@@ -39,6 +31,8 @@
 					</div>
 				</div>
 			</div>
+
+			${ errormessage }
 		</form>
 
 		<button id="btnInsc"
@@ -47,9 +41,6 @@
 			Inscription <i class="material-icons right">send</i>
 		</button>
 
-		<div class="inputLogin">
-			<p>${ errormessage }</p>
-		</div>
 	</div>
 
 

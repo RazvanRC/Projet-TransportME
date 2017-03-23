@@ -4,10 +4,10 @@
 <header>
 		<nav>
     		<div class="nav-wrapper">
-				<c:if test="${ page == 'inscription' or page == 'accueil' }">
+				<c:if test="${ page == 'accueil' }">
 					<a href="${ pageContext.request.contextPath }/login" class="brand-logo">Login</a>
 				</c:if>
-				<c:if test="${ page == 'login' }">
+				<c:if test="${ page == 'inscription' or page == 'login' }">
 					<a href="${ pageContext.request.contextPath }/accueil" class="brand-logo">Accueil</a>
 				</c:if>
 				<img src="resources/images/logo.PNG">

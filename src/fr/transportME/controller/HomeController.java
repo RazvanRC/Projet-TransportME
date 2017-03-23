@@ -1,17 +1,18 @@
 package fr.transportME.controller;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.transportME.DAO.DAO;
+import fr.transportME.model.Client;
 import fr.transportME.model.Utilisateur;
 import fr.transportME.validation.WrongUsernameOrPasswordException;
 
@@ -33,11 +34,13 @@ public class HomeController {
 		return "accueil";	
 	}
 	
+	// affichage formulaire de connection
 	@RequestMapping(value = {"/login"}, method = RequestMethod.GET)
 	public String loginGet(Model model, HttpSession session) {
 		model.addAttribute("formLogin", new Utilisateur());
 		model.addAttribute("utilisateur", null);
 		model.addAttribute("page", "login");
+		model.addAttribute("errormessage", null);
 		
 		if (session.getAttribute("user") == null && errorLogin == false) {
 			model.addAttribute("errormessage", null);
@@ -53,25 +56,28 @@ public class HomeController {
 		}		
 	}
 	
+	// recupération données de connection et vérification existance dans la BDD
 	@RequestMapping(value = {"/login"}, method = RequestMethod.POST)
 	public String loginPost(Model model, HttpSession session,
 			@RequestParam(value = "loginUtil", required = false) String loginUtil,
-			@RequestParam(value = "mdpUtil", required = false) String mdpUtil,
-			@RequestParam(value = "typeUtilisateur") String typeUtilisateur
+			@RequestParam(value = "mdpUtil", required = false) String mdpUtil
 			) {
 		
-			System.out.println("connection type utilisateur "+typeUtilisateur);
+			System.out.println("connection");
+			Utilisateur user;
 			try {
-				utilisateurDao.auth(loginUtil, mdpUtil);
+				user = utilisateurDao.auth(loginUtil, mdpUtil);
 			} catch (WrongUsernameOrPasswordException e) {
 				model.addAttribute("errormessage", "utilisateur non trouvé");
 				return "login";
 			}
 			model.addAttribute("utilisateur", loginUtil);
-			if (typeUtilisateur.equals("Client"))  {
+			if (user instanceof Client)  {
+				System.out.println("vers profil client");
 				return "profilClient";	
 			}
 			else
+				System.out.println("vers profil conducteur");
 				return "profilConducteur";	
 				
 		}
