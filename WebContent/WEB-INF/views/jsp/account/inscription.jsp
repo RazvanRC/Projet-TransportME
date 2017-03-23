@@ -1,6 +1,6 @@
 
 <body>
-	 <div id="wrapper">
+	 <div id="wrapper" >
 		<div class="header">
 		    <div class="header2">                  
 		        <img src="css/img/logo.PNG">                  
