@@ -28,7 +28,8 @@
 
 <body>
 	<tiles:insertAttribute name="navigation" />
-	<tiles:insertAttribute name="body" />
+	<tiles:insertAttribute name="body" /> 
+	
 
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
