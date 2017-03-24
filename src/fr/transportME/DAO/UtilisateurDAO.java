@@ -49,6 +49,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 	@Override
 	public Utilisateur auth(String login, String mdp) throws WrongUsernameOrPasswordException {
 		Utilisateur myUtilisateur = null;
+		System.out.println("debut AUTH utilisateurDAO");
 		try {
 			myUtilisateur =  em.createQuery("FROM Utilisateur u WHERE u.loginUtil = :uti_login AND u.mdpUtil = :uti_mdp", Utilisateur.class)
 					.setParameter("uti_login", login)
@@ -70,7 +71,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 			throw new WrongUsernameOrPasswordException();
 		}
 			
-		
+		System.out.println("retourne myUtilisateur");
 		return myUtilisateur;
 	}
 

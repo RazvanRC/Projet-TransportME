@@ -3,13 +3,21 @@ package fr.transportME.controller;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 
 import fr.transportME.DAO.DAO;
 import fr.transportME.model.Client;
@@ -64,15 +72,58 @@ public class HomeController {
 			) {
 		
 			System.out.println("connection");
-			Utilisateur user;
-			try {
-				user = utilisateurDao.auth(loginUtil, mdpUtil);
-			} catch (WrongUsernameOrPasswordException e) {
-				model.addAttribute("errormessage", "utilisateur non trouvé");
+			
+			RestTemplate restTemplate = new RestTemplate();
+			String url = "http://localhost:8080/TransportME/api/verifLoginClient?user={loginUtil}&mdp={mdpUtil}"; 
+			System.out.println("appel service url= "+url);
+			ResponseEntity<Utilisateur> response = restTemplate.getForEntity(url, Utilisateur.class, loginUtil, mdpUtil );
+			System.out.println("sortie appel service");
+			boolean client = false; 
+			if (response.getStatusCode().equals(HttpStatus.OK)) {
+				if (response.getBody()==null)
+					// verif si login conducteur existe
+				{
+					restTemplate = new RestTemplate();
+					url = "http://localhost:8080/TransportME/api/verifLoginConducteur?user={loginUtil}&mdp={mdpUtil}"; 
+					System.out.println("appel service url= "+url);
+					response = restTemplate.getForEntity(url, Utilisateur.class, loginUtil, mdpUtil );
+					if (response.getStatusCode().equals(HttpStatus.OK))
+					{
+						if (response.getBody()==null)
+						{
+							model.addAttribute("errormessage", "utilisateur non trouvé");
+							return "login";
+						}
+						else
+						{
+							client = false;
+						}
+					}
+					else 
+					{
+						System.out.println("statut non ok");
+						model.addAttribute("errormessage", "probleme survenu dans le service WEB de vérification de login");
+						return "login";
+					}
+				}
+				else
+				{
+					client = true;
+				}
+				
+				System.out.println("statut ok "+response.getBody().getIdUtil());				
+				session.setAttribute("idUtil", response.getBody().getIdUtil());
+				
+			}
+			else
+			{
+				System.out.println("statut non ok");
+				model.addAttribute("errormessage", "probleme survenu dans le service WEB de vérification de login");
 				return "login";
 			}
-			model.addAttribute("utilisateur", loginUtil);
-			if (user instanceof Client)  {
+			
+			System.out.println("aiguillage vers profil client ou conducteur suivant user");
+			if (client)  {
 				System.out.println("vers profil client");
 				return "profilClient";	
 			}
@@ -88,8 +139,26 @@ public class HomeController {
 			
 			System.out.println("inscriptionnnn");
 			return "inscription";
+		}
+	
+	@RequestMapping(value = "/inscription/client", method = RequestMethod.POST)
+	// dans inscription, mettre form:form modelAttribute="client"
+	// et modifier html pour 
+	// <input id="candidat_nom" type="text" class="validate" name="nom" value="${ candidat.nom }" />
+	// <label for="candidat_nom">Nom</label>
+	// <form:errors path="nom" />
+	public String inscPost(@Valid @ModelAttribute("client") Client client, 
+			BindingResult result, HttpSession session) {
 			
-
+			System.out.println("validation inscription");
+			if (result.hasErrors()) {
+				return "inscription";
+			}
+			
+			System.out.println("appel service ecriture inscription");
+			
+			
+			return "profilClient"; // ou profilConducteur
 		}
 	
 	@RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
