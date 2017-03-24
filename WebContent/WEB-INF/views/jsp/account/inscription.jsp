@@ -27,7 +27,8 @@
                        
                     <br>
                         <br>
-                    
+                
+                
 
 	<div class="presentation">
     <h3 class="titre">L'inscription ne prend que quelques secondes...
