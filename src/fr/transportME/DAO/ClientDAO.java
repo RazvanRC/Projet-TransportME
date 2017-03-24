@@ -38,7 +38,15 @@ public class ClientDAO extends DAO<Client>{
 
 	@Override
 	public Client save(Client object) {
-		return this.em.merge(object);
+		
+		try {
+			System.out.println(object.getMdpUtil());
+			return this.em.merge(object);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+		
 	}
 
 	@Override

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mysql.jdbc.jdbc2.optional.MysqlXid;
+
 import fr.transportME.DAO.ClientDAO;
 import fr.transportME.model.Client;
 import fr.transportME.model.Comment;
@@ -63,11 +65,19 @@ public class ClientRESTCont {
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	@ResponseBody
-	public ResponseEntity<Client> modifClient(@PathVariable(value = "id", required = false) String idClient) {
-		Client myClient = this.clientDAO.find(Integer.parseInt(idClient));
+	public ResponseEntity<Client> modifClient(@PathVariable(value = "id", required = false) int idClient, 
+											@RequestBody Client client, BindingResult bindingResult) {
 
-		myClient = this.clientDAO.save(myClient);
-		return new ResponseEntity<Client>(myClient, HttpStatus.OK);
+		// TODO securite de la modif
+//		System.out.println(myClient.getNomUtil());
+		client.setIdUtil(idClient);
+		client = this.clientDAO.save(client);
+//		System.out.println(myClient.getNomUtil());
+		if (client == null)
+			return new ResponseEntity<Client>( HttpStatus.BAD_REQUEST);
+		
+		return new ResponseEntity<Client>(client, HttpStatus.OK);
+
 	}
 	
 	/**
