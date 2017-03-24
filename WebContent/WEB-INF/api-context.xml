@@ -16,7 +16,7 @@
 	<context:annotation-config />
 
 	<!-- On indique quel(s) package(s) sont concernés par cette configuration par annotation -->
-	<context:component-scan base-package="fr.transportME.controller" />
+	<context:component-scan base-package="fr.transportME.restcontroller" />
 
 	<!-- On active la délégation des requêtes vers les contrôleurs -->
 	<mvc:annotation-driven />
