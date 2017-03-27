@@ -1,5 +1,7 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!-- Contenu principal -->
+
 
 <div class="presentation">
 	<h3 class="titre">L'inscription ne prend que quelques secondes...
@@ -20,40 +22,42 @@
 		<h2 id="demo"></h2>
 		<br> <br>
 		<div id="divClient">
-			<form method="post" class="inscription">
+			<form:form modelAttribute="client" method="post" class="inscription" action="inscription/client">
 
 				<label for="pseudo"> Votre Login*: </label> 
 				<input type="text" class="form-text" name="loginUtil" id="loginUtil" required><br><br> 
 				
-				<label for="password">Password*: </label> 
-				<input type="password" class="form-password" name="password" id="password" required><br> <br> 
+				<label for="mdpUtil">Password*: </label> 
+				<input type="password" class="form-password" name="mdpUtil" id="mdpUtil" required><br> <br>
+				<form:errors path="mdpUtil" /> 
 				
 				<label for="verif_password">Confirmation Password*: </label> 
-				<input type="password" class="form-password" name="verif_password" id="verif_password" required><br><br> 
+				<input type="password" class="form-password" name="verif_password" id="verif_password" required><br><br>
+				<form:errors path="mdpUtil" />  
 				
-				<label for="surname">Votre Nom de famille:* </label> 
-				<input type="text" class="form-text" name="surname" id="surname" required><br><br> 
+				<label for="nomUtil">Votre Nom de famille:* </label> 
+				<input type="text" class="form-text" name="nomUtil" id="nomUtil" required><br><br> 
 				
-				<label for="name">Votre prénom:* </label> 
-				<input type="text" class="form-text" name="name" id="name" required><br><br> 
+				<label for="prenomUtil">Votre prénom:* </label> 
+				<input type="text" class="form-text" name="prenomUtil" id="prenomUtil" required><br><br> 
 				
-				<label for="date_naissance">Votre date de naissance:* </label> 
-				<input type="date" class="form-text" name="date_naissance" id="date_naissance" required><br><br> 
+				<label for="dateNaissanceUtil">Votre date de naissance:* </label> 
+				<input type="date" class="form-text" name="dateNaissanceUtil" id="dateNaissanceUtil" required><br><br> 
 				
-				<label for="name">Téléphone:* </label>  
+				<label for="telephoneUtil">Téléphone:* </label>  
 				<input type="tel" class="form-text" name="telephoneUtil" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" id="telephoneUtil" required><br><br> 
 				
-				<label for="name">Numéro de la carte bancaire:* </label> 
-				<input type="text" class="form-text" name="telephoneUtil" maxlength="16" id="telephoneUtil" required><br> <br> 
+				<label for="noCBCli">Numéro de la carte bancaire:* </label> 
+				<input type="text" class="form-text" name="noCBCli" maxlength="16" id="noCBCli" required><br> <br> 
 				
-				<label for="date_naissance">Date d'Expiration CB:* </label> 
-				<input type="month" class="form-text" name="dateExpirationCli" id="dateExpirationCli" required><br> <br> 
+				<label for="cli_dateExpiration">Date d'Expiration CB:* </label> 
+				<input type="month" class="form-text" name="cli_dateExpiration" id="cli_dateExpiration" required><br> <br> 
 				
-				<label for="name">Cryptogramme:* </label> 
+				<label for="cryptogrammeCli">Cryptogramme:* </label> 
 				<input type="text" class="form-text" name="cryptogrammeCli" maxlength="3" id="cryptogrammeCli" required><br> <br> 
 				
-				<label for="email">Votre e-mail*: </label> 
-				<input class="form-text" type="email" name="email" id="email" required> <br> <br> <br>
+				<label for="emailUtil">Votre e-mail*: </label> 
+				<input class="form-text" type="email" name="emailUtil" id="emailUtil" required> <br> <br> <br>
 				<div class="inputLogin">
 					<div class="reset">
 						<button id="reset"
@@ -72,14 +76,14 @@
 						</button>
 					</div>
 				</div>
-			</form>
+			</form:form>
 		</div>
 
 
 
 		
 		<div id="divConducteur">
-			<form method="post" class="inscription">
+			<form:form modelAttribute="conducteur" method="post" class="inscription" action="inscription/conducteur">
 				<label for="pseudo"> Votre Login*: </label> 
 				<input type="text" class="form-text" name="loginUtil" id="loginUtil" required><br><br>
 				 
@@ -116,8 +120,8 @@
 				<label for="name">Imatriculation:* </label> 
 				<input type="text" class="form-text" name="immatriculation" id="immatriculation" required><br> <br> 
 				
-				<label for="email">Votre e-mail:* </label> 
-				<input class="form-text" type="email" name="email" id="email" required> <br> <br>
+				<label for="emailUtil">Votre e-mail:* </label> 
+				<input class="form-text" type="email" name="emailUtil" id="emailUtil" required> <br> <br>
 				
 				<br>
 				<div class="inputLogin">
@@ -138,7 +142,7 @@
 						</button>
 					</div>
 				</div>
-			</form>
+			</form:form>
 		</div>
 
 	</fieldset>
