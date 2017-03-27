@@ -2,7 +2,10 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <section id="loginPanel">
+<div class="inscription">
 	<div id="loginCenter" class="z-depth-5">
+	<br>
+	<br>
 		<form class="col s6" method="POST">
 			<div class="row">
 			
@@ -21,6 +24,8 @@
 							de passe</label>
 					</div>
 				</div>
+				<br>
+				<br>
 				<div class="inputLogin">
 					<div class="btnLogin">
 						<button id="btnLogin"
@@ -34,7 +39,7 @@
 
 			${ errormessage }
 		</form>
-
+<br>
 		<button id="btnInsc"
 			class="btn waves-effect waves-light orange darken-4"
 			onclick="location.href='inscription'">
@@ -42,8 +47,14 @@
 		</button>
 
 	</div>
+	
 
 
 
+
+
+
+
+				
 
 </section>
