@@ -3,6 +3,7 @@ package fr.transportME.DAO;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -58,18 +59,17 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 			
 		}
 		
-		catch (Exception e)  {
+		catch (Exception e)  {  
 			System.out.println("pbe select from Utilisateur "+e);
 			throw new WrongUsernameOrPasswordException();
-			
-		}
+			}
 		
-		if (myUtilisateur == null) 
-			
-		{
-			System.out.println("pbe myUtilisateur est null ");
-			throw new WrongUsernameOrPasswordException();
-		}
+//		if (myUtilisateur == null) 
+//			
+//		{
+//			System.out.println("pbe myUtilisateur est null ");
+//			throw new WrongUsernameOrPasswordException();
+//		}
 			
 		System.out.println("retourne myUtilisateur");
 		return myUtilisateur;

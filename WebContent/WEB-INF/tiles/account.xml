@@ -14,11 +14,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/jsp/account/inscription.jsp" />
 	</definition>	
 	<definition name="profilConducteur" extends="base.definition">
-		<put-attribute name="title" value="ProfilConducteur" />
+		<put-attribute name="title" value="Profil du Conducteur" />
 		<put-attribute name="body" value="/WEB-INF/views/jsp/account/profilConducteur.jsp" />
 	</definition>	
 	<definition name="profilClient" extends="base.definition">
-		<put-attribute name="title" value="ProfilClient" />
+		<put-attribute name="title" value="Profil du Client" />
 		<put-attribute name="body" value="/WEB-INF/views/jsp/account/profilClient.jsp" />
 	</definition>	
 </tiles-definitions>

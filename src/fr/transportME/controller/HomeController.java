@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import fr.transportME.DAO.DAO;
@@ -75,52 +76,56 @@ public class HomeController {
 			
 			RestTemplate restTemplate = new RestTemplate();
 			String url = "http://localhost:8080/TransportME/api/verifLoginClient?user={loginUtil}&mdp={mdpUtil}"; 
-			System.out.println("appel service url= "+url);
-			ResponseEntity<Utilisateur> response = restTemplate.getForEntity(url, Utilisateur.class, loginUtil, mdpUtil );
+			System.out.println("appel service url client = "+url);
+			ResponseEntity<Utilisateur> response=null;
+			try
+			{
+				response = restTemplate.getForEntity(url, Utilisateur.class, loginUtil, mdpUtil );
+			}
+			catch (RestClientException e) {
+				// traiter l'exception TODO
+			}
 			System.out.println("sortie appel service");
+			
+			
 			boolean client = false; 
-			if (response.getStatusCode().equals(HttpStatus.OK)) {
 				if (response.getBody()==null)
-					// verif si login conducteur existe
+					// client non trouvé, verif si login conducteur existe
 				{
 					restTemplate = new RestTemplate();
 					url = "http://localhost:8080/TransportME/api/verifLoginConducteur?user={loginUtil}&mdp={mdpUtil}"; 
-					System.out.println("appel service url= "+url);
-					response = restTemplate.getForEntity(url, Utilisateur.class, loginUtil, mdpUtil );
-					if (response.getStatusCode().equals(HttpStatus.OK))
+					System.out.println("appel service url conducteur = "+url);
+					try
 					{
+					response = restTemplate.getForEntity(url, Utilisateur.class, loginUtil, mdpUtil );
+					}
+					catch (RestClientException e)
+					{
+						// traiter l'exception TODO
+					}
 						if (response.getBody()==null)
 						{
+							System.out.println("dans if");
 							model.addAttribute("errormessage", "utilisateur non trouvé");
 							return "login";
 						}
 						else
 						{
+							System.out.println("dans else");
 							client = false;
 						}
-					}
-					else 
-					{
-						System.out.println("statut non ok");
-						model.addAttribute("errormessage", "probleme survenu dans le service WEB de vérification de login");
-						return "login";
-					}
+
 				}
 				else
 				{
+					System.out.println("dans else true");
 					client = true;
 				}
 				
 				System.out.println("statut ok "+response.getBody().getIdUtil());				
 				session.setAttribute("idUtil", response.getBody().getIdUtil());
 				
-			}
-			else
-			{
-				System.out.println("statut non ok");
-				model.addAttribute("errormessage", "probleme survenu dans le service WEB de vérification de login");
-				return "login";
-			}
+
 			
 			System.out.println("aiguillage vers profil client ou conducteur suivant user");
 			if (client)  {
@@ -139,6 +144,22 @@ public class HomeController {
 			
 			System.out.println("inscriptionnnn");
 			return "inscription";
+		}
+	
+	@RequestMapping(value = "/profilClient", method = RequestMethod.GET)
+	public String profilClientGet(Model model, HttpSession session) {
+			model.addAttribute("page", "profil Client");
+			
+			System.out.println(" profil client");
+			return "profilClient";
+		}
+	
+	@RequestMapping(value = "/profilConducteur", method = RequestMethod.GET)
+	public String profilConducteurGet(Model model, HttpSession session) {
+			model.addAttribute("page", "profil Conducteur");
+			
+			System.out.println(" profil conducteur");
+			return "profilConducteur";
 		}
 	
 	@RequestMapping(value = "/inscription/client", method = RequestMethod.POST)
