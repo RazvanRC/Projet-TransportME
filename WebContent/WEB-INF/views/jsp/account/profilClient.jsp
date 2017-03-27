@@ -3,7 +3,7 @@
 
 
 <div class="presentation">
-	<h3 class="titre">  Votre profil
+	<h3 class="titre">  Profil Client
 	</h3>
 	<br>
 	<br>
