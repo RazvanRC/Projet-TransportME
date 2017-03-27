@@ -7,9 +7,6 @@
 	<h3 class="titre">L'inscription ne prend que quelques secondes...
 	</h3>
 
-
-
-
 	<fieldset>
 		<div class="inscription">
 			<br> <br> <label for="utilisateur">Utilisateur*: </label> <select
