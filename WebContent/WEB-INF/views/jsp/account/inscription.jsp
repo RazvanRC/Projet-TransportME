@@ -26,25 +26,25 @@
 				<input type="text" class="form-text" name="loginUtil" id="loginUtil" required><br><br> 
 				
 				<label for="password">Password*: </label> 
-				<input type="password" class="form-password" name="password" id="password" required><br> <br> 
+				<input type="password" class="form-password" name="mdpUtil" id="mdpUtil" required><br> <br> 
 				
 				<label for="verif_password">Confirmation Password*: </label> 
 				<input type="password" class="form-password" name="verif_password" id="verif_password" required><br><br> 
 				
 				<label for="surname">Votre Nom de famille:* </label> 
-				<input type="text" class="form-text" name="surname" id="surname" required><br><br> 
+				<input type="text" class="form-text" name="nomUtil" id="nomUtil" required><br><br> 
 				
 				<label for="name">Votre prénom:* </label> 
-				<input type="text" class="form-text" name="name" id="name" required><br><br> 
+				<input type="text" class="form-text" name="prenomUtil" id="prenomUtil" required><br><br> 
 				
 				<label for="date_naissance">Votre date de naissance:* </label> 
-				<input type="date" class="form-text" name="date_naissance" id="date_naissance" required><br><br> 
+				<input type="date" class="form-text" name="dateNaissanceUtil" id="dateNaissanceUtil" required><br><br> 
 				
 				<label for="name">Téléphone:* </label>  
 				<input type="tel" class="form-text" name="telephoneUtil" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" id="telephoneUtil" required><br><br> 
 				
 				<label for="name">Numéro de la carte bancaire:* </label> 
-				<input type="text" class="form-text" name="telephoneUtil" maxlength="16" id="telephoneUtil" required><br> <br> 
+				<input type="text" class="form-text" name="noCBCli" maxlength="16" id="noCBCli" required><br> <br> 
 				
 				<label for="date_naissance">Date d'Expiration CB:* </label> 
 				<input type="month" class="form-text" name="dateExpirationCli" id="dateExpirationCli" required><br> <br> 
@@ -84,19 +84,19 @@
 				<input type="text" class="form-text" name="loginUtil" id="loginUtil" required><br><br>
 				 
 				<label for="password">Password*: </label> 
-				<input type="password" class="form-password" name="password" id="password" required> <br> <br> 
+				<input type="password" class="form-password" name="mdpUtil" id="mdpUtil" required> <br> <br> 
 				
 				<label for="verif_password">Confirmation Password:* </label> 
 				<input type="password" class="form-password" name="verif_password" id="verif_password" required><br><br> 
 				
 				<label for="surname">Votre Nom de famille:* </label> 
-				<input type="text" class="form-text" name="surname" id="surname" required><br> <br> 
+				<input type="text" class="form-text" name="nomUtil" id="nomUtil" required><br> <br> 
 				
 				<label for="name">Votre prénom:* </label> 	
-				<input type="text" class="form-text" name="name" id="name" required><br><br> 
+				<input type="text" class="form-text" name="nomUtil" id="nomUtil" required><br><br> 
 				
 				<label for="date_naissance">Votre date de naissance:* </label> 
-				<input type="date" class="form-text" name="date_naissance" id="date_naissance" required><br> <br> 
+				<input type="date" class="form-text" name="dateNaissanceUtil" id="dateNaissanceUtil" required><br> <br> 
 				
 				<label for="name">Téléphone:* </label> 
 				<input type="tel" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" size="10" maxlength="10" class="form-text" name="telephoneUtil" id="telephoneUtil" required><br> <br> 
