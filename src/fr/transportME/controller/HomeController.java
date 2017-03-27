@@ -22,7 +22,9 @@ import org.springframework.web.client.RestTemplate;
 
 import fr.transportME.DAO.DAO;
 import fr.transportME.model.Client;
+import fr.transportME.model.Conducteur;
 import fr.transportME.model.Utilisateur;
+import fr.transportME.validation.UtilisateurSubscribeValidator;
 import fr.transportME.validation.WrongUsernameOrPasswordException;
 
 @Controller
@@ -163,15 +165,44 @@ public class HomeController {
 		}
 	
 	@RequestMapping(value = "/inscription/client", method = RequestMethod.POST)
-	// dans inscription, mettre form:form modelAttribute="client"        
-	// et modifier html pour 
-	// <input id="candidat_nom" type="text" class="validate" name="nom" value="${ candidat.nom }" />
-	// <label for="candidat_nom">Nom</label>
-	// <form:errors path="nom" />
-	public String inscPost(@Valid @ModelAttribute("client") Client client, 
-			BindingResult result, HttpSession session) {
+	public String inscClientPost(@Valid @ModelAttribute("client") Client client, 
+			BindingResult result, HttpSession session,
+			@RequestParam String verif_password  // afin de recuperer le champ verif_password du jsp qui ne fait pas partie des propriétés de la classe Utilisateur
+			) {
 			
-			System.out.println("validation inscription");
+			System.out.println("validation inscription client");
+			
+			if (result.hasErrors()) {
+				System.out.println("ERREURS de coherence champs formulaire et modele ");
+				System.out.println("erreurs : "+result.getFieldError());
+				System.out.println("==> retour formulaire inscription");
+				return "inscription";
+			}
+			
+			// validation personnalisée
+			System.out.println("appel validation du mot de passe");
+			new fr.transportME.validation.UtilisateurSubscribeValidator().validate(client, result, verif_password);
+
+
+			
+			System.out.println("appel service ecriture inscription");
+			
+			
+			return "profilClient"; 
+		}
+	
+	@RequestMapping(value = "/inscription/conducteur", method = RequestMethod.POST)
+	public String inscConducteurPost(@Valid @ModelAttribute("conducteur") Utilisateur conducteur, 
+			BindingResult result, HttpSession session,
+			@RequestParam String verif_password  // afin de recuperer le champ verif_password du jsp qui ne fait pas partie des propriétés de la classe Utilisateur
+			) {
+			
+			System.out.println("validation inscription conducteur");
+			
+			// validation personnalisée
+			
+			new UtilisateurSubscribeValidator().validate(conducteur, result, verif_password);
+
 			if (result.hasErrors()) {
 				return "inscription";
 			}
@@ -179,7 +210,7 @@ public class HomeController {
 			System.out.println("appel service ecriture inscription");
 			
 			
-			return "profilClient"; // ou profilConducteur
+			return "profilConducteur"; 
 		}
 	
 	@RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
