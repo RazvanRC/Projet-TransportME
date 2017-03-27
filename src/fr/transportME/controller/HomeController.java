@@ -130,6 +130,7 @@ public class HomeController {
 
 			
 			System.out.println("aiguillage vers profil client ou conducteur suivant user");
+			model.addAttribute("utilisateur", utilisateur);
 			if (client)  {
 				System.out.println("vers profil client");
 				return "profilClient";	
