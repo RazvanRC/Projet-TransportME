@@ -50,7 +50,7 @@ public class ClientRESTCont {
 	 */
 	@RequestMapping(value="", method= RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<Client> putClient(@RequestBody Client client, BindingResult bindingResult) {
+	public ResponseEntity<Client> createClient(@RequestBody Client client, BindingResult bindingResult) {
 		
 		if (bindingResult.hasErrors())
 				return new ResponseEntity<Client>(HttpStatus.BAD_REQUEST);
