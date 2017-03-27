@@ -38,7 +38,7 @@ public class ConducteurRESTCont {
 		
 //		return new ResponseEntity<Client>(this.clientDAO.find(((Client) session.getAttribute("utilisateur")).getIdUtil()),	HttpStatus.OK);
 		Conducteur c = this.conducteurDAO.find(idConducteur);
-		return new ResponseEntity<Conducteur>(c,	HttpStatus.OK);
+		return new ResponseEntity<Conducteur>(c, HttpStatus.OK);
 	}
 	
 	/**
