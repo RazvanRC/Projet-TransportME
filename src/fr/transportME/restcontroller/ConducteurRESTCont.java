@@ -37,7 +37,8 @@ public class ConducteurRESTCont {
 	public ResponseEntity<Conducteur> getClient(@PathVariable("id") int idConducteur, HttpSession session) {
 		
 //		return new ResponseEntity<Client>(this.clientDAO.find(((Client) session.getAttribute("utilisateur")).getIdUtil()),	HttpStatus.OK);
-		return new ResponseEntity<Conducteur>(this.conducteurDAO.find(idConducteur),	HttpStatus.OK);
+		Conducteur c = this.conducteurDAO.find(idConducteur);
+		return new ResponseEntity<Conducteur>(c,	HttpStatus.OK);
 	}
 	
 	/**

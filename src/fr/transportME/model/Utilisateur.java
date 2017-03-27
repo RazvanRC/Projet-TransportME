@@ -53,7 +53,11 @@ public class Utilisateur implements Serializable {
 	@Size(min=10, max=10)
 	@NotNull
 	private String telephoneUtil;
-
+	
+	@Column(name="uti_email")
+	@NotNull
+	private String emailUtil;
+	
 	@Column(name="uti_dateNaissance")
 	@NotNull
 	private Date dateNaissanceUtil;
