@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<header>
+<%-- <header>
 		<nav>
     		<div class="nav-wrapper">
 				<c:if test="${ page == 'accueil' }">
@@ -16,6 +16,30 @@
 	      					<li><a href="${ pageContext.request.contextPath }/logout">Deconnexion</a></li>
 	   		  		</ul>
    		  		</c:if>
+   		 	</div>
+ 		 </nav>	
+</header> --%>
+
+<header>
+
+		<nav>
+		
+    		<div class="nav-wrapper" >
+    			<div class="brand-logo">
+    				<img src="resources/images/logo.PNG">
+    			</div>
+    		
+				
+   
+    		<div class="barreLogin">
+    			
+					<a href="/TransportME/login" class="brand-logo">Login</a>
+				
+				
+    		
+    		</div>
+				
+				
    		 	</div>
  		 </nav>	
 </header>

@@ -13,10 +13,28 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	padding: 0;
 	border: 0;
 	outline: 0;
-	font:13px/1.231 arial,helvetica,clean,sans-serif;
+	font:13px/1.231 verdana, arial,helvetica,clean,sans-serif;
 	
 	background: transparent;
 }
+
+.content {
+	width: 80%;
+	margin: 0 auto;
+}
+
+label
+
+{
+	margin: auto;
+
+}
+
+input,select
+{
+	float:right;
+}
+
 
 ol, ul {
 	list-style: none;
@@ -35,18 +53,31 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+.nav-wrapper{
+	display: float;
+width: 100%;
+}
+
+.brand-logo {
+	margin-left: 10%;
+}
 
 /* PAGE LAYOUT */
 
 html, body {
 	height: 100%;
+	witdh: 80%;
 }
 
 
 
 body {
 	margin: 0 auto;
-	width: 100%;
+	
+}
+.inscription {
+	margin : auto;
+	width : 500px
 }
 
 #leftcolumn {
@@ -67,7 +98,8 @@ body {
 
 .header {
 	
-	height: 100px;
+	height: 80px;
+
 	
 }
 
@@ -77,38 +109,44 @@ body {
 	float: left;
 	
 }
-
-
-.header h1 {
-	color: red;
-	font-size: 272%;
-	margin: 0;
-	padding: 20px 0 0 120px;
-	float: left;
-
+#inscription{
+	margin: 0 auto;
+	width: 25%;
 }
 
-.header h2 {
-	color: green;
-	font-size: 108%;
-	margin: 0;
-	padding: 0 0 0 120px;
+#divClient,#divConducteur
+{
+	display: none;
 }
+
 
 /* MENU 1 */
 
-#menu1 {
-	background: url(resources/images/menu2.png) no-repeat 0% 0%;
-	float: left;
-	height: 42px;
-	margin: 0 0 18px 0;
-	width: 100%;
+#wrapper {
+	/* background: url(resources/images/menu2.png) no-repeat 0% 0%;  */
+	/* float: left; */
+	/* height: 102px;
+	margin: 0 0 0 0;
+	width: 80%; */
+} 
+
+.barreLogin {
+	background-color: cyan;
+	height: 35px;
+	width: 80%;
+	margin: 0 auto;
+}
+
+#menuu {
+	margin: auto;
+	
+	
 }
 
 #menu1 ul {
 	padding: 0;
-	margin: 0;
-	float: left;
+	margin: 0 auto;
+	/* float: left; */
 
 }
 
@@ -118,7 +156,7 @@ body {
 
 #menu1 ul li a,#menu1 ul li a:link {
 	color: #fff;
-	float: left;
+	/* float: left; */
 	padding: 7px 10px 8px 10px;
 	text-decoration: none;
 }
@@ -129,16 +167,19 @@ body {
 	padding: 7px 10px 8px 10px;
 }
 
-
+#reset{
+	float: right;
+}
 
 /* HEADINGS */
 
 h1, h2, h3, h4, h5, h6 
 { 	
 	color: #37657f;
-	letter-spacing: 1px;
-	margin: 0 0 18px 0;
-	text-transform: uppercase;
+	
+	text-align: center;
+	font-size: 100px;
+	
 }
 
 h1 {
@@ -146,14 +187,15 @@ h1 {
 }
 
 h2 {
-	font-size: 146.5%;
+	font-size: 20px;
+	text-align: center;
+	margin: 0 auto;
 }
 
 
 h3 {
-	border-top: 2px dotted #afc1cc;
-	border-bottom: 2px dotted #afc1cc;
-	font-size: 131%;
+
+	font-size: 100%;
 	padding: 5px 0;
 }
 
@@ -188,7 +230,7 @@ margin: 0;
 }
 
 p {
-	margin: 100px 100px 100px 100px;
+/* 	margin: 100px 100px 100px 100px; */
 	font-size: 13%;
 
 

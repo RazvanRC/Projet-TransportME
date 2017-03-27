@@ -7,6 +7,7 @@
 <head>
 	
 	<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.1.1.min.js"></script>
+	<script src="${ pageContext.request.contextPath }/resources/js/function.js"></script>
 	<title><tiles:insertAttribute name="title" /></title>
 	
 	<meta charset="UTF-8">

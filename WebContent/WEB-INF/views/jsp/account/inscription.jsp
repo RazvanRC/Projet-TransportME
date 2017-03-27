@@ -1,32 +1,3 @@
-<body>
-	
-   
-   
-<header>
-
-		<nav>
-		
-    		<div class="nav-wrapper" >
-    			<div class="brand-logo">
-    				<img src="resources/images/logo.PNG">
-    			</div>
-    		
-				
-   
-    		<div class="barreLogin">
-    			
-					<a href="/TransportME/login" class="brand-logo">Login</a>
-				
-				
-    		
-    		</div>
-				
-				
-   		 	</div>
- 		 </nav>	
-</header>
-	
-
 
 <!-- Contenu principal -->
 
@@ -167,12 +138,6 @@
 
 </div>
 
-</body>
 
- 
-	
 
 <!-- 	<script -->
-
-
-</body>
