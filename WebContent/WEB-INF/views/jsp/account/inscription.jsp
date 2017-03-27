@@ -22,35 +22,38 @@
 		<div id="divClient">
 			<form method="post" class="inscription">
 
-				<label for="pseudo"> Votre Login*: </label> <input type="text"
-					class="form-text" name="loginUtil" id="loginUtil" required><br>
-
-				<br> <label for="password">Password*: </label> <input
-					type="password" class="form-password" name="password" id="password"
-					required><br> <br> <label for="verif_password">Confirmation
-					Password*: </label> <input type="password" class="form-password"
-					name="verif_password" id="verif_password" required><br>
-				<br> <label for="surname">Votre Nom de famille:* </label> <input
-					type="text" class="form-text" name="surname" id="surname" required><br>
-				<br> <label for="name">Votre prénom:* </label> <input
-					type="text" class="form-text" name="name" id="name" required><br>
-				<br> <label for="date_naissance">Votre date de
-					naissance:* </label> <input type="date" class="form-text"
-					name="date_naissance" id="date_naissance" required><br>
-				<br> 
-					<label for="name">Téléphone:* </label> 
-					<input type="tel" class="form-text" name="telephoneUtil" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" id="telephoneUtil" required><br>
-				<br> <label for="name">Numéro de la carte bancaire:* </label> <input
-					type="text" class="form-text" name="telephoneUtil" maxlength="16"
-					id="telephoneUtil" required><br> <br> <label
-					for="date_naissance">Date d'Expiration CB:* </label> <input
-					type="month" class="form-text" name="dateExpirationCli"
-					id="dateExpirationCli" required><br> <br> <label
-					for="name">Cryptogramme:* </label> <input type="text"
-					class="form-text" name="cryptogrammeCli" maxlength="3" id="cryptogrammeCli"
-					required><br> <br> <label for="email">Votre
-					e-mail*: </label> <input class="form-text" type="email" name="email"
-					id="email" required> <br> <br> <br>
+				<label for="pseudo"> Votre Login*: </label> 
+				<input type="text" class="form-text" name="loginUtil" id="loginUtil" required><br><br> 
+				
+				<label for="password">Password*: </label> 
+				<input type="password" class="form-password" name="password" id="password" required><br> <br> 
+				
+				<label for="verif_password">Confirmation Password*: </label> 
+				<input type="password" class="form-password" name="verif_password" id="verif_password" required><br><br> 
+				
+				<label for="surname">Votre Nom de famille:* </label> 
+				<input type="text" class="form-text" name="surname" id="surname" required><br><br> 
+				
+				<label for="name">Votre prénom:* </label> 
+				<input type="text" class="form-text" name="name" id="name" required><br><br> 
+				
+				<label for="date_naissance">Votre date de naissance:* </label> 
+				<input type="date" class="form-text" name="date_naissance" id="date_naissance" required><br><br> 
+				
+				<label for="name">Téléphone:* </label>  
+				<input type="tel" class="form-text" name="telephoneUtil" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" id="telephoneUtil" required><br><br> 
+				
+				<label for="name">Numéro de la carte bancaire:* </label> 
+				<input type="text" class="form-text" name="telephoneUtil" maxlength="16" id="telephoneUtil" required><br> <br> 
+				
+				<label for="date_naissance">Date d'Expiration CB:* </label> 
+				<input type="month" class="form-text" name="dateExpirationCli" id="dateExpirationCli" required><br> <br> 
+				
+				<label for="name">Cryptogramme:* </label> 
+				<input type="text" class="form-text" name="cryptogrammeCli" maxlength="3" id="cryptogrammeCli" required><br> <br> 
+				
+				<label for="email">Votre e-mail*: </label> 
+				<input class="form-text" type="email" name="email" id="email" required> <br> <br> <br>
 				<div class="inputLogin">
 					<div class="reset">
 						<button id="reset"
@@ -77,38 +80,45 @@
 		
 		<div id="divConducteur">
 			<form method="post" class="inscription">
-				<label for="pseudo"> Votre Login*: </label> <input type="text"
-					class="form-text" name="loginUtil" id="loginUtil" required><br>
-				<br> <label for="password">Password*: </label> <input
-					type="password" class="form-password" name="password" id="password"
-					required> <br> <br> <label for="verif_password">Confirmation
-					Password:* </label> <input type="password" class="form-password"
-					name="verif_password" id="verif_password" required><br>
-				<br> <label for="surname">Votre Nom de famille:* </label> <input
-					type="text" class="form-text" name="surname" id="surname" required><br>
-				<br> <label for="name">Votre prénom:* </label> 
+				<label for="pseudo"> Votre Login*: </label> 
+				<input type="text" class="form-text" name="loginUtil" id="loginUtil" required><br><br>
+				 
+				<label for="password">Password*: </label> 
+				<input type="password" class="form-password" name="password" id="password" required> <br> <br> 
 				
-				<input type="text" class="form-text" name="name" id="name" required><br>
+				<label for="verif_password">Confirmation Password:* </label> 
+				<input type="password" class="form-password" name="verif_password" id="verif_password" required><br><br> 
 				
-				<br> <label for="date_naissance">Votre date de naissance:* </label> 
-				<input type="date" class="form-text" name="date_naissance" id="date_naissance" required><br>
-				<br> <label for="name">Téléphone:* </label> <input type="number" size="10" maxlength="10"
-					class="form-text" name="telephoneUtil" id="telephoneUtil" required><br>
-				<br> <label for="name">Année Permis de conduire:* </label> <input
-					type="text" class="form-text" name="anneePermis" id="anneePermis"
-					required><br> <br> <label for="date_naissance">Marque
-					de voiture:* </label> <input type="text" class="form-text"
-					name="marqueVoiture" id="marqueVoiture" required><br>
-				<br> <label for="name">Modele de voiture:* </label> <input
-					type="text" class="form-text" name="modeleVoiture"
-					id="modeleVoiture" required><br> <br> <label
-					for="name">Nombre de passagers:* </label> <input type="text"
-					class="form-text" name="nbrPassagers" id="nbrPassagers" required><br>
-				<br> <label for="name">Imatriculation:* </label> <input
-					type="text" class="form-text" name="immatriculation"
-					id="immatriculation" required><br> <br> <label
-					for="email">Votre e-mail:* </label> <input class="form-text"
-					type="email" name="email" id="email" required> <br> <br>
+				<label for="surname">Votre Nom de famille:* </label> 
+				<input type="text" class="form-text" name="surname" id="surname" required><br> <br> 
+				
+				<label for="name">Votre prénom:* </label> 	
+				<input type="text" class="form-text" name="name" id="name" required><br><br> 
+				
+				<label for="date_naissance">Votre date de naissance:* </label> 
+				<input type="date" class="form-text" name="date_naissance" id="date_naissance" required><br> <br> 
+				
+				<label for="name">Téléphone:* </label> 
+				<input type="tel" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" size="10" maxlength="10" class="form-text" name="telephoneUtil" id="telephoneUtil" required><br> <br> 
+				
+				<label for="name">Année Permis de conduire:* </label> 
+				<input type="text" class="form-text" name="anneePermis" id="anneePermis" required><br> <br> 
+				
+				<label for="date_naissance">Marque de voiture:* </label> 
+				<input type="text" class="form-text" name="marqueVoiture" id="marqueVoiture" required><br> <br> 
+				
+				<label for="name">Modele de voiture:* </label> 
+				<input type="text" class="form-text" name="modeleVoiture" id="modeleVoiture" required><br> <br> 
+				
+				<label for="name">Nombre de passagers:* </label> 
+				<input type="text" class="form-text" name="nbrPassagers" id="nbrPassagers" required><br> <br> 
+				
+				<label for="name">Imatriculation:* </label> 
+				<input type="text" class="form-text" name="immatriculation" id="immatriculation" required><br> <br> 
+				
+				<label for="email">Votre e-mail:* </label> 
+				<input class="form-text" type="email" name="email" id="email" required> <br> <br>
+				
 				<br>
 				<div class="inputLogin">
 					<div class="reset">
@@ -130,9 +140,6 @@
 				</div>
 			</form>
 		</div>
-
-		<!--                   <input type="reset" value="Réinitialiser"> -->
-		<!--         <input type="submit" value="Envoyer" id="submit"> -->
 
 	</fieldset>
 
