@@ -48,7 +48,7 @@ public class ClientRESTCont {
 	 * @param bindingResult
 	 * @return
 	 */
-	@RequestMapping(value="/{id}", method= RequestMethod.POST)
+	@RequestMapping(value="", method= RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<Client> putClient(@RequestBody Client client, BindingResult bindingResult) {
 		
@@ -87,8 +87,8 @@ public class ClientRESTCont {
 	 */
 	@RequestMapping(value="/{id}/comments", method= RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<List<Comment>> getCommentsHistory(@PathVariable(value="id", required=false) String idClient) {
-		Client myClient = this.clientDAO.find(Integer.parseInt(idClient));
+	public ResponseEntity<List<Comment>> getCommentsHistory(@PathVariable(value="id", required=false) int idClient) {
+		Client myClient = this.clientDAO.find(idClient);
 		return new ResponseEntity<List<Comment>>(myClient.getComments(), HttpStatus.OK);
 	}
 	
@@ -99,8 +99,8 @@ public class ClientRESTCont {
 	 */
 	@RequestMapping(value="/{id}/courses", method= RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<List<Course>> getCoursesHistory(@PathVariable(value="id", required=false) String idClient) {
-		Client myClient = this.clientDAO.find(Integer.parseInt(idClient));
+	public ResponseEntity<List<Course>> getCoursesHistory(@PathVariable(value="id", required=false) int idClient) {
+		Client myClient = this.clientDAO.find(idClient);
 		return new ResponseEntity<List<Course>>(myClient.getCourses(), HttpStatus.OK);
 	}
 

@@ -26,7 +26,7 @@ public class Comment {
 	
 	@Column(name="com_note")
 	@NotNull
-	private int noteComment;
+	private float noteComment;
 
 	@Column(name="com_texte")
 	private String texteComment;
@@ -39,11 +39,11 @@ public class Comment {
 		this.idComment = idComment;
 	}
 
-	public int getNoteComment() {
+	public float getNoteComment() {
 		return noteComment;
 	}
 
-	public void setNoteComment(int noteComment) {
+	public void setNoteComment(float noteComment) {
 		this.noteComment = noteComment;
 	}
 

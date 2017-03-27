@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="utilisateur")
@@ -57,6 +59,7 @@ public class Utilisateur implements Serializable {
 	private Date dateNaissanceUtil;
 	
 	@OneToMany(mappedBy="utilisateur")
+	@JsonIgnore
 	private List<Comment> comments;
 
 	public int getIdUtil() {
