@@ -163,7 +163,7 @@ public class HomeController {
 		}
 	
 	@RequestMapping(value = "/inscription/client", method = RequestMethod.POST)
-	// dans inscription, mettre form:form modelAttribute="client"
+	// dans inscription, mettre form:form modelAttribute="client"     
 	// et modifier html pour 
 	// <input id="candidat_nom" type="text" class="validate" name="nom" value="${ candidat.nom }" />
 	// <label for="candidat_nom">Nom</label>
