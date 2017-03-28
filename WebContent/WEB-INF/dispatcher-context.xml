@@ -35,6 +35,7 @@
 			<value>/WEB-INF/tiles/layout.xml</value>
 			<value>/WEB-INF/tiles/home.xml</value>
 			<value>/WEB-INF/tiles/account.xml</value>
+			<value>/WEB-INF/tiles/commande.xml</value>
 		</list>
 	</property>
 </bean>

@@ -47,6 +47,7 @@
 					<div class="reset">
 						<button id="reset"
 							class="btn waves-effect waves-light orange darken-4" type="reset"
+							onclick="location.href='commande'"
 							name="Réinitialiser">
 							Commander  <i class="material-icons right">send</i>
 						</button>
