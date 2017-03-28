@@ -15,19 +15,19 @@
 
 				<label for="pseudo"> Votre Login: </label> 
 				
-				<input type="text" name="loginUtil" value="${ utilisateur.loginUtil }"><br><br> 
+				<input type="text" name="loginUtil" value="${ client.loginUtil }"><br><br> 
 				
 				<label for="surname">Votre Nom de famille: </label> 
-				<input type="text" name="nomUtil" value="${ utilisateur.nomUtil }"><br><br> 
+				<input type="text" name="nomUtil" value="${ client.nomUtil }"><br><br> 
 				
 				<label for="name">Votre prénom: </label> 
-				<input type="text" name="prenomUtil" value="${ utilisateur.prenomUtil }"><br><br> 
+				<input type="text" name="prenomUtil" value="${ client.prenomUtil }"><br><br> 
 				
 				<label for="date_naissance">Votre date de naissance: </label> 
-				<input type="text" name="dateNaissanceUtil" value="${ utilisateur.dateNaissanceUtil }"><br><br> 
+				<input type="text" name="dateNaissanceUtil" value="${ client.dateNaissanceUtil }"><br><br> 
 				
 				<label for="name">Téléphone: </label>  
-				<input type="text" name="telephoneUtil" value="${ utilisateur.telephoneUtil }"><br><br> 
+				<input type="text" name="telephoneUtil" value="${ client.telephoneUtil }"><br><br> 
 				
 				<label for="name">Numéro de la carte bancaire: </label> 
 				<input type="text" name="noCBCli" value="${ client.noCBCli }"><br> <br> 
@@ -39,7 +39,7 @@
 				<input type="text" name="cryptogrammeCli" value="${ client.cryptogrammeCli }"><br> <br> 
 				
 				<label for="email">Votre e-mail: </label> 
-				<input type="text" name="emailUtil" value="${ utilisateur.emailUtil }"> <br> <br> <br>
+				<input type="text" name="emailUtil" value="${ client.emailUtil }"> <br> <br> <br>
 					</form>
 		</div>
 		
