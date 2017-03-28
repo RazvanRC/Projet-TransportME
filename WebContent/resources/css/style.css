@@ -78,7 +78,7 @@ body {
 }
 .inscription {
 	margin : auto;
-	width : 500px
+	width : 500px;
 }
 
 .col s6{
@@ -203,8 +203,19 @@ h2 {
 
 h3 {
 
-	font-size: 100%;
+	font-size: 25px;
 	padding: 5px 0;
+}
+
+#statut {
+	margin : auto;
+	width : 200px;	
+}
+
+.comment {
+	margin : 50px 0px 0px 190px;
+	float: inherit;
+	/* width : 200px; */
 }
 
  h5, h6 {

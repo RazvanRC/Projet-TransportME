@@ -62,10 +62,6 @@ public class Utilisateur implements Serializable {
 	@NotNull
 	private Date dateNaissanceUtil;
 	
-	@OneToMany(mappedBy="utilisateur")
-	@JsonIgnore
-	private List<Comment> comments;
-
 	public int getIdUtil() {
 		return idUtil;
 	}
@@ -121,14 +117,6 @@ public class Utilisateur implements Serializable {
 
 	public void setEmailUtil(String emailUtil) {
 		this.emailUtil = emailUtil;
-	}
-
-	public List<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
 	}
 
 	public Date getDateNaissanceUtil() {

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -42,6 +43,20 @@ public class Course {
 	@Column(name="cou_prixEstime")
 	private float prixEstime;
 
+	@Column(name="cou_noteClient")
+	@NotNull
+	private float noteCommentClient;
+
+	@Column(name="cou_texteClient")
+	private String texteCommentClient;
+	
+	@Column(name="cou_noteConducteur")
+	@NotNull
+	private float noteCommentConducteur;
+
+	@Column(name="cou_texteConducteur")
+	private String texteCommentConducteur;
+	
 	@ManyToOne
 	@JoinColumn(name="cou_client")
 	private Client client;
@@ -129,6 +144,40 @@ public class Course {
 
 	public void setConducteur(Conducteur conducteur) {
 		this.conducteur = conducteur;
+	}
+
+	
+	
+	public float getNoteCommentClient() {
+		return noteCommentClient;
+	}
+
+	public void setNoteCommentClient(float noteCommentClient) {
+		this.noteCommentClient = noteCommentClient;
+	}
+
+	public String getTexteCommentClient() {
+		return texteCommentClient;
+	}
+
+	public void setTexteCommentClient(String texteCommentClient) {
+		this.texteCommentClient = texteCommentClient;
+	}
+
+	public float getNoteCommentConducteur() {
+		return noteCommentConducteur;
+	}
+
+	public void setNoteCommentConducteur(float noteCommentConducteur) {
+		this.noteCommentConducteur = noteCommentConducteur;
+	}
+
+	public String getTexteCommentConducteur() {
+		return texteCommentConducteur;
+	}
+
+	public void setTexteCommentConducteur(String texteCommentConducteur) {
+		this.texteCommentConducteur = texteCommentConducteur;
 	}
 
 	/**

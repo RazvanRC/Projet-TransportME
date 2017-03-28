@@ -13,38 +13,42 @@
 			<div id="divprofilclient">
 				<form method="post" class="inscription">
 
-					<label for="pseudo"> Votre Login: </label> 
-					<input type="text" name="loginUtil" value="${ client.loginUtil }"><br> <br> 				
+					<input type="hidden" id="idUtil" name="idUtil" value="${ client.idUtil }"><br> <br>
 					
-					<label for="surname">Votre mot de passe: </label> 
-					<input type="password" name="mdpUtil" value="${ client.mdpUtil }"><br> <br> 
+					<label for="loginUtil"> Votre Login: </label> 
+					<input type="text" id="loginUtil" name="loginUtil" value="${ client.loginUtil }"><br> <br> 				
 					
-					<label for="surname">Votre Nom de famille: </label> 
-					<input type="text" name="nomUtil" value="${ client.nomUtil }"><br> <br> 
+					<label for="mdpUtil">Votre mot de passe: </label> 
+					<input type="password" id="mdpUtil" name="mdpUtil" value="${ client.mdpUtil }"><br> <br> 
 					
-					<label for="firstname">Votre prénom: </label> 
-					<input type="text" name="prenomUtil" value="${ client.prenomUtil }"><br><br> 
+					<label for="nomUtil">Votre Nom de famille: </label> 
+					<input type="text" id="nomUtil" name="nomUtil" value="${ client.nomUtil }"><br> <br> 
 					
-					<label for="date_naissance">Votre date de naissance: </label> 
-					<input type="text" name="dateNaissanceUtil" value="${ client.dateNaissanceUtil }"><br><br> 
+					<label for="prenomUtil">Votre prénom: </label> 
+					<input type="text" id="prenomUtil" name="prenomUtil" value="${ client.prenomUtil }"><br><br> 
 					
-					<label for="tel">Téléphone: </label> 
-					<input type="text" name="telephoneUtil" value="${ client.telephoneUtil }"><br> <br> 
+					<label for="dateNaissanceUtil">Votre date de naissance: </label> 
+					<input type="text" id="dateNaissanceUtil" name="dateNaissanceUtil" value="${ client.dateNaissanceUtil }"><br><br> 
 					
-					<label for="email">Votre e-mail: </label> 
-					<input type="email" name="emailUtil" value="${ client.emailUtil }">
+					<label for="telephoneUtil">Téléphone: </label> 
+					<input type="text" id="telephoneUtil" name="telephoneUtil" value="${ client.telephoneUtil }"><br> <br> 
 					
-					<label for="noCB">Numéro de la carte bancaire: </label> 
-					<input type="text" name="noCBCli" value="${ client.noCBCli }"><br> <br>
+					<label for="emailUtil">Votre e-mail: </label> 
+					<input type="email" id="emailUtil" name="emailUtil" value="${ client.emailUtil }"><br> <br>
+					
+					<label for="noCBCli">Numéro de la carte bancaire: </label> 
+					<input type="text" id="noCBCli" name="noCBCli" value="${ client.noCBCli }"><br> <br>
 					 
-					<label for="date_expiration">Date d'Expiration CB: </label> 
-					<input type="text" name="dateExpirationCli" value="${ client.dateExpirationCli }"><br> <br>
+					<label for="dateExpirationCli">Date d'Expiration CB: </label> 
+					<input type="text" id="dateExpirationCli" name="dateExpirationCli" value="${ client.dateExpirationCli }"><br> <br>
 					
-					<label for="crypto">Cryptogramme: </label> 
-					<input type="text" name="cryptogrammeCli" value="${ client.cryptogrammeCli }"><br> <br>
+					<label for="cryptogrammeCli">Cryptogramme: </label> 
+					<input type="text" id="cryptogrammeCli" name="cryptogrammeCli" value="${ client.cryptogrammeCli }"><br> <br>
 					
 					<br> <br> <br>
 				</form>
+				
+				<div id="messageAction"></div>
 			</div>
 
 			
@@ -65,32 +69,31 @@
 					<div class="btnLogin">
 						<button id="submit"
 							class="btn waves-effect waves-light orange darken-4"
-							type="submit" onclick="modifProfil()" name="Envoyer">
+							type="submit" onclick="modifProfilClient()" name="Envoyer">
 							Modification <i class="material-icons right">send</i>
 						</button>
 					</div>
 				</div>
-			</div>
-			<br>
-
+		
 			<div class="comment">
 				<div class="btnLogin">
 					<button id="comment"
 						class="btn waves-effect waves-light orange darken-4" type="submit"
 						name="Envoyer">
-						Commentaire <i class="material-icons right">send</i>
+						Commentaires <i class="material-icons right">send</i>
 					</button>
 				</div>
 			</div>
+			
+		</div>
+			<br>
 
-
-
-
-
-
+			
 
 		
 	</fieldset>
 </div>
+
+<script src="${ pageContext.request.contextPath }/resources/js/methodes.js"></script>
 
 

@@ -10,7 +10,6 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.transportME.model.Comment;
 import fr.transportME.model.Conducteur;
 import fr.transportME.model.Utilisateur;
 import fr.transportME.validation.WrongUsernameOrPasswordException;
@@ -38,9 +37,6 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 		}
 	}
 	
-	public List<Comment> findAllComments() {
-		return this.em.createQuery("SELECT c FROM Comment c", Comment.class).getResultList();
-	}
 
 	@Override
 	public Utilisateur save(Utilisateur object) {

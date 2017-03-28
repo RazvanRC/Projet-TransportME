@@ -69,15 +69,15 @@ public class ClientRESTCont {
 											@RequestBody Client client, BindingResult bindingResult) {
 
 		// TODO securite de la modif
-//		System.out.println(myClient.getNomUtil());
+		System.out.println(idClient);
 		client.setIdUtil(idClient);
 		client = this.clientDAO.save(client);
-//		System.out.println(myClient.getNomUtil());
+		System.out.println(idClient + "apres le save");
 		if (client == null)
 			return new ResponseEntity<Client>( HttpStatus.BAD_REQUEST);
-		
+		System.out.println(idClient + "apres if");
 		return new ResponseEntity<Client>(client, HttpStatus.OK);
-
+		
 	}
 	
 	/**
