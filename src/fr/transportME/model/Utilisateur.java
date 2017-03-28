@@ -115,6 +115,14 @@ public class Utilisateur implements Serializable {
 		this.telephoneUtil = telephoneUtil;
 	}
 
+	public String getEmailUtil() {
+		return emailUtil;
+	}
+
+	public void setEmailUtil(String emailUtil) {
+		this.emailUtil = emailUtil;
+	}
+
 	public List<Comment> getComments() {
 		return comments;
 	}
