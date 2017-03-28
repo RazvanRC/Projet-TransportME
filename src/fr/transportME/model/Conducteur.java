@@ -28,10 +28,10 @@ public class Conducteur extends Utilisateur {
 	private int anneePermis;
 
 	@Column(name="cond_posActuelleLong")
-	private float posActuelleLong;
+	private Float posActuelleLong;
 
 	@Column(name="cond_posActuelleLat")
-	private float posActuelleLat;
+	private Float posActuelleLat;
 
 	@Column(name="cond_statut")
 	@ColumnDefault("false")
@@ -66,19 +66,19 @@ public class Conducteur extends Utilisateur {
 		this.anneePermis = anneePermis;
 	}
 
-	public float getPosActuelleLong() {
+	public Float getPosActuelleLong() {
 		return posActuelleLong;
 	}
 
-	public void setPosActuelleLong(float posActuelleLong) {
+	public void setPosActuelleLong(Float posActuelleLong) {
 		this.posActuelleLong = posActuelleLong;
 	}
 
-	public float getPosActuelleLat() {
+	public Float getPosActuelleLat() {
 		return posActuelleLat;
 	}
 
-	public void setPosActuelleLat(float posActuelleLat) {
+	public void setPosActuelleLat(Float posActuelleLat) {
 		this.posActuelleLat = posActuelleLat;
 	}
 

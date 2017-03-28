@@ -87,7 +87,7 @@ public class HomeController {
 			
 			
 			boolean client = false; 
-				if (response.getBody()==null)
+				if (response == null || response.getBody()==null)
 					// client non trouvé, verif si login conducteur existe
 				{
 					restTemplate = new RestTemplate();
