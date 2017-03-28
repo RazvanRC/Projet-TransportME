@@ -9,7 +9,9 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.transportME.model.Client;
 import fr.transportME.model.Course;
+import fr.transportME.model.Utilisateur;
 
 @Repository
 @Transactional
@@ -43,6 +45,20 @@ public class CourseDAO extends DAO<Course>{
 	public Course auth(String login, String mdp) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public List<Course> getClientComments(int id) {
+		TypedQuery<Course> myCourses =  em.createQuery("FROM Course c WHERE c.client = :cou_client", Course.class)
+				.setParameter("client", id);
+		return myCourses.getResultList();
+		
+	}
+	
+	public List<Course> getConducteurComments(int id) {
+		TypedQuery<Course> myCourses =  em.createQuery("FROM Course c WHERE c.conducteur = :cou_conducteur", Course.class)
+				.setParameter("conducteur", id);
+		return myCourses.getResultList();
+		
 	}
 
 }

@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mysql.jdbc.jdbc2.optional.MysqlXid;
 
 import fr.transportME.DAO.ClientDAO;
+import fr.transportME.DAO.CourseDAO;
 import fr.transportME.model.Client;
-import fr.transportME.model.Comment;
 import fr.transportME.model.Course;
 
 @RestController
@@ -28,6 +28,9 @@ public class ClientRESTCont {
 	
 	@Autowired
 	private ClientDAO clientDAO;
+	
+	@Autowired
+	private CourseDAO courseDAO;
 	
 	/**
 	 * methode pour la recherche d'un client
@@ -87,7 +90,7 @@ public class ClientRESTCont {
 	 */
 	@RequestMapping(value="/{id}/comments", method= RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<List<Comment>> getCommentsHistory(@PathVariable(value="id", required=false) int idClient) {
+	public ResponseEntity<List<Course>> getCommentsHistory(@PathVariable(value="id", required=false) int idClient) {
 		Client myClient = this.clientDAO.find(idClient);
 		return new ResponseEntity<List<Comment>>(myClient.getComments(), HttpStatus.OK);
 	}
