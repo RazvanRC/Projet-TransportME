@@ -34,6 +34,12 @@ public class HomeController {
 	
 	@Autowired
 	DAO<Utilisateur> utilisateurDao;
+	
+	@Autowired
+	DAO<Client> clientDao;
+	
+	@Autowired
+	DAO<Conducteur> conducteurDao;
 
 	// accès page Accueil
 	@RequestMapping(value = {"/","/accueil"}, method = RequestMethod.GET)
@@ -101,6 +107,7 @@ public class HomeController {
 					catch (RestClientException e)
 					{
 						// traiter l'exception TODO
+						System.out.println("exception conducteur "+e);
 					}
 						if (response.getBody()==null)
 						{
@@ -129,14 +136,17 @@ public class HomeController {
 			System.out.println("aiguillage vers profil client ou conducteur suivant user");
 			model.addAttribute("utilisateur", utilisateur);
 			if (client)  {
-				System.out.println("vers profil client");
-				model.addAttribute("client", response.getBody());
+				System.out.println("vers profil client, getIdUtil ="+response.getBody().getIdUtil());
+				Client monClient = clientDao.find(response.getBody().getIdUtil());
+				model.addAttribute("client", monClient);
 				return "profilClient";	
 			}
 			else
 			{
-				System.out.println("vers profil conducteur");
-				model.addAttribute("conducteur", response.getBody());
+				System.out.println("vers profil conducteur, getIdUtil ="+response.getBody().getIdUtil());
+				Conducteur monConducteur = conducteurDao.find(response.getBody().getIdUtil());
+				System.out.println("annee permis = "+monConducteur.getAnneePermis());
+				model.addAttribute("conducteur", monConducteur);
 				return "profilConducteur";
 			}
 				
