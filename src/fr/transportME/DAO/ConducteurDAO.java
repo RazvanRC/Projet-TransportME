@@ -44,5 +44,15 @@ public class ConducteurDAO extends DAO<Conducteur>{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public List<Conducteur> findAllDispo() {
+		try {
+			TypedQuery<Conducteur> myQuery = em.createQuery("SELECT c FROM Conducteur c where c.statut = 1", Conducteur.class);
+			return myQuery.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 }

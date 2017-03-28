@@ -1,5 +1,6 @@
 package fr.transportME.restcontroller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,11 +15,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fr.transportME.DAO.ConducteurDAO;
 import fr.transportME.model.Comment;
 import fr.transportME.model.Conducteur;
 import fr.transportME.model.Course;
+import fr.transportME.model.Utilisateur;
+
 
 @RestController
 @RequestMapping("/conducteurs")
@@ -101,6 +109,82 @@ public class ConducteurRESTCont {
 	public ResponseEntity<List<Course>> getCoursesHistoryCond(@PathVariable(value="id", required=false) int idConducteur) {
 		Conducteur myConducteur = this.conducteurDAO.find(idConducteur);
 		return new ResponseEntity<List<Course>>(myConducteur.getCourses(), HttpStatus.OK);
+	}
+	
+	
+	/**
+	 * methode pour rechercher les disponibilités conducteurs autour de l'endroit où se trouve le passager
+	 * @param 
+	 * @return
+	 */
+	@RequestMapping(value="/disponibilites/{lat}/{lng}", method= RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<Conducteur>> getDispoCond(@PathVariable(value="lat", required=false) float lat,
+			@PathVariable(value="lng", required=false) float lng) {
+		
+		System.out.println("lat="+lat+" lng="+lng);
+		List<Conducteur> myConducteurs = this.conducteurDAO.findAllDispo();
+		
+		// recherche des positions des conducteurs
+		String latlng_conducteurs;//"48.861322, 2.335196|50,4";
+		StringBuffer latlng_conducteurs_buf = new StringBuffer();
+		for (int i = 0; i < myConducteurs.size(); i++) {
+			System.out.println("lat="+ myConducteurs.get(i).getPosActuelleLat() + " lng="+myConducteurs.get(i).getPosActuelleLong());
+			if (i != 0) {
+				latlng_conducteurs_buf.append("|");
+			}
+			latlng_conducteurs_buf.append(myConducteurs.get(i).getPosActuelleLat()+","+myConducteurs.get(i).getPosActuelleLong());
+			System.out.println("latlng_conducteurs="+latlng_conducteurs_buf.toString());
+		}
+		latlng_conducteurs = latlng_conducteurs_buf.toString();
+		
+		// constitution url avec infos lat, lng origine et destination		
+		String latlng_passager = lat + "," + lng;//"50.6079121,3.1672095";
+		System.out.println("latlng_passager="+latlng_passager);
+
+		String cleApi = "AIzaSyAlQBHwe0zERdQ2lehqHdbMVPN0daVd7gA";
+		String url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+latlng_passager+"&destinations="+latlng_conducteurs+"&key="+cleApi;
+		System.out.println("url appelé = "+url);
+		
+		// appel service distancematrix
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<String> response=null;
+		try
+		{
+			response = restTemplate.getForEntity(url, String.class, latlng_passager, latlng_conducteurs );
+		}
+		catch (RestClientException e) {
+			System.out.println("erreur "+e);
+		}
+		
+		// parcours du JSON en sortie du service google matrix
+		ObjectMapper objMap = new ObjectMapper();
+		int distance;
+		try {
+			JsonNode rootMode = objMap.readValue(response.getBody(),  JsonNode.class);
+			// TODO boucler sur tous les elements get("rows").get(0).get("elements")
+			JsonNode elements  = rootMode.get("rows").get(0).get("elements");
+			System.out.println(elements);
+			for (int i = 0; i < elements.size(); i++) {
+				System.out.println("distance i="+i+" "+elements.get(i).get("distance").get("value").asInt());
+				if (elements.get(i).get("distance").get("value").asInt() <= 1000) {
+					System.out.println("conducteur disponible "+myConducteurs.get(i).getNomUtil());					
+				}
+			}
+		}
+		catch (IOException e)
+		{
+			
+		}
+		
+		System.out.println("sortie de service");
+		
+		// parmi les conducteurs, verification si position du conducteur proche du passager (1km)
+		// TODO
+		
+				
+		// TODO en cours
+		return new ResponseEntity<List<Conducteur>>(myConducteurs, HttpStatus.OK);
 	}
 
 }
