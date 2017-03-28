@@ -28,10 +28,10 @@ public class LoginVerif {
 	public ResponseEntity<Utilisateur> getClient(HttpSession session,
 			@RequestParam(value = "user", required = false) String loginUtil,
 			@RequestParam(value = "mdp", required = false) String mdpUtil) {
-		
+		Utilisateur user=null;
 		try {
 			System.out.println("dans verifloginclient, loginUtil= "+loginUtil+" mdp= "+mdpUtil);
-			Utilisateur user = this.utilisateurDAO.auth(loginUtil, mdpUtil);
+			user = this.utilisateurDAO.auth(loginUtil, mdpUtil);
 			
 			if ( user instanceof Client) {
 				System.out.println("instance client qghqfdh");
@@ -39,6 +39,7 @@ public class LoginVerif {
 			}
 			else 
 				{System.out.println("dans else");
+				user.setLoginUtil("suite");
 				return new ResponseEntity<Utilisateur>(HttpStatus.OK);
 				}
 		} catch (WrongUsernameOrPasswordException e) {
@@ -53,15 +54,20 @@ public class LoginVerif {
 	public ResponseEntity<Utilisateur> getConducteur(HttpSession session,
 			@RequestParam(value = "user", required = false) String loginUtil,
 			@RequestParam(value = "mdp", required = false) String mdpUtil) {
-		
+		Utilisateur user=null;
 		try {
-			Utilisateur user = this.utilisateurDAO.auth(loginUtil, mdpUtil);
+			user = this.utilisateurDAO.auth(loginUtil, mdpUtil);
 			if ( user instanceof Conducteur) {
+				System.out.println("instance conducteur");
 				return new ResponseEntity<Utilisateur>(user,	HttpStatus.OK);
 			}
 			else
-				return new ResponseEntity<Utilisateur>(HttpStatus.NOT_ACCEPTABLE);
+			{
+				System.out.println("user autre que conducteur");
+				return new ResponseEntity<Utilisateur>(HttpStatus.OK);
+			}
 		} catch (WrongUsernameOrPasswordException e) {
+				System.out.println("dans exception conducteur, e="+e);
 			return new ResponseEntity<Utilisateur>(HttpStatus.NOT_ACCEPTABLE);
 		}
 	}

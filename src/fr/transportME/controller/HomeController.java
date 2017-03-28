@@ -20,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 
 import fr.transportME.DAO.DAO;
 import fr.transportME.model.Client;
+import fr.transportME.model.Conducteur;
 import fr.transportME.model.Utilisateur;
 import fr.transportME.validation.UtilisateurSubscribeValidator;
 
@@ -211,10 +212,9 @@ public class HomeController {
 			boolean erreur_trait=false;
 			try
 			{
-				response = restTemplate.getForEntity(url, Client.class, client );
+				response = restTemplate.postForEntity(url, client, Client.class);
 			}
 			catch (RestClientException e) {
-				// traiter l'exception TODO
 				System.out.println("dans exception RestClientException "+e);
 				erreur_trait = true;
 			}
@@ -235,25 +235,75 @@ public class HomeController {
 		}
 	
 	@RequestMapping(value = "/inscription/conducteur", method = RequestMethod.POST)
-	public String inscConducteurPost(@Valid @ModelAttribute("conducteur") Utilisateur conducteur, 
+	public String inscConducteurPost(@Valid @ModelAttribute("conducteur") Conducteur conducteur, 
 			BindingResult result, HttpSession session,
+			Model model,
 			@RequestParam String verif_password  // afin de recuperer le champ verif_password du jsp qui ne fait pas partie des propriétés de la classe Utilisateur
 			) {
 			
 			System.out.println("validation inscription conducteur");
 			
-			// validation personnalisée
-			
-			new UtilisateurSubscribeValidator().validate(conducteur, result, verif_password);
-
 			if (result.hasErrors()) {
+				System.out.println("ERREURS de coherence champs formulaire et modele ");
+				System.out.println("erreurs : "+result.getFieldError());
+			    
+				// affichage detail des erreurs
+				StringBuilder buffer=new StringBuilder();
+				boolean isFirst=true;
+				for(ObjectError error : result.getAllErrors()) {
+			        if(isFirst) {
+			            isFirst=false;
+			        } else {
+			            buffer.append("; and,\n");
+			        }
+			        buffer.append(error);
+			    }
+				System.out.println("erreurs suivantes: "+buffer.toString());
+				//
+				
+				System.out.println("==> retour formulaire inscription");
 				return "inscription";
 			}
 			
-			System.out.println("appel service ecriture inscription");
+			// validation personnalisée
+			System.out.println("appel validation du mot de passe, verif_password = "+ verif_password+" password= "+conducteur.getMdpUtil());
+			new fr.transportME.validation.UtilisateurSubscribeValidator().validate(conducteur, result, verif_password);
+			if (result.hasErrors()) {
+				System.out.println("ERREURS de coherence entre mdp saisis ");
+				System.out.println("erreurs : "+result.getFieldError());
+				System.out.println("==> retour formulaire inscription");
+				return "inscription";
+			}
 			
+			// appel service ecriture inscription
+			System.out.println("appel service ecriture inscription conducteur");
+			RestTemplate restTemplate = new RestTemplate();
+			String url = "http://localhost:8080/TransportME/api/conducteurs"; 
+			System.out.println("appel service url conducteurs = "+url);
+			ResponseEntity<Conducteur> response=null;
+			boolean erreur_trait=false;
+			try
+			{
+				response = restTemplate.postForEntity(url, conducteur, Conducteur.class);
+			}
+			catch (RestClientException e) {
+				System.out.println("dans exception RestClientException "+e);
+				erreur_trait = true;
+			}
+			System.out.println("sortie appel service");
 			
-			return "profilConducteur"; 
+			// aiguillage vers le profil client si aucune erreur de traitement
+			if (erreur_trait) {
+				System.out.println("erreur de traitement => sortie de programme");
+				model.addAttribute("errormessage", "pbe traitement");
+				return "redirect:/inscription/conducteur"; 
+			}
+			else
+			{
+				System.out.println("affichage variable session client - login = "+conducteur.getLoginUtil());
+				model.addAttribute("errormessage", null);
+				return "profilConducteur"; 
+				}
 		}
 	
 	@RequestMapping(value = {"/logout"}, method = RequestMethod.GET)

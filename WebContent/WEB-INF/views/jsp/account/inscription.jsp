@@ -47,8 +47,8 @@
 				<label for="noCBCli">Numéro de la carte bancaire:* </label> 
 				<input type="text" class="form-text" name="noCBCli" maxlength="16" id="noCBCli" required><br> <br> 
 				
-				<label for="cli_dateExpiration">Date d'Expiration CB:* </label> 
-				<input type="month" class="form-text" name="cli_dateExpiration" id="cli_dateExpiration" required><br> <br> 
+				<label for="dateExpirationCli">Date d'Expiration CB:* </label> 
+				<input type="date" class="form-text" name="dateExpirationCli" id="dateExpirationCli" required value="2017-09-15"><br> <br> 
 				
 				<label for="cryptogrammeCli">Cryptogramme:* </label> 
 				<input type="text" class="form-text" name="cryptogrammeCli" maxlength="3" id="cryptogrammeCli" required><br> <br> 
@@ -94,7 +94,7 @@
 				<input type="text" class="form-text" name="nomUtil" id="nomUtil" required><br> <br> 
 				
 				<label for="name">Votre prénom:* </label> 	
-				<input type="text" class="form-text" name="nomUtil" id="nomUtil" required><br><br> 
+				<input type="text" class="form-text" name="prenomUtil" id="prenomUtil" required><br><br> 
 				
 				<label for="date_naissance">Votre date de naissance:* </label> 
 				<input type="date" class="form-text" name="dateNaissanceUtil" id="dateNaissanceUtil" required><br> <br> 

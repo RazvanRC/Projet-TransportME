@@ -15,10 +15,12 @@ public class UtilisateurSubscribeValidator implements Validator {
 
 	
 	public void validate(Utilisateur utilisateur, Errors result, String confirmPassword) {
-		System.out.println("utilisateur = "+utilisateur.getNomUtil());
+		System.out.println("utilisateur = "+utilisateur.getMdpUtil());
+		System.out.println("confirmPassword = "+confirmPassword);
 		if (!utilisateur.getMdpUtil().equals(confirmPassword))
 		{
-			result.rejectValue("mdpUtil", "password.code", "password differents");   // param 1 : nom du champ sur lequel on met l'erreur, param 2 : code de message bidon, param 3 : message d'erreur
+			result.rejectValue("mdpUtil", "result.code", "password differents");   // param 1 : nom du champ sur lequel on met l'erreur, 
+			//param 2 : code de message bidon, param 3 : message d'erreur
 		}
 		
 	}
