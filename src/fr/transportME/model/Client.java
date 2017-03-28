@@ -23,6 +23,7 @@ public class Client extends Utilisateur {
 
 	private static final long serialVersionUID = 1L;
 
+	
 	@Column(name="cli_noCB")
 	@Size(min=16, max=16)
 	@NotNull
