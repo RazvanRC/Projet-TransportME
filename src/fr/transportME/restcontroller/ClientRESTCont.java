@@ -93,7 +93,7 @@ public class ClientRESTCont {
 	}
 	
 	/**
-	 * methode pour recupere les trajets pour un client
+	 * methode pour recuperer les trajets pour un client
 	 * @param idClient
 	 * @return
 	 */
@@ -103,5 +103,8 @@ public class ClientRESTCont {
 		Client myClient = this.clientDAO.find(idClient);
 		return new ResponseEntity<List<Course>>(myClient.getCourses(), HttpStatus.OK);
 	}
+	
+	
+	
 
 }

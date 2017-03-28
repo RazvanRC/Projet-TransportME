@@ -44,6 +44,7 @@ public class ClientDAO extends DAO<Client>{
 			return this.em.merge(object);
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.out.println(e);
 			return null;
 		}
 		
