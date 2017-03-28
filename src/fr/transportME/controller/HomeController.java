@@ -130,11 +130,15 @@ public class HomeController {
 			model.addAttribute("utilisateur", utilisateur);
 			if (client)  {
 				System.out.println("vers profil client");
+				model.addAttribute("client", response.getBody());
 				return "profilClient";	
 			}
 			else
+			{
 				System.out.println("vers profil conducteur");
-				return "profilConducteur";	
+				model.addAttribute("conducteur", response.getBody());
+				return "profilConducteur";
+			}
 				
 		}
 	

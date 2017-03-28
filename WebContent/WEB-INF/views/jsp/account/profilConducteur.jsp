@@ -15,22 +15,22 @@
 
 				<label for="pseudo"> Votre Login: </label> 
 				
-				<input type="text" name="loginUtil" value="${ utilisateur.loginUtil }"><br><br> 
+				<input type="text" name="loginUtil" value="${ conducteur.loginUtil }"><br><br> 
 				
 				<label for="surname">Votre Nom de famille: </label> 
-				<input type="text" name="nomUtil" value="${ utilisateur.nomUtil }"><br><br> 
+				<input type="text" name="nomUtil" value="${ conducteur.nomUtil }"><br><br> 
 				
 				<label for="name">Votre prénom: </label> 
-				<input type="text" name="prenomUtil" value="${ utilisateur.prenomUtil }"><br><br> 
+				<input type="text" name="prenomUtil" value="${ conducteur.prenomUtil }"><br><br> 
 				
 				<label for="date_naissance">Votre date de naissance: </label> 
-				<input type="text" name="dateNaissanceUtil" value="${ utilisateur.dateNaissanceUtil }"><br><br> 
+				<input type="text" name="dateNaissanceUtil" value="${ conducteur.dateNaissanceUtil }"><br><br> 
 				
 				<label for="name">Téléphone: </label>  
-				<input type="text" name="telephoneUtil" value="${ utilisateur.telephoneUtil }"><br><br> 
+				<input type="text" name="telephoneUtil" value="${ conducteur.telephoneUtil }"><br><br> 
 				
-			<label for="name">Année Permis de conduire: </label> 
-				<input type="text" name="telephoneUtil" value="${ conducteur.telephoneUtil }"><br> <br> 
+				<label for="name">Année Permis de conduire: </label> 
+				<input type="text" name="anneePermis" value="${ conducteur.anneePermis }"><br> <br> 
 				
 				<label for="date_naissance">Marque de voiture: </label> 
 				<input type="text" name="marqueVoiture" value="${ conducteur.marqueVoiture }"><br> <br> 
