@@ -326,4 +326,11 @@ public class HomeController {
 		session.invalidate();
 		return "redirect:login";
 	}
+	
+	@RequestMapping(value = "/commande", method = RequestMethod.GET)
+	public String commandeGet(Model model, HttpSession session) {
+			
+			System.out.println(" acces ecran Commande");
+			return "commande";
+		}
 }
