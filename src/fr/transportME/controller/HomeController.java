@@ -1,18 +1,16 @@
 package fr.transportME.controller;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
+
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,10 +20,8 @@ import org.springframework.web.client.RestTemplate;
 
 import fr.transportME.DAO.DAO;
 import fr.transportME.model.Client;
-import fr.transportME.model.Conducteur;
 import fr.transportME.model.Utilisateur;
 import fr.transportME.validation.UtilisateurSubscribeValidator;
-import fr.transportME.validation.WrongUsernameOrPasswordException;
 
 @Controller
 public class HomeController {	
@@ -168,6 +164,7 @@ public class HomeController {
 	@RequestMapping(value = "/inscription/client", method = RequestMethod.POST)
 	public String inscClientPost(@Valid @ModelAttribute("client") Client client, 
 			BindingResult result, HttpSession session,
+			Model model,
 			@RequestParam String verif_password  // afin de recuperer le champ verif_password du jsp qui ne fait pas partie des propriétés de la classe Utilisateur
 			) {
 			
@@ -176,20 +173,65 @@ public class HomeController {
 			if (result.hasErrors()) {
 				System.out.println("ERREURS de coherence champs formulaire et modele ");
 				System.out.println("erreurs : "+result.getFieldError());
+			    
+				// affichage detail des erreurs
+				StringBuilder buffer=new StringBuilder();
+				boolean isFirst=true;
+				for(ObjectError error : result.getAllErrors()) {
+			        if(isFirst) {
+			            isFirst=false;
+			        } else {
+			            buffer.append("; and,\n");
+			        }
+			        buffer.append(error);
+			    }
+				System.out.println("erreurs suivantes: "+buffer.toString());
+				//
+				
 				System.out.println("==> retour formulaire inscription");
 				return "inscription";
 			}
 			
 			// validation personnalisée
-			System.out.println("appel validation du mot de passe");
+			System.out.println("appel validation du mot de passe, verif_password = "+ verif_password+" password= "+client.getMdpUtil());
 			new fr.transportME.validation.UtilisateurSubscribeValidator().validate(client, result, verif_password);
-
-
+			if (result.hasErrors()) {
+				System.out.println("ERREURS de coherence entre mdp saisis ");
+				System.out.println("erreurs : "+result.getFieldError());
+				System.out.println("==> retour formulaire inscription");
+				return "inscription";
+			}
 			
+			// appel service ecriture inscription
 			System.out.println("appel service ecriture inscription");
+			RestTemplate restTemplate = new RestTemplate();
+			String url = "http://localhost:8080/TransportME/api/clients"; 
+			System.out.println("appel service url clients = "+url);
+			ResponseEntity<Client> response=null;
+			boolean erreur_trait=false;
+			try
+			{
+				response = restTemplate.getForEntity(url, Client.class, client );
+			}
+			catch (RestClientException e) {
+				// traiter l'exception TODO
+				System.out.println("dans exception RestClientException "+e);
+				erreur_trait = true;
+			}
+			System.out.println("sortie appel service");
 			
-			
-			return "profilClient"; 
+			// aiguillage vers le profil client si aucune erreur de traitement
+			if (erreur_trait) {
+				System.out.println("erreur de traitement => sortie de programme");
+				model.addAttribute("errormessage", "pbe traitement");
+				return "redirect:/inscription/client"; 
+			}
+			else
+			{
+				System.out.println("affichage variable session client - login = "+client.getLoginUtil());
+				model.addAttribute("errormessage", null);
+				return "profilClient"; 
+				}
 		}
 	
 	@RequestMapping(value = "/inscription/conducteur", method = RequestMethod.POST)
