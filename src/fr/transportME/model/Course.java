@@ -44,14 +44,12 @@ public class Course {
 	private float prixEstime;
 
 	@Column(name="cou_noteClient")
-	@NotNull
 	private float noteCommentClient;
 
 	@Column(name="cou_texteClient")
 	private String texteCommentClient;
 	
 	@Column(name="cou_noteConducteur")
-	@NotNull
 	private float noteCommentConducteur;
 
 	@Column(name="cou_texteConducteur")
