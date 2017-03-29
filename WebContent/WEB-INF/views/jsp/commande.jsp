@@ -18,19 +18,27 @@
 
     <script>
 
-    function initMap() {
+   
+function initMap() {
+    	
+    	
     	  var map = new google.maps.Map(document.getElementById('map'), {
     	    center: {lat: 50.632492, lng: 3.069908}, 
-    	    zoom: 15
+    	    zoom: 15,
+    	    mapTypeId: google.maps.MapTypeId.ROADMAP
+    	    
     	  });
     	  var infoWindow = new google.maps.InfoWindow({map: map});
-
+          
+    	  
+    	  var image = 'resources/images/voitureS.png';
     	  // Try HTML5 geolocation.
     	  if (navigator.geolocation) {
     	    navigator.geolocation.getCurrentPosition(function(position) {
     	      var pos = {
     	        lat: position.coords.latitude,
-    	        lng: position.coords.longitude
+    	        lng: position.coords.longitude,
+    	       
     	        
     	      };
     	      
@@ -45,7 +53,7 @@
     	    	  },
     	    	  success: function(data) {
     	    	  	
-    	    	  console.log(data.results[0].formatted_address);
+    	    	  console.log(data.results[0].formatted_address+ "xyz");
     	    	  infoWindow.setPosition(pos);
         	      infoWindow.setContent('Votre position est: ' + 'lat:=' + pos.lat + '  long:=' + pos.lng + ' \n et votre adresse est: ' + data.results[0].formatted_address);
         	      map.setCenter(pos);
@@ -55,10 +63,90 @@
 
     	    	  });
     	    
-    	    
-    	    
+    	      console.log("lat="+pos.lat+' lng='+pos.lng);
+    	      //var url = 'http://localhost:8080/TransportME/api/conducteurs/disponibilites?lat='+pos.lat+'&lng='+pos.lng;
+    	      var latlong = 'lat='+pos.lat+'&lng='+pos.lng;
+    	      //console.log(url);
+    	      $.ajax({
+    	          url   : 'http://localhost:8080/TransportME/api/conducteurs/disponibilites?lat=50.6079121&lng=3.1672095', // TODO rendre dynamique
+    	          error : function(request, error) { // Info Debuggage si erreur         
+    	                    alert("Erreur sous genre - responseText: "+request.responseText);
+    	                   },                
+    	       dataType : "json",  
+    	       success  : function(data){
+    	                   // console.log(data[0].posActuelleLat + ","+ data[0].posActuelleLong);
+    	                   // console.log(data[1].posActuelleLat + ","+ data[1].posActuelleLong);
+    	                    $.each(data, function(i,item) {
+    	                    	console.log(item);
+	                    	
+	                              marker = new google.maps.Marker({
+	                                position : new google.maps.LatLng(item.posActuelleLat, item.posActuelleLong),
+	                                map      : map
+	                               }); 
+	                              
+	      	                     google.maps.event.addListener(marker, 'click', (function(marker, i) {
+	     	                      return function() {
+	     	                      // Affichage de la légende de chaque lieu
+	     	                      infowindow.setContent('<p> essai de bulle </p> '+item.nomUtil+' ' +item.prenomUtil);
+	     	                      infowindow.open(map, marker);
+	     	                     }
+	     	                   })(marker, i)); 
+	                              
+	                              
+    	                   } )
+    	                    
+    	                 }
+    	               });                        
+ 	      
+    	      
+    	      
+//     	      $.ajax({
+//     	          url   : 'http://localhost:8080/TransportME/api/conducteurs/disponibilites?lat=50.6079121&lng=3.1672095',
+//     	          error : function(request, error) { // Info Debuggage si erreur         
+//     	                    alert("Erreur sous genre - responseText: "+request.responseText);
+//     	                   },                
+//     	       dataType : "json",  
+//     	       success  : function(data){
+//     	                     $("#map").fadeIn('slow');
+//     	                     var infowindow = new google.maps.InfoWindow();    
+//     	                     var marker, i;   
+//     	                     // Parcours des données reçus depuis le fichier index-map-ajax.php
+//     	                     // Récupération de LatLng, Hint et Legende de chaque lieu et création d'un marqueur
+//     	                     $.each(data.items, function(i,item){
+//     	                        if (item) {
+//     	                           if (item.LatLng_lieu!=''){
+//     	                              // On sépare la latitude et la longitude
+//     	                              var strLatLng = item.LatLng_lieu.split(',');
+//     	                              marker = new google.maps.Marker({
+//     	                                position : new google.maps.LatLng(strLatLng[0], strLatLng[1]),
+//     	                                map      : map,
+//     	                                icon     : pinImage,
+//     	                                shadow   : pinShadow,
+//     	                                title    : item.Titre_lieu
+//     	                               });          
+//     	                     google.maps.event.addListener(marker, 'click', (function(marker, i) {
+//     	                      return function() {
+//     	                      // Affichage de la légende de chaque lieu
+//     	                      infowindow.setContent('<a target="_blank" href="'+item.Url_lieu+'"><br/>'+item.Titre_lieu+' </a> ');
+//     	                      infowindow.open(carte, marker);
+//     	                     }
+//     	                   })(marker, i));                              }         
+//     	                   //alert('Vérification données reçues '+item.Titre_lieu+' -- '+item.Url_lieu+ ' -- '+item.LatLng_lieu);
+//     	                 }
+//     	               });                        
+//     	             }
+
+//     	         })initMap();
+  
 
     	    
+    	     
+    	     
+    	     
+    	     
+    	     
+    	     
+    	     
     	    }, function() {
     	      handleLocationError(true, infoWindow, map.getCenter());
     	    });
@@ -142,6 +230,19 @@
 
 
 }
+    
+    
+ 
+  
+ 
+    
+    
+    
+    
+    
+    
+    
+    
 
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCMS6cNPjMWn-Q9uT2f5q_4T2aIrZx9H8&libraries=places&callback=initMap"
