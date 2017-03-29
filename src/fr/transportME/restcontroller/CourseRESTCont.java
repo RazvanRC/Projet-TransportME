@@ -1,5 +1,7 @@
 package fr.transportME.restcontroller;
 
+import java.sql.Date;
+
 import javax.persistence.NoResultException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,17 +64,24 @@ public class CourseRESTCont {
 		return new ResponseEntity<Course>(course, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/{id}/demarrer", method= RequestMethod.POST)
+	/**
+	 * methode pour demarrer une course
+	 * @param idCourse
+	 * @param dateDepart
+	 * @return
+	 */
+	@RequestMapping(value="/{idCourse}/demarrer", method= RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<Course> demarrerCourse(@PathVariable("id") int idCourse, @RequestBody Course course, BindingResult bindingResult) {
+	public ResponseEntity<Course> demarrerCourse(@PathVariable("idCourse") int idCourse, 
+			@RequestParam("dateDepart") Date dateDepart) {
 		
-		//TODO faire cette fonction
+		System.out.println("demarrage de la course idCourse="+idCourse);
+		Course myCourse = this.courseDAO.find(idCourse);
+		System.out.println("date de depart="+dateDepart);
+		myCourse.setDateDepart(dateDepart);
 		
-		return new ResponseEntity<Course>(this.courseDAO.find(idCourse),	HttpStatus.OK);
-//		if (bindingResult.hasErrors())
-//				return new ResponseEntity<Course>(HttpStatus.BAD_REQUEST);
-		
-		//return new ResponseEntity<Course>(courseDAO.save(course), HttpStatus.OK);
+		System.out.println("sauvegarde");
+		return new ResponseEntity<Course>(courseDAO.save(myCourse),	HttpStatus.OK);
 	}
 	
 }
