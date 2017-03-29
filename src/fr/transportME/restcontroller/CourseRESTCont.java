@@ -1,6 +1,7 @@
 package fr.transportME.restcontroller;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.NoResultException;
 
@@ -40,7 +41,7 @@ public class CourseRESTCont {
 		if (bindingResult.hasErrors())
 				return new ResponseEntity<Course>(HttpStatus.BAD_REQUEST);
 		
-		//TODO validator a creer pour verifier que l'id client passé est bien existant dans la bdd sinon plantage 500 
+		//TODO validator a creer pour verifier que l'id client passï¿½ est bien existant dans la bdd sinon plantage 500 
 		
 		return new ResponseEntity<Course>(courseDAO.save(course), HttpStatus.OK);
 	}
@@ -84,4 +85,18 @@ public class CourseRESTCont {
 		return new ResponseEntity<Course>(courseDAO.save(myCourse),	HttpStatus.OK);
 	}
 	
+	
+	/**
+	 * methode pour recuperer l'historique pour un client
+	 * @param idClient
+	 * @return
+	 */
+	@RequestMapping(value="/history", method= RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<Course>> getClientCommentsHistory(@RequestParam("idClient") int idClient) {
+//		Client myClient = this.clientDAO.find(idClient);
+//		List<Course> myCourses = this.courseDAO.getClientCourses(idClient);
+		
+		return new ResponseEntity<List<Course>>(this.courseDAO.getClientCourses(idClient), HttpStatus.OK);
+	}
 }

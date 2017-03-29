@@ -9,9 +9,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.transportME.model.Client;
 import fr.transportME.model.Course;
-import fr.transportME.model.Utilisateur;
 
 @Repository
 @Transactional
@@ -58,18 +56,20 @@ public class CourseDAO extends DAO<Course>{
 		return null;
 	}
 	
-	public List<Course> getClientComments(int id) {
-		TypedQuery<Course> myCourses =  em.createQuery("FROM Course c WHERE c.client = :cou_client", Course.class)
-				.setParameter("client", id);
+	public List<Course> getClientCourses(int id) {
+		TypedQuery<Course> myCourses =  em.createQuery("FROM Course c WHERE c.client.id = :cou_client", Course.class)
+				.setParameter("cou_client", id);
 		return myCourses.getResultList();
 		
 	}
 	
-	public List<Course> getConducteurComments(int id) {
-		TypedQuery<Course> myCourses =  em.createQuery("FROM Course c WHERE c.conducteur = :cou_conducteur", Course.class)
-				.setParameter("conducteur", id);
+	public List<Course> getConducteurCourses(int id) {
+		TypedQuery<Course> myCourses =  em.createQuery("FROM Course c WHERE c.conducteur.id = :cou_conducteur", Course.class)
+				.setParameter("cou_conducteur", id);
 		return myCourses.getResultList();
 		
 	}
+	
+	//TODO methode pour creer les comments
 
 }

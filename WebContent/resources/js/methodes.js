@@ -50,6 +50,11 @@ function modifProfilConducteur() {
 	conducteur.nbrPassagers = $("input[name='nbrPassagers']").val();
 	conducteur.immatriculation = $("input[name='immatriculation']").val();
 	
+	if ($('#indisponible').prop("checked") == true)
+		conducteur.statut = false;
+	else
+		conducteur.statut = true;
+	
 	
 	$.ajax({
 		
@@ -66,3 +71,22 @@ function modifProfilConducteur() {
 			}
 	})
 }
+
+function disponibilite() {
+	
+	
+	statut = $("input[name='statut']").val();
+	console.log(statut);
+	if(statut == "false") {
+		$('#indisponible').prop("checked", true);
+	}
+	else {
+		$('#disponible').prop("checked", true);
+		
+	}
+}
+
+disponibilite();
+
+
+

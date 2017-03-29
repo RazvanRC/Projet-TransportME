@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 
 
 <div class="presentation">
@@ -11,7 +12,7 @@
 <fieldset>
 	<div class="inscription">
 		<div id="divprofilclient">
-			<form method="post" class="inscription">
+			<form method="post" name="inscription" class="inscription">
 			
 				<input type="hidden" id="idUtil" name="idUtil" value="${ conducteur.idUtil }"><br> <br>
 
@@ -51,6 +52,18 @@
 				<label for="immatriculation">Imatriculation: </label> 
 				<input type="text" id="immatriculation" name="immatriculation" value="${ conducteur.immatriculation }"><br> <br> 
 				
+				<input type="hidden" id="statut" name="statut" value="${ conducteur.statut }"><br> <br> 
+				
+		<div id="statut">
+			<h3> Statut :</h3> <br>
+
+				<input type="radio" name="souhait" value="1" id="disponible" onload="disponibilite()"/> 
+				<label for="disponible">Disponible</label><br>
+           
+				<input type="radio" name="souhait" value="0" id="indisponible" onload="disponibilite()"/> 
+				<label for="indisponible">indisponible</label>
+		</div>
+		
 				<br> <br> <br>
 					</form>
 		</div>
@@ -90,18 +103,31 @@
 
 		</div>
 	</fieldset>
-	
-	<div id="statut">
-			<h3> Statut :</h3> <br>
+		
+			
+</div>
 
-				<input type="radio" name="souhait" value="disponible" id="disponible" /> 
-				<label for="disponible">Disponible</label><br>
-           
-				<input type="radio" name="souhait" value="indisponible" id="indisponible" /> 
-				<label for="indisponible">indisponible</label>
-		</div>
+<div class="comments">
+
+	<ul>
+	
+		<c:forEach items = "${comments }" var = "comment">
+			<li> 
+			
+				<div class="commentTotal">
+				
+					<div class="texteComment"></div>
+					<div class="noteComment"></div>
+					<div class="dateComment"></div>
+				
+				</div>
 			
 			
+			</li>
+		</c:forEach>
+	
+	</ul>
+
 </div>
 
 <script src="${ pageContext.request.contextPath }/resources/js/methodes.js"></script>
