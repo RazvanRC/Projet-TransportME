@@ -1,6 +1,7 @@
 package fr.transportME.restcontroller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClientException;
@@ -22,7 +24,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fr.transportME.DAO.ConducteurDAO;
-import fr.transportME.model.Comment;
 import fr.transportME.model.Conducteur;
 import fr.transportME.model.Course;
 import fr.transportME.model.Utilisateur;
@@ -92,12 +93,12 @@ public class ConducteurRESTCont {
 	 * @param idConducteur
 	 * @return
 	 */
-	@RequestMapping(value="/{id}/comments", method= RequestMethod.GET)
-	@ResponseBody
-	public ResponseEntity<List<Comment>> getCommentsHistoryCond(@PathVariable(value="id", required=false) int idConducteur) {
-		Conducteur myConducteur = this.conducteurDAO.find(idConducteur);
-		return new ResponseEntity<List<Comment>>(myConducteur.getComments(), HttpStatus.OK);
-	}
+//	@RequestMapping(value="/{id}/comments", method= RequestMethod.GET)
+//	@ResponseBody
+//	public ResponseEntity<List<Comment>> getCommentsHistoryCond(@PathVariable(value="id", required=false) int idConducteur) {
+//		Conducteur myConducteur = this.conducteurDAO.find(idConducteur);
+//		return new ResponseEntity<List<Comment>>(myConducteur.getComments(), HttpStatus.OK);
+//	}
 	
 	/**
 	 * methode pour recupere les trajets pour un Conducteur
@@ -117,12 +118,14 @@ public class ConducteurRESTCont {
 	 * @param 
 	 * @return
 	 */
-	@RequestMapping(value="/disponibilites/{lat}/{lng}", method= RequestMethod.GET)
+	@RequestMapping(value="/disponibilites", method= RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<List<Conducteur>> getDispoCond(@PathVariable(value="lat", required=false) float lat,
-			@PathVariable(value="lng", required=false) float lng) {
+	public ResponseEntity<List<Conducteur>> getDispoCond(
+			@RequestParam(value = "lat", required = false) double lat,
+			@RequestParam(value = "lng", required = false) double lng
+			) {
 		
-		System.out.println("lat="+lat+" lng="+lng);
+		System.out.println("lat ="+lat+" lng ="+lng);
 		List<Conducteur> myConducteurs = this.conducteurDAO.findAllDispo();
 		
 		// recherche des positions des conducteurs
@@ -155,36 +158,35 @@ public class ConducteurRESTCont {
 		}
 		catch (RestClientException e) {
 			System.out.println("erreur "+e);
+			return new ResponseEntity<List<Conducteur>>(HttpStatus.NOT_ACCEPTABLE);
 		}
 		
 		// parcours du JSON en sortie du service google matrix
 		ObjectMapper objMap = new ObjectMapper();
 		int distance;
+		List<Conducteur> listCondDispo = new ArrayList<>();
 		try {
 			JsonNode rootMode = objMap.readValue(response.getBody(),  JsonNode.class);
-			// TODO boucler sur tous les elements get("rows").get(0).get("elements")
 			JsonNode elements  = rootMode.get("rows").get(0).get("elements");
 			System.out.println(elements);
 			for (int i = 0; i < elements.size(); i++) {
 				System.out.println("distance i="+i+" "+elements.get(i).get("distance").get("value").asInt());
 				if (elements.get(i).get("distance").get("value").asInt() <= 1000) {
-					System.out.println("conducteur disponible "+myConducteurs.get(i).getNomUtil());					
+					System.out.println("conducteur disponible "+myConducteurs.get(i).getNomUtil());		
+					System.out.println(myConducteurs.get(i));
+					listCondDispo.add(myConducteurs.get(i));
 				}
 			}
 		}
-		catch (IOException e)
+		catch (Exception e)
 		{
-			
+			System.out.println("erreur de parcours JSON "+e);
+			return new ResponseEntity<List<Conducteur>>(HttpStatus.NOT_ACCEPTABLE);
 		}
 		
 		System.out.println("sortie de service");
-		
-		// parmi les conducteurs, verification si position du conducteur proche du passager (1km)
-		// TODO
-		
-				
-		// TODO en cours
-		return new ResponseEntity<List<Conducteur>>(myConducteurs, HttpStatus.OK);
+
+		return new ResponseEntity<List<Conducteur>>(listCondDispo, HttpStatus.OK);
 	}
 
 }

@@ -88,12 +88,12 @@ public class ClientRESTCont {
 	 * @param idClient
 	 * @return
 	 */
-	@RequestMapping(value="/{id}/comments", method= RequestMethod.GET)
-	@ResponseBody
-	public ResponseEntity<List<Course>> getCommentsHistory(@PathVariable(value="id", required=false) int idClient) {
-		Client myClient = this.clientDAO.find(idClient);
-		return new ResponseEntity<List<Comment>>(myClient.getComments(), HttpStatus.OK);
-	}
+//	@RequestMapping(value="/{id}/comments", method= RequestMethod.GET)
+//	@ResponseBody
+//	public ResponseEntity<List<Course>> getCommentsHistory(@PathVariable(value="id", required=false) int idClient) {
+//		Client myClient = this.clientDAO.find(idClient);
+//		return new ResponseEntity<List<Comment>>(myClient.getComments(), HttpStatus.OK);
+//	}
 	
 	/**
 	 * methode pour recuperer les trajets pour un client
