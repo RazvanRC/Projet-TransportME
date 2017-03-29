@@ -59,6 +59,7 @@ public class Course {
 	@JoinColumn(name="cou_client")
 	private Client client;
 	
+	
 	@ManyToOne
 	@JoinColumn(name="cou_conducteur")
 	private Conducteur conducteur;
