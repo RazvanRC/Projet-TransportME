@@ -171,7 +171,7 @@ public class ConducteurRESTCont {
 			System.out.println(elements);
 			for (int i = 0; i < elements.size(); i++) {
 				System.out.println("distance i="+i+" "+elements.get(i).get("distance").get("value").asInt());
-				if (elements.get(i).get("distance").get("value").asInt() <= 1000) {
+				if (elements.get(i).get("distance").get("value").asInt() <= 3000) {  // TODO mettre en constante
 					System.out.println("conducteur disponible "+myConducteurs.get(i).getNomUtil());		
 					System.out.println(myConducteurs.get(i));
 					listCondDispo.add(myConducteurs.get(i));

@@ -23,16 +23,16 @@ public class Course {
 	private int idcourse;
 
 	@Column(name="cou_posDepLong")
-	private float posDepartLong;
+	private Float posDepartLong;
 
 	@Column(name="cou_posDepLat")
-	private float posDepartLat;
+	private Float posDepartLat;
 
 	@Column(name="cou_posArrLong")
-	private float posArretLong;
+	private Float posArretLong;
 
 	@Column(name="cou_posArrLat")
-	private float posArretLat;
+	private Float posArretLat;
 
 	@Column(name="cou_dateDepart")
 	private Date dateDepart;
@@ -41,16 +41,16 @@ public class Course {
 	private Date dateArrivee;
 
 	@Column(name="cou_prixEstime")
-	private float prixEstime;
+	private Float prixEstime;
 
 	@Column(name="cou_noteClient")
-	private float noteCommentClient;
+	private Float noteCommentClient;
 
 	@Column(name="cou_texteClient")
 	private String texteCommentClient;
 	
 	@Column(name="cou_noteConducteur")
-	private float noteCommentConducteur;
+	private Float noteCommentConducteur;
 
 	@Column(name="cou_texteConducteur")
 	private String texteCommentConducteur;
@@ -64,120 +64,175 @@ public class Course {
 	@JoinColumn(name="cou_conducteur")
 	private Conducteur conducteur;
 
+
+
 	public int getIdcourse() {
 		return idcourse;
 	}
+
+
 
 	public void setIdcourse(int idcourse) {
 		this.idcourse = idcourse;
 	}
 
-	public float getPosDepartLong() {
+
+
+	public Float getPosDepartLong() {
 		return posDepartLong;
 	}
 
-	public void setPosDepartLong(float posDepartLong) {
+
+
+	public void setPosDepartLong(Float posDepartLong) {
 		this.posDepartLong = posDepartLong;
 	}
 
-	public float getPosDepartLat() {
+
+
+	public Float getPosDepartLat() {
 		return posDepartLat;
 	}
 
-	public void setPosDepartLat(float posDepartLat) {
+
+
+	public void setPosDepartLat(Float posDepartLat) {
 		this.posDepartLat = posDepartLat;
 	}
 
-	public float getPosArretLong() {
+
+
+	public Float getPosArretLong() {
 		return posArretLong;
 	}
 
-	public void setPosArretLong(float posArretLong) {
+
+
+	public void setPosArretLong(Float posArretLong) {
 		this.posArretLong = posArretLong;
 	}
 
-	public float getPosArretLat() {
+
+
+	public Float getPosArretLat() {
 		return posArretLat;
 	}
 
-	public void setPosArretLat(float posArretLat) {
+
+
+	public void setPosArretLat(Float posArretLat) {
 		this.posArretLat = posArretLat;
 	}
+
+
 
 	public Date getDateDepart() {
 		return dateDepart;
 	}
 
+
+
 	public void setDateDepart(Date dateDepart) {
 		this.dateDepart = dateDepart;
 	}
+
+
 
 	public Date getDateArrivee() {
 		return dateArrivee;
 	}
 
+
+
 	public void setDateArrivee(Date dateArrivee) {
 		this.dateArrivee = dateArrivee;
 	}
 
-	public float getPrixEstime() {
+
+
+	public Float getPrixEstime() {
 		return prixEstime;
 	}
 
-	public void setPrixEstime(float prixEstime) {
+
+
+	public void setPrixEstime(Float prixEstime) {
 		this.prixEstime = prixEstime;
 	}
-	
-	
-	public Client getClient() {
-		return client;
-	}
 
-	public void setClient(Client client) {
-		this.client = client;
-	}
 
-	public Conducteur getConducteur() {
-		return conducteur;
-	}
 
-	public void setConducteur(Conducteur conducteur) {
-		this.conducteur = conducteur;
-	}
-
-	
-	
-	public float getNoteCommentClient() {
+	public Float getNoteCommentClient() {
 		return noteCommentClient;
 	}
 
-	public void setNoteCommentClient(float noteCommentClient) {
+
+
+	public void setNoteCommentClient(Float noteCommentClient) {
 		this.noteCommentClient = noteCommentClient;
 	}
+
+
 
 	public String getTexteCommentClient() {
 		return texteCommentClient;
 	}
 
+
+
 	public void setTexteCommentClient(String texteCommentClient) {
 		this.texteCommentClient = texteCommentClient;
 	}
 
-	public float getNoteCommentConducteur() {
+
+
+	public Float getNoteCommentConducteur() {
 		return noteCommentConducteur;
 	}
 
-	public void setNoteCommentConducteur(float noteCommentConducteur) {
+
+
+	public void setNoteCommentConducteur(Float noteCommentConducteur) {
 		this.noteCommentConducteur = noteCommentConducteur;
 	}
+
+
 
 	public String getTexteCommentConducteur() {
 		return texteCommentConducteur;
 	}
 
+
+
 	public void setTexteCommentConducteur(String texteCommentConducteur) {
 		this.texteCommentConducteur = texteCommentConducteur;
 	}
+
+
+
+	public Client getClient() {
+		return client;
+	}
+
+
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+
+
+	public Conducteur getConducteur() {
+		return conducteur;
+	}
+
+
+
+	public void setConducteur(Conducteur conducteur) {
+		this.conducteur = conducteur;
+	}
+
+
 
 	/**
 	    * Default constructor

@@ -36,6 +36,17 @@ public class CourseDAO extends DAO<Course>{
 		}
 	}
 
+	public Course findByIdCient(int idClient) {
+		try {
+			TypedQuery<Course> myQuery = em.createQuery("SELECT c FROM Course c where c.client.id = :idClient", Course.class);
+			myQuery.setParameter("idClient", idClient);
+			return myQuery.getSingleResult();
+		} catch (Exception e) {
+			System.out.println("pbe findByIdClient "+e);
+			return null;
+		}
+	}
+
 	@Override
 	public Course save(Course object) {
 		return this.em.merge(object);
