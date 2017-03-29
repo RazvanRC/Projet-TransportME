@@ -31,11 +31,34 @@
     	      var pos = {
     	        lat: position.coords.latitude,
     	        lng: position.coords.longitude
+    	        
     	      };
+    	      
+    	      
+    	      
+    	      $.ajax({
+    	    	  method: 'GET',
+    	    	  url: 'http://maps.googleapis.com/maps/api/geocode/json',
+    	    	  data: {
+    	    	  latlng: pos.lat + "," + pos.lng,
+    	    	  sensor: 'true'
+    	    	  },
+    	    	  success: function(data) {
+    	    	  	
+    	    	  console.log(data.results[0].formatted_address);
+    	    	  infoWindow.setPosition(pos);
+        	      infoWindow.setContent('Votre position est: ' + 'lat:=' + pos.lat + '  long:=' + pos.lng + ' \n et votre adresse est: ' + data.results[0].formatted_address);
+        	      map.setCenter(pos);
+    	    	 
+    	    	  }
 
-    	      infoWindow.setPosition(pos);
-    	      infoWindow.setContent('Location found.' + 'lat:=' + pos.lat + '  long:=' + pos.lng );
-    	      map.setCenter(pos);
+
+    	    	  });
+    	    
+    	    
+    	    
+
+    	    
     	    }, function() {
     	      handleLocationError(true, infoWindow, map.getCenter());
     	    });
