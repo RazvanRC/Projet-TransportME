@@ -16,6 +16,8 @@
 	<meta name="Robots" content="all">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	
 	<link href="http://fonts.googleapis.com/css?family=Verdana" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/style1.css">

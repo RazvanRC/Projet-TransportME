@@ -41,7 +41,6 @@ public class ConducteurDAO extends DAO<Conducteur>{
 
 	@Override
 	public Conducteur auth(String login, String mdp) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

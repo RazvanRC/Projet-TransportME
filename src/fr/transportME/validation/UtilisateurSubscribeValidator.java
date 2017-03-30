@@ -27,7 +27,7 @@ public class UtilisateurSubscribeValidator implements Validator {
 
 	@Override
 	public void validate(Object arg0, Errors arg1) {
-		// TODO Auto-generated method stub
+
 		
 	}
 

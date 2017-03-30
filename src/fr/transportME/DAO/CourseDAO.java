@@ -52,7 +52,6 @@ public class CourseDAO extends DAO<Course>{
 
 	@Override
 	public Course auth(String login, String mdp) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

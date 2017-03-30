@@ -88,5 +88,27 @@ function disponibilite() {
 
 disponibilite();
 
+function passageCommande() {
+	
+	var course = {};
+	// TODO en cours
+	course.idClient = $("input[name='idUtil']").val();	
+	
+	$.ajax({
+		
+			method: 'POST',
+			dataType: 'json',
+			contentType: 'application/json',
+			url: 'http://localhost:8080/TransportME/api/courses',
+			data: JSON.stringify(course),
+			success: function() {
+				$("#messageAction").html("Le passage de la commande est effectué.");
+			},
+			error: function() {
+				$("#messageAction").html("Le passage de la commande a echoué.");
+			}
+	});
+}
+
 
 

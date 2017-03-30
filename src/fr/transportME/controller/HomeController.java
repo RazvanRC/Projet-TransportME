@@ -106,7 +106,6 @@ public class HomeController {
 					}
 					catch (RestClientException e)
 					{
-						// traiter l'exception TODO
 						System.out.println("exception conducteur "+e);
 					}
 						if (response.getBody()==null)

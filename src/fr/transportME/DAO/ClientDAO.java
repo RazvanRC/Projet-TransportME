@@ -43,7 +43,6 @@ public class ClientDAO extends DAO<Client>{
 			System.out.println(object.getMdpUtil());
 			return this.em.merge(object);
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println(e);
 			return null;
 		}
@@ -52,7 +51,6 @@ public class ClientDAO extends DAO<Client>{
 
 	@Override
 	public Client auth(String login, String mdp) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
