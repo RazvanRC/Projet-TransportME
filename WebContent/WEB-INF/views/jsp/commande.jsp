@@ -15,6 +15,11 @@
         placeholder="Enter a location">
    
     <div id="map"></div>
+    
+	<!--  ajout SD -->    
+    <input id="pac-input2" class="controls" type="text"
+        placeholder="Enter a location destination">
+
 
     <script>
 
@@ -227,6 +232,12 @@ function initMap() {
     var radioButton = document.getElementById(id);
     
   }
+  
+  /// ajout SD
+  var input2 = /** @type {!HTMLInputElement} */(
+	      document.getElementById('pac-input2'));
+  var autocomplete2 = new google.maps.places.Autocomplete(input2);
+  // fin ajout SD
 
 
 }

@@ -53,6 +53,22 @@ margin-top: 50px;}
   border-color: #4d90fe;
 }
 
+#pac-input2 {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 5px;
+  float: left;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+#pac-input2:focus {
+  border-color: #4d90fe;
+}
+
 .pac-container {
   font-family: Roboto;
 }
