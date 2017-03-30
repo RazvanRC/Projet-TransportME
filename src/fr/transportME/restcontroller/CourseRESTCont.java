@@ -46,24 +46,24 @@ public class CourseRESTCont {
 		return new ResponseEntity<Course>(courseDAO.save(course), HttpStatus.OK);
 	}
 	
-	/**
-	 * methode pour recuperer une course
-	 * @param idClient
-	 * @param 
-	 * @return
-	 */
-	@RequestMapping(value="", method= RequestMethod.GET)
-	@ResponseBody
-	public ResponseEntity<Course> recupererCourse(@RequestParam(value = "idClient", required = false) int idClient) {
-		
-		Course course=null;
-		course = courseDAO.findByIdCient(idClient);
-		if (course == null) {
-			return new ResponseEntity<Course>(HttpStatus.NOT_FOUND);
-		}
-			
-		return new ResponseEntity<Course>(course, HttpStatus.OK);
-	}
+//	/**
+//	 * methode pour recuperer une course
+//	 * @param idClient
+//	 * @param 
+//	 * @return
+//	 */
+//	@RequestMapping(value="", method= RequestMethod.GET)
+//	@ResponseBody
+//	public ResponseEntity<Course> recupererCourse(@RequestParam(value = "idClient", required = false) int idClient) {
+//		
+//		Course course=null;
+//		course = courseDAO.findByIdCient(idClient);
+//		if (course == null) {
+//			return new ResponseEntity<Course>(HttpStatus.NOT_FOUND);
+//		}
+//			
+//		return new ResponseEntity<Course>(course, HttpStatus.OK);
+//	}
 	
 	/**
 	 * methode pour demarrer une course
