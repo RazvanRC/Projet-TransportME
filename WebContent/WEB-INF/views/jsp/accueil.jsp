@@ -62,6 +62,14 @@
 			</div>
 		</div>
 	</div>
-
+	<!--  pour clic sur les photos  -->
+	<script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/jquery-1.3.2.min.js"></script>	
+	<script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/jquery.jslickmenu.js"></script>
+	<script type="text/javascript">
+		var $jq132 = jQuery.noConflict();
+		$jq132(document).ready(function() {
+			$jq132("#menu").jSlickmenu();
+		});
+	</script>
 </body>
 </html>
