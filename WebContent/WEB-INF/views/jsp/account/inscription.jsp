@@ -10,7 +10,7 @@
 	<fieldset>
 		<div class="inscription">
 			<br> <br> <label for="utilisateur">Utilisateur*: </label> <select
-				id="mySelect" onchange="myFunction()">
+				id="mySelect">
 				<option value="">utilisateur</option>
 				<option value="client">client</option>
 				<option value="conducteur">conducteur</option>
@@ -145,6 +145,6 @@
 	</fieldset>
 
 </div>
-
+	<script src="${ pageContext.request.contextPath }/resources/js/function.js"></script>
 
 

@@ -6,8 +6,6 @@
 <html>
 <head>
 	
-	<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.1.1.min.js"></script>
-	<script src="${ pageContext.request.contextPath }/resources/js/function.js"></script>
 	<title><tiles:insertAttribute name="title" /></title>
 	
 	<meta charset="UTF-8">
@@ -28,9 +26,6 @@
 <!-- 	<link rel="stylesheet" type="text/css" -->
 <%-- 		href="${ pageContext.request.contextPath }/resources/css/materialize.css" /> --%>
 	
-	<!--  pour clic sur les photos  -->
-	<script type="text/javascript" src="resources/js/jquery.jslickmenu.js"></script>
-	<script type="text/javascript" src="resources/js/script.js"></script>
 
 </head>
 
@@ -38,10 +33,12 @@
 
 <body>
 	<tiles:insertAttribute name="navigation" />
-	<tiles:insertAttribute name="body" /> 
+	 
 	
-
-	<script src="${ pageContext.request.contextPath }/resources/js/materialize.min.js"></script>
-
+	<script src="${ pageContext.request.contextPath }/resources/js/jquery-3.1.1.min.js"></script>
+	<script>var $jq311 = jQuery.noConflict();</script>	
+	<script src="${ pageContext.request.contextPath }/resources/js/materialize.js"></script>
+	
+	<tiles:insertAttribute name="body" />
 </body>
 </html>
