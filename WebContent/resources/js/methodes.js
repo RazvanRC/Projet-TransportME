@@ -86,7 +86,6 @@ function disponibilite() {
 	}
 }
 
-disponibilite();
 
 function passageCommande() {
 	

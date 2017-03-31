@@ -11,6 +11,9 @@ function myFunction() {
 	 {
 	 $("#divConducteur").show();
 	 $("#divClient").hide();
+	 
+	 disponibilite();
+
 	 }
  else
 	 if ($("#mySelect").val() == "client")
