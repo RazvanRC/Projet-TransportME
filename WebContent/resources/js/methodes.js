@@ -96,6 +96,49 @@ $jq311(document).ready(function($) {
 				}
 		});
 	}
+	
+	function demarrerCourse() {
+
+		var course = {};
+		// TODO en cours
+		course.idCourse =  27; //$("input[name='idCourse']").val();	
+		$.ajax({
+				method: 'PUT',
+				dataType: 'json',
+				contentType: 'application/json',
+				url: 'http://localhost:8080/TransportME/api/courses/'+course.idCourse+'/demarrer',
+				data: JSON.stringify(course),
+				success: function() {
+					$("#messageAction").html("La course est démarrée.");
+				},
+				error: function() {
+					$("#messageAction").html("Echec démarrage course.");
+				}
+		});
+
+	}
+
+	function terminerCourse() {
+
+		var course = {};
+		// TODO en cours
+		course.idCourse = 27; //$("input[name='idCourse']").val();	
+		$.ajax({
+				method: 'PUT',
+				dataType: 'json',
+				contentType: 'application/json',
+				url: 'http://localhost:8080/TransportME/api/courses/'+course.idCourse+'/terminer',
+				data: JSON.stringify(course),
+				success: function() {
+					$("#messageAction").html("La course est terminée.");
+				},
+				error: function() {
+					$("#messageAction").html("Echec fin de course.");
+				}
+
+		});
+
+	}
 
 });
 
