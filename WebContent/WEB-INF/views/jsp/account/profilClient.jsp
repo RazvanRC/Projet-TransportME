@@ -67,9 +67,9 @@
 				</div>
 				<div class="reset">
 					<div class="btnLogin">
-						<button id="submit"
+						<button id="submitProfilClient"
 							class="btn waves-effect waves-light orange darken-4"
-							type="submit" onclick="modifProfilClient()" name="Envoyer">
+							type="submit" name="Envoyer">
 							Modification <i class="material-icons right">send</i>
 						</button>
 					</div>

@@ -35,7 +35,7 @@
 <input type="hidden" id="idConducteur" name="idConducteur" value="${ conducteur.idUtil }"><br> <br>
 
 <script src="${ pageContext.request.contextPath }/resources/js/dispo.js"></script>
-<script src="${ pageContext.request.contextPath }/resources/js/methodes.js"></script>
+<script src="${ pageContext.request.contextPath }/resources/js/methodesConducteur.js"></script>
 
 
 
