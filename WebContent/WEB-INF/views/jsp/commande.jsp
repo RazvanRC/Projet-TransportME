@@ -17,6 +17,7 @@
 		</button>
 	</div>
 </div>
+<div id="infoConducteur"></div>
 
 <div id="messageAction"></div>
 

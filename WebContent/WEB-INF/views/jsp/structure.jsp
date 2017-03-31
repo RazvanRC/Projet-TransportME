@@ -41,8 +41,7 @@
 	<tiles:insertAttribute name="body" /> 
 	
 
-	<script
-		src="${ pageContext.request.contextPath }/resources/js/materialize.min.js"></script>
+	<script src="${ pageContext.request.contextPath }/resources/js/materialize.min.js"></script>
 
 </body>
 </html>
