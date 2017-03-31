@@ -34,16 +34,28 @@ public class CourseDAO extends DAO<Course>{
 		}
 	}
 
-//	public Course findByIdCient(int idClient) {
-//		try {
-//			TypedQuery<Course> myQuery = em.createQuery("SELECT c FROM Course c where c.client.id = :idClient", Course.class);
-//			myQuery.setParameter("idClient", idClient);
-//			return myQuery.getSingleResult();
-//		} catch (Exception e) {
-//			System.out.println("pbe findByIdClient "+e);
-//			return null;
-//		}
-//	}
+	public Course findByidCourse(int idCourse) {
+		try {
+			TypedQuery<Course> myQuery = em.createQuery("SELECT c FROM Course c where c.id = :idCourse", Course.class);
+			myQuery.setParameter("idCourse", idCourse);
+			return myQuery.getSingleResult();
+		} catch (Exception e) {
+			System.out.println("pbe findByidCourse "+e);
+			return null;
+		}
+	}
+	
+	// course non commencee
+	public Course findByidConducteur(int idConducteur) {
+		try {
+			TypedQuery<Course> myQuery = em.createQuery("SELECT c FROM Course c where c.conducteur.id = :idConducteur and c.dateDepart is null", Course.class);
+			myQuery.setParameter("idConducteur", idConducteur);
+			return myQuery.getSingleResult();
+		} catch (Exception e) {
+			System.out.println("pbe findByidConducteur "+e);
+			return null;
+		}
+	}
 
 	@Override
 	public Course save(Course object) {

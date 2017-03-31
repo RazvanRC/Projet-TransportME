@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
     
 
 
@@ -12,7 +13,8 @@
 <fieldset>
 	<div class="inscription">
 		<div id="divprofilclient">
-			<form method="post" name="inscription" class="inscription">
+			<!-- <form method="post" name="inscription" class="inscription"> -->
+			<form:form id="dispo" action="dispo" >
 			
 				<input type="hidden" id="idUtil" name="idUtil" value="${ conducteur.idUtil }"><br> <br>
 
@@ -65,18 +67,30 @@
 		</div>
 		
 				<br> <br> <br>
-					</form>
-		</div>
+					<!-- </form> -->
+
 		
-		<div class="inputLogin">
-					<div class="reset">
-						<button id="reset"
-							class="btn waves-effect waves-light orange darken-4" type="reset"
-							name="Réinitialiser">
-							Gerer disponibilité  <i class="material-icons right">send</i>
+
+			<div class="inputLogin">
+						<div class="reset">
+						
+							<!--  <button id="reset"
+								class="btn waves-effect waves-light orange darken-4" type="reset"
+								onclick="location.href='dispo'"
+								name="Réinitialiser">
+								Gerer disponibilité  <i class="material-icons right">send</i>
+							</button>
+							-->
+							
+							<button id="subdispo"
+							class="btn waves-effect waves-light orange darken-4"
+							type="submit"  name="Envoyer">
+							Gerer disponibilité <i class="material-icons right">send</i>
 						</button>
-					</div>
-		</div>
+						</div>
+			</div>
+		</form:form>
+	</div>
 				<div class="reset">
 					<div class="btnLogin">
 						<button id="submit"

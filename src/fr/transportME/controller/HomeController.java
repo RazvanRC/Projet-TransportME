@@ -169,8 +169,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/profilConducteur", method = RequestMethod.GET)
 	public String profilConducteurGet(Model model, HttpSession session) {
-			model.addAttribute("page", "profil Conducteur");
-			
+			model.addAttribute("page", "profil Conducteur");		
 			System.out.println(" profil conducteur");
 			return "profilConducteur";
 		}
@@ -331,5 +330,13 @@ public class HomeController {
 			
 			System.out.println(" acces ecran Commande");
 			return "commande";
+		}
+	
+	@RequestMapping(value = "/dispo", method = RequestMethod.POST)
+	public String dispoGet(Model model, @ModelAttribute("dispo") Conducteur conducteur, HttpSession session) {
+			
+			System.out.println(" acces ecran Disponibilité "+conducteur.getLoginUtil());
+			model.addAttribute("conducteur", conducteur);
+			return "dispo";
 		}
 }

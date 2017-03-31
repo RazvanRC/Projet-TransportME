@@ -51,24 +51,43 @@ public class CourseRESTCont {
 		return new ResponseEntity<Course>(courseDAO.save(course), HttpStatus.OK);
 	}
 	
-//	/**
-//	 * methode pour recuperer une course
-//	 * @param idClient
-//	 * @param 
-//	 * @return
-//	 */
-//	@RequestMapping(value="", method= RequestMethod.GET)
-//	@ResponseBody
-//	public ResponseEntity<Course> recupererCourse(@RequestParam(value = "idClient", required = false) int idClient) {
-//		
-//		Course course=null;
-//		course = courseDAO.findByIdCient(idClient);
-//		if (course == null) {
-//			return new ResponseEntity<Course>(HttpStatus.NOT_FOUND);
-//		}
-//			
-//		return new ResponseEntity<Course>(course, HttpStatus.OK);
-//	}
+	/**
+	 * methode pour recuperer une course precise
+	 * @param idClient
+	 * @param 
+	 * @return
+	 */
+	@RequestMapping(value="/{idCourse}/recuperer", method= RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<Course> recupererInfoCourse(@PathVariable("idCourse") int idCourse) {
+		
+		Course course=null;
+		course = courseDAO.findByidCourse(idCourse);
+		if (course == null) {
+			return new ResponseEntity<Course>(HttpStatus.NOT_FOUND);
+		}
+			
+		return new ResponseEntity<Course>(course, HttpStatus.OK);
+	}
+	
+	/**
+	 * methode pour recuperer une course attribuee à un conducteur et non commencee 
+	 * @param idConducteur
+	 * @param 
+	 * @return
+	 */
+	@RequestMapping(value="/recuperer", method= RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<Course> recupererCourseAttribuee(@RequestParam(value = "idConducteur", required = false) int idConducteur) {
+		
+		Course course=null;
+		course = courseDAO.findByidConducteur(idConducteur);
+		if (course == null) {
+			return new ResponseEntity<Course>(HttpStatus.NOT_FOUND);
+		}
+			
+		return new ResponseEntity<Course>(course, HttpStatus.OK);
+	}
 	
 	/**
 	 * methode pour demarrer une course
