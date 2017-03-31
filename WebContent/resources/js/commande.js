@@ -9,111 +9,143 @@ function initMap() {
 		mapTypeId : google.maps.MapTypeId.ROADMAP
 
 	});
-	var infoWindow = new google.maps.InfoWindow({
-		map : map
-	});
 
-	var image = 'resources/images/voitureS.png';
+	function RefreshDisponibilitesConducteurs() {
+
+		return function() {
+			$.ajax({
+						url : 'api/conducteurs/disponibilites?lat=50.6079121&lng=3.1672095', // TODO
+						// rendre
+						// dynamique
+						error : function(request, error) {
+							alert("Erreur sous genre - responseText: "
+									+ request.responseText);
+						},
+						dataType : "json",
+						success : function(data) {
+							$.each(
+											data,
+											function(i, item) {
+												console.log(item);
+												var image = {
+													url : 'resources/images/voitureS4.png',
+												// This marker is 20 pixels wide by 32 pixels high.
+												//size: new google.maps.Size(64, 64)
+												// The origin for this image is (0, 0).
+												//origin: new google.maps.Point(0, 0),
+												// The anchor for this image is the base of the flagpole at (0, 32).
+												//anchor: new google.maps.Point(0, 32)
+												};
+
+												marker = new google.maps.Marker(
+														{
+															position : new google.maps.LatLng(
+																	item.posActuelleLat,
+																	item.posActuelleLong),
+															map : map,
+															icon : image
+														});
+
+												google.maps.event
+														.addListener(
+																marker,
+																'click',
+																(function(
+																		marker,
+																		i) {
+																	return function() {
+																		var infoWindow = new google.maps.InfoWindow(
+																				{
+																					map : map
+																				});
+																		
+																		var contentInfo = 'Conducteur : '
+																			+ item.nomUtil
+																			+ ', '
+																			+ item.prenomUtil
+																			+ ', '
+																			+ item.marqueVoiture
+																			+ ', '
+																			+ item.modeleVoiture
+																			+ ', '
+																			+ item.nbrPassagers;
+																		
+																		var contentCommande = 
+																			'<h1>Info Conducteur</h1>'
+																			+ '<p>' + contentInfo + '</p>'
+																			+ '<button>Passez la commande</button>';
+																		
+																		$('#infoConducteur').html(contentCommande);
+																		
+																		// Affichage de la légende de chaque lieu
+																		infowindow
+																				.setContent(contentInfo)
+
+																		infowindow
+																				.open(
+																						map,
+																						marker);
+																	}
+																})(marker, i));
+
+											})
+
+						}
+					});
+
+		}
+	}
+	RefreshDisponibilitesConducteurs()();
+	//refresh des disponibilités toute les 3 secondes
+	setInterval(RefreshDisponibilitesConducteurs(), 3000);
+	
 	// Try HTML5 geolocation.
 	if (navigator.geolocation) {
-		navigator.geolocation
-				.getCurrentPosition(
-						function(position) {
-							var pos = {
-								lat : position.coords.latitude,
-								lng : position.coords.longitude,
+		navigator.geolocation.getCurrentPosition(function(position) {
+			var pos = {
+				lat : position.coords.latitude,
+				lng : position.coords.longitude,
 
-							};
+			};
 
-							$.ajax({
-										method : 'GET',
-										url : 'http://maps.googleapis.com/maps/api/geocode/json',
-										data : {
-											latlng : pos.lat + "," + pos.lng,
-											sensor : 'true'
-										},
-										success : function(data) {
+			$.ajax({
+				method : 'GET',
+				url : 'http://maps.googleapis.com/maps/api/geocode/json',
+				data : {
+					latlng : pos.lat + "," + pos.lng,
+					sensor : 'true'
+				},
+				success : function(data) {
 
-											console.log(data.results[0].formatted_address
-															+ "xyz");
-											infoWindow.setPosition(pos);
-											infoWindow.setContent('Votre position est: '
-															+ 'lat:='
-															+ pos.lat
-															+ '  long:='
-															+ pos.lng
-															+ ' \n et votre adresse est: '
-															+ data.results[0].formatted_address);
-											map.setCenter(pos);
+					var marker = new google.maps.Marker({
+						position : new google.maps.LatLng(pos.lat, pos.lng),
+						map : map
+					});
 
-										}
+					var contenuInfoBulle = 'Votre position est: ' + 'lat:='
+							+ pos.lat + '  long:=' + pos.lng
+							+ ' \n et votre adresse est: '
+							+ data.results[0].formatted_address;
 
-									});
+					var infoBulle = new google.maps.InfoWindow({
+						content : contenuInfoBulle
+					})
 
-							console.log("lat=" + pos.lat + ' lng=' + pos.lng);
-							// var url =
-							// 'http://localhost:8080/TransportME/api/conducteurs/disponibilites?lat='+pos.lat+'&lng='+pos.lng;
-							var latlong = 'lat=' + pos.lat + '&lng=' + pos.lng;
-							// console.log(url);
-							$.ajax({
-										url : 'http://localhost:8080/TransportME/api/conducteurs/disponibilites?lat=50.6079121&lng=3.1672095', // TODO
-																																				// rendre
-																																				// dynamique
-										error : function(request, error) { 
-											alert("Erreur sous genre - responseText: "
-													+ request.responseText);
-										},
-										dataType : "json",
-										success : function(data) {
-											$.each(data,function(i, item) {
-																console.log(item);
+					google.maps.event.addListener(marker, 'click', function() {
+						infoBulle.open(map, marker);
+					});
 
-																marker = new google.maps.Marker(
-																		{
-																			position : new google.maps.LatLng(
-																					item.posActuelleLat,
-																					item.posActuelleLong),
-																			map : map
-																		});
+					console.log(data.results[0].formatted_address + "xyz");
 
-																google.maps.event.addListener(
-																				marker,
-																				'click',
-																				(function(
-																						marker,
-																						i) {
-																					return function() {
-																						// Affichage de la légende de chaque lieu
-																						infowindow.setContent('Conducteur : '
-																										+ item.nomUtil
-																										+ ', '
-																										+ item.prenomUtil
-																										+ ', ' 
-																										+ item.marqueVoiture
-																										+ ', '
-																										+ item.modeleVoiture
-																										+ ', '
-																										+ item.nbrPassagers
-																										)
-																										
-																						
-																						infowindow.open(
-																										map,
-																										marker);
-																					}
-																				})
-																						(
-																								marker,
-																								i));
+					map.setCenter(pos);
 
-															})
+				}
 
-										}
-									});
+			});
+		}, function() {
+			handleLocationError(true, infoWindow, map.getCenter());
+		});
 
-						}, function() {
-							handleLocationError(true, infoWindow, map.getCenter());
-						});
 	} else {
 		// Browser doesn't support Geolocation
 		handleLocationError(false, infoWindow, map.getCenter());
@@ -121,7 +153,8 @@ function initMap() {
 
 	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 		infoWindow.setPosition(pos);
-		infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.'
+		infoWindow
+				.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.'
 						: 'Error: Your browser doesn\'t support geolocation.');
 	}
 
