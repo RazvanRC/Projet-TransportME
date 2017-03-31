@@ -28,7 +28,7 @@
 	</div>
 </div>
 
-<div id="infoConducteur"></div>
+<div id="infoClient"></div>
 
 <div id="messageAction"></div>
 

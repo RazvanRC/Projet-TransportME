@@ -27,10 +27,6 @@ $jq311(document).ready(function($) {
 							},
 							dataType : "json",
 							success : function(data) {
-								//$.each(
-									//			data,
-										//		function(i, item) {
-													///////console.log(item);
 													var image = {
 														url : 'resources/images/client.png',   
 													};
@@ -51,9 +47,8 @@ $jq311(document).ready(function($) {
 																	marker,
 																	'click',
 																	(function(
-																			marker,
-																			i) {
-																		return function() {
+																			marker 
+																			) {
 																			var infoWindow = new google.maps.InfoWindow(
 																					{
 																						map : map
@@ -62,10 +57,8 @@ $jq311(document).ready(function($) {
 																			var contentInfo = 'Passager : '
 																				+ data.nomUtil;
 																			
-																			var contentClient = 
-																				'<h1>Info Passage</h1>'
-																				+ '<p>' + contentInfo + '</p>'
-						+ '<input type="hidden" id="courseId" value='+data.idcourse+'/>';
+																			var contentClient = 	
+																					"<input type='hidden' id='courseId' value='"+data.idcourse+"'>";
 																			
 																			$('#infoClient').html(contentClient);
 																			
@@ -77,18 +70,14 @@ $jq311(document).ready(function($) {
 																					.open(
 																							map,
 																							marker);
-																		}
-																//	})(marker, i));
+																		
 																	})(marker));
 	
-												//}    //)
 	
 							}
 						});
 	
-			//}
 		}
-		//RecherchePosClient();
 		CoursesAttribuees();
 		//refresh des disponibilités toute les 3 secondes
 		////////////setInterval(CoursesAttribuees(), 30000);  // TODO a modifier
@@ -174,7 +163,6 @@ $jq311(document).ready(function($) {
 		}
 		
 		function CoursesAttribuees() {
-			//return function() {
 				
 				var course = {};
 				course.idConducteur = $("input[name='idConducteur']").val();   
@@ -193,7 +181,6 @@ $jq311(document).ready(function($) {
 	
 							}
 						});
-			//}
 		}
 	}
 	

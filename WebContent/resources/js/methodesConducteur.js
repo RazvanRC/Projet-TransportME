@@ -42,9 +42,8 @@ $jq311(document).ready(function($) {
 	
 	function demarrerCourse() {
 		var course = {};
-		// TODO en cours
-		course.idCourse =  27; //$("input[name='idCourse']").val();	
-		
+		course.idCourse =  $("input[id='courseId']").val();	
+		console.log("courseId = "+course.idCourse);
 		
 		$.ajax({
 			
@@ -65,8 +64,7 @@ $jq311(document).ready(function($) {
 	function terminerCourse() {
 		
 		var course = {};
-		// TODO en cours
-		course.idCourse = 27; //$("input[name='idCourse']").val();	
+		course.idCourse =  $("input[id='courseId']").val();		
 		
 		$.ajax({
 			
