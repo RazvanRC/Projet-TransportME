@@ -36,7 +36,7 @@
 
 <script src="${ pageContext.request.contextPath }/resources/js/dispo.js"></script>
 <script src="${ pageContext.request.contextPath }/resources/js/methodes.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCMS6cNPjMWn-Q9uT2f5q_4T2aIrZx9H8&libraries=places&callback=initMap"></script>
+
 
 
 
