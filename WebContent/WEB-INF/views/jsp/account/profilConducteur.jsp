@@ -93,9 +93,9 @@
 	</div>
 				<div class="reset">
 					<div class="btnLogin">
-						<button id="submit"
+						<button id="submitModifProfilConducteur"
 							class="btn waves-effect waves-light orange darken-4"
-							type="submit" onclick="modifProfilConducteur()" name="Envoyer">
+							type="submit" name="Envoyer">
 							Modification <i class="material-icons right">send</i>
 						</button>
 					</div>
@@ -144,7 +144,7 @@
 
 </div>
 
-<script src="${ pageContext.request.contextPath }/resources/js/methodes.js"></script>
+<script src="${ pageContext.request.contextPath }/resources/js/methodesConducteur.js"></script>
 
 
 

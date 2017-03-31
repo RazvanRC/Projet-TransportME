@@ -108,7 +108,7 @@ $jq311(document).ready(function($) {
 	
 	$('#submitDemarrerCourse').on('click', demarrerCourse);
 	$('#submitTerminerCourse').on('click', terminerCourse);
-
+	$('#submitModifProfilConducteur').on('click', modifProfilConducteur);
 });
 
 

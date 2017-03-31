@@ -94,6 +94,6 @@
 	</fieldset>
 </div>
 
-<script src="${ pageContext.request.contextPath }/resources/js/methodes.js"></script>
+<script src="${ pageContext.request.contextPath }/resources/js/methodesClient.js"></script>
 
 
