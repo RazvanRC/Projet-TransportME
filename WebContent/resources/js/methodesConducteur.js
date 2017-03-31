@@ -82,9 +82,19 @@ $jq311(document).ready(function($) {
 		});
 	}
 	
+	function modifStatutAccept() {
+// TODO à faire
+	}
+	
+	function modifStatutRefus() {
+		// TODO à faire
+			}
+	
 	$('#submitDemarrerCourse').on('click', demarrerCourse);
 	$('#submitTerminerCourse').on('click', terminerCourse);
 	$('#submitModifProfilConducteur').on('click', modifProfilConducteur);
+	$('#submitAcceptation').on('click', modifStatutAccept);
+	$('#submitRefus').on('click', modifStatutRefus);
 });
 
 

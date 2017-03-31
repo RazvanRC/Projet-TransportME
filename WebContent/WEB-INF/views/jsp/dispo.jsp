@@ -9,7 +9,7 @@
 <!-- <input id="pac-input2" class="controls" type="text" placeholder="Enter a location destination"> -->
 
 <div class="demarrercourse">
-	<div class="btnLogin">
+	<div class="btnDemarrercourse">
 		<button id="submitDemarrerCourse"
 			class="btn waves-effect waves-light orange darken-4" type="submit"
 			name="Demarrer Course">
@@ -19,11 +19,31 @@
 </div>
 
 <div class="terminercourse">
-	<div class="btnLogin">
+	<div class="btnTerminercourse">
 		<button id="submitTerminerCourse"
 			class="btn waves-effect waves-light orange darken-4" type="submit"
 			name="Terminer Course">
 			Terminer course <i class="material-icons right">send</i>
+		</button>
+	</div>
+</div>
+
+<div class="acceptation">
+	<div class="btnAcceptation">
+		<button id="submitAcceptation"
+			class="btn waves-effect waves-light orange darken-4" type="submit"
+			name="acceptation">
+			Acceptation <i class="material-icons right">send</i>
+		</button>
+	</div>
+</div>
+
+<div class="refus">
+	<div class="btnRefus">
+		<button id="submitRefus"
+			class="btn waves-effect waves-light orange darken-4" type="submit"
+			name="refus">
+			Refus <i class="material-icons right">send</i>
 		</button>
 	</div>
 </div>

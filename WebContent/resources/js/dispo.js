@@ -55,10 +55,13 @@ $jq311(document).ready(function($) {
 																					});
 																			
 																			var contentInfo = 'Passager : '
-																				+ data.nomUtil;
+																				+ data.client.nomUtil;
 																			
 																			var contentClient = 	
-																					"<input type='hidden' id='courseId' value='"+data.idcourse+"'>";
+																					"<input type='hidden' id='courseId' value='"+data.idcourse+"'>"
+																					+ "<p> passager "+ data.client.nomUtil+" "+data.client.prenomUtil+"</p>"
+																					+ "<p> depart: "+ data.posDepartLat+" "+data.posDepartLong+"</p>"
+																					+ "<p> destination: "+ data.posArretLat+" "+data.posArretLong+"</p>";
 																			
 																			$('#infoClient').html(contentClient);
 																			
