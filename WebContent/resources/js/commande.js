@@ -100,6 +100,8 @@ $jq311(document).ready(function($) {
 																				+ '</button>'
 																				+ '</div>';
 																			
+																			$('#infoConducteur').html(contentInfo);  // ajout SD
+																			
 																			// Affichage de la légende de chaque lieu
 																			infowindow
 																					.setContent(contentInfo)

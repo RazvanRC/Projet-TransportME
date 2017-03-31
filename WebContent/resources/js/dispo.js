@@ -27,18 +27,12 @@ $jq311(document).ready(function($) {
 							},
 							dataType : "json",
 							success : function(data) {
-								$.each(
-												data,
-												function(i, item) {
+								//$.each(
+									//			data,
+										//		function(i, item) {
 													///////console.log(item);
 													var image = {
 														url : 'resources/images/client.png',   
-													// This marker is 20 pixels wide by 32 pixels high.
-													//size: new google.maps.Size(64, 64)
-													// The origin for this image is (0, 0).
-													//origin: new google.maps.Point(0, 0),
-													// The anchor for this image is the base of the flagpole at (0, 32).
-													//anchor: new google.maps.Point(0, 32)
 													};
 	
 													marker = new google.maps.Marker(
@@ -46,8 +40,8 @@ $jq311(document).ready(function($) {
 																// TODO latitude et longitude en dur du client
 														
 																position : new google.maps.LatLng(
-																		50.605678999999995 ,//item.posActuelleLat,
-																		3.1521624),	//item.posActuelleLong),
+																		50.605678999999995 ,//data.posDepartLat,
+																		3.1521624),	//data.posDepartLong),
 																map : map,
 																icon : image
 															});
@@ -65,23 +59,15 @@ $jq311(document).ready(function($) {
 																						map : map
 																					});
 																			
-																			var contentInfo = 'Conducteur : '
-																				+ item.nomUtil
-																				+ ', '
-																				+ item.prenomUtil
-																				+ ', '
-																				+ item.marqueVoiture
-																				+ ', '
-																				+ item.modeleVoiture
-																				+ ', '
-																				+ item.nbrPassagers;
+																			var contentInfo = 'Passager : '
+																				+ data.nomUtil;
 																			
-																			var contentCommande = 
-																				'<h1>Info Conducteur</h1>'
+																			var contentClient = 
+																				'<h1>Info Passage</h1>'
 																				+ '<p>' + contentInfo + '</p>'
-																				+ '<button>Passez la commande</button>';
+						+ '<input type="hidden" id="courseId" value='+data.idcourse+'/>';
 																			
-																			$('#infoConducteur').html(contentCommande);
+																			$('#infoClient').html(contentClient);
 																			
 																			// Affichage de la légende de chaque lieu
 																			infowindow
@@ -92,9 +78,10 @@ $jq311(document).ready(function($) {
 																							map,
 																							marker);
 																		}
-																	})(marker, i));
+																//	})(marker, i));
+																	})(marker));
 	
-												})
+												//}    //)
 	
 							}
 						});
