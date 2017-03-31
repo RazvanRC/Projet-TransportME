@@ -1,6 +1,17 @@
+var map;
+var panel;
+var initialize;
+var calculate;
+var direction;
+var autocompleteDepart;
+var autocompleteDestination;
+
+
+
+
 function initMap() {
 
-	var map = new google.maps.Map(document.getElementById('map'), {
+	map = new google.maps.Map(document.getElementById('map'), {
 		center : {
 			lat : 50.632492,
 			lng : 3.069908
@@ -9,6 +20,13 @@ function initMap() {
 		mapTypeId : google.maps.MapTypeId.ROADMAP
 
 	});
+	
+	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+		infoWindow.setPosition(pos);
+		infoWindow
+				.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.'
+						: 'Error: Your browser doesn\'t support geolocation.');
+	}
 
 	function RefreshDisponibilitesConducteurs() {
 
@@ -18,8 +36,7 @@ function initMap() {
 						// rendre
 						// dynamique
 						error : function(request, error) {
-							alert("Erreur sous genre - responseText: "
-									+ request.responseText);
+							console.log(request);
 						},
 						dataType : "json",
 						success : function(data) {
@@ -97,7 +114,7 @@ function initMap() {
 	}
 	RefreshDisponibilitesConducteurs()();
 	//refresh des disponibilités toute les 3 secondes
-	setInterval(RefreshDisponibilitesConducteurs(), 3000);
+	//setInterval(RefreshDisponibilitesConducteurs(), 3000);
 	
 	// Try HTML5 geolocation.
 	if (navigator.geolocation) {
@@ -130,10 +147,17 @@ function initMap() {
 					var infoBulle = new google.maps.InfoWindow({
 						content : contenuInfoBulle
 					})
-
-					google.maps.event.addListener(marker, 'click', function() {
-						infoBulle.open(map, marker);
-					});
+						
+					
+					var closure = function () {
+						google.maps.event.addListener(marker, 'click', function() {
+							infoBulle.open(map, marker);							
+							$('#inputDepart').val(data.results[0].formatted_address);
+							//autocompleteDepart.set("place", data.results[0].formatted_address);
+							
+							//google.maps.event.trigger(autocompleteDepart, 'place_changed');
+						});
+					}();
 
 					console.log(data.results[0].formatted_address + "xyz");
 
@@ -151,22 +175,21 @@ function initMap() {
 		handleLocationError(false, infoWindow, map.getCenter());
 	}
 
-	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-		infoWindow.setPosition(pos);
-		infoWindow
-				.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.'
-						: 'Error: Your browser doesn\'t support geolocation.');
-	}
+	//On cache l'input de destination
+	$('#inputDestination').hide();
+	
+	var inputDepart = document.getElementById('inputDepart');
+	map.controls[google.maps.ControlPosition.TOP_LEFT].push(inputDepart);
+	autocompleteDepart = new google.maps.places.Autocomplete(inputDepart);
+	autocompleteDepart.bindTo('bounds', map);
 
-	var input = /** @type {!HTMLInputElement} */
-	(document.getElementById('pac-input'));
+	var inputDestination = document.getElementById('inputDestination');
+	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(inputDestination);	
+	autocompleteDestination = new google.maps.places.Autocomplete(inputDestination);
+	autocompleteDestination.bindTo('bounds', map);
 
 	var types = document.getElementById('type-selector');
-	map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 	map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
-
-	var autocomplete = new google.maps.places.Autocomplete(input);
-	autocomplete.bindTo('bounds', map);
 
 	var infowindow = new google.maps.InfoWindow();
 	var marker = new google.maps.Marker({
@@ -174,14 +197,21 @@ function initMap() {
 		anchorPoint : new google.maps.Point(0, -29)
 	});
 
-	autocomplete.addListener('place_changed', function() {
+	autocompleteDepart.addListener('place_changed', function() {
 		infowindow.close();
 		marker.setVisible(false);
-		var place = autocomplete.getPlace();
+		var place = autocompleteDepart.getPlace();
 		if (!place.geometry) {
+			//On rend visible l'input de destination
+			$('#inputDestination').hide();
+
 			window.alert("Autocomplete's returned place contains no geometry");
 			return;
 		}
+
+		//On rend visible l'input de destination
+		$('#inputDestination').show();
+		
 
 		// If the place has a geometry, then present it on a map.
 		if (place.geometry.viewport) {
@@ -218,15 +248,105 @@ function initMap() {
 		infowindow.open(map, marker);
 	});
 
+	
+	autocompleteDestination.addListener('place_changed', function() {
+		
+		var place = autocompleteDepart.getPlace();
+		if (!place.geometry) {
+			window.alert("Autocomplete's returned place contains no geometry");
+			return;
+		}
+		
+		var direction = new google.maps.DirectionsRenderer({
+		    map   : map//,
+		    //panel : panel // Dom element pour afficher les instructions d'itinÃƒÂ©raire
+
+		});
+		
+	    origin   = document.getElementById('inputDepart').value; // Le point dÃƒÂ©part
+	    destination = document.getElementById('inputDestination').value; // Le point d'arrivÃƒÂ©
+	    if(origin && destination){
+	        var request = {
+	            origin      : origin,
+	            destination : destination,
+	            travelMode  : google.maps.DirectionsTravelMode.DRIVING // Mode de conduite
+	        }
+	        var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinÃƒÂ©raire
+	        directionsService.route(request, function(response, status){ // Envoie de la requÃƒÂªte pour calculer le parcours
+	          //console.log(response);
+	            if(status == google.maps.DirectionsStatus.OK){
+	                direction.setDirections(response); // Trace l'itinÃƒÂ©raire sur la carte et les diffÃƒÂ©rentes ÃƒÂ©tapes du parcours
+	            }
+	        });
+	    }
+		
+
+	});
+	
 	// Sets a listener on a radio button to change the filter type on Places
-	// Autocomplete.
+	// Autocomplete
 	function setupClickListener(id, types) {
 		var radioButton = document.getElementById(id);
 
 	}
+	
 
-	var input2 = /** @type {!HTMLInputElement} */
-	(document.getElementById('pac-input2'));
-	var autocomplete2 = new google.maps.places.Autocomplete(input2);
 
 }
+
+
+
+
+
+
+
+
+/*
+
+
+var infoWindow = new google.maps.InfoWindow({
+  content  : contentMarker,
+  position : input
+});
+
+google.maps.event.addListener(marker, 'click', function() {
+  infoWindow.open(map,marker);
+});
+
+google.maps.event.addListener(infoWindow, 'domready', function(){ // infoWindow est biensÃƒÂ»r notre info-bulle
+  jQuery("#tabs").tabs();
+});
+
+
+
+
+
+
+
+direction = new google.maps.DirectionsRenderer({
+    map   : map,
+    panel : panel // Dom element pour afficher les instructions d'itinÃƒÂ©raire
+ 
+
+});
+
+calculate = function(){
+    origin      = document.getElementById('pac-input').value; // Le point dÃƒÂ©part
+    destination = document.getElementById('pac-input2').value; // Le point d'arrivÃƒÂ©
+    if(origin && destination){
+        var request = {
+            origin      : origin,
+            destination : destination,
+            travelMode  : google.maps.DirectionsTravelMode.DRIVING // Mode de conduite
+        }
+        var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinÃƒÂ©raire
+        directionsService.route(request, function(response, status){ // Envoie de la requÃƒÂªte pour calculer le parcours
+          //console.log(response);
+            if(status == google.maps.DirectionsStatus.OK){
+                direction.setDirections(response); // Trace l'itinÃƒÂ©raire sur la carte et les diffÃƒÂ©rentes ÃƒÂ©tapes du parcours
+            }
+        });
+    }
+};
+*/
+

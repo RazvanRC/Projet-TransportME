@@ -2,11 +2,19 @@
 	pageEncoding="ISO-8859-1"%>
 
 
-<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+<input id="inputDepart" name="origin" class="controls" type="text" placeholder="Entrer un départ">
+<input id="inputDestination" name ="destination" class="controls" type="text" placeholder="Entrer une destination">
 
 <div id="map"></div>
+<!-- <input type="button" value="Calculer l'itinéraire" onclick="javascript:calculate()"> -->
 
-<input id="pac-input2" class="controls" type="text" placeholder="Enter a location destination">
+
+  <div id="panel"></div>
+        <div id="map">
+         
+        </div>
+
+
 
 <div class="commandecourse">
 	<div class="btnLogin">
@@ -17,13 +25,17 @@
 		</button>
 	</div>
 </div>
+
+
+
+
 <div id="infoConducteur"></div>
 
 <div id="messageAction"></div>
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCMS6cNPjMWn-Q9uT2f5q_4T2aIrZx9H8&libraries=places&callback=initMap"async defer></script>
 <script src="${ pageContext.request.contextPath }/resources/js/commande.js"></script>
 <script src="${ pageContext.request.contextPath }/resources/js/methodes.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCMS6cNPjMWn-Q9uT2f5q_4T2aIrZx9H8&libraries=places&callback=initMap"></script>
+
 
 
 
