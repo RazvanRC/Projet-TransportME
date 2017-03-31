@@ -55,6 +55,9 @@ public class Course {
 	@Column(name="cou_texteConducteur")
 	private String texteCommentConducteur;
 	
+	@Column(name="cou_statutCourse")
+	private String statutCourse;
+	
 	@ManyToOne
 	@JoinColumn(name="cou_client")
 	private Client client;
@@ -230,6 +233,19 @@ public class Course {
 
 	public void setConducteur(Conducteur conducteur) {
 		this.conducteur = conducteur;
+	}
+
+	
+
+
+	public String getStatutCourse() {
+		return statutCourse;
+	}
+
+
+
+	public void setStatutCourse(String statutCourse) {
+		this.statutCourse = statutCourse;
 	}
 
 
