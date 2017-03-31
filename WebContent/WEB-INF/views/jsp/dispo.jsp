@@ -10,7 +10,7 @@
 
 <div class="demarrercourse">
 	<div class="btnLogin">
-		<button id="submit"
+		<button id="submitDemarrerCourse"
 			class="btn waves-effect waves-light orange darken-4" type="submit"
 			onclick="demarrerCourse()" name="Demarrer Course">
 			Démarrer course <i class="material-icons right">send</i>
@@ -20,9 +20,9 @@
 
 <div class="terminercourse">
 	<div class="btnLogin">
-		<button id="submit"
+		<button id="submitTerminerCourse"
 			class="btn waves-effect waves-light orange darken-4" type="submit"
-			onclick="terminerCourse()" name="Terminer Course">
+			name="Terminer Course">
 			Terminer course <i class="material-icons right">send</i>
 		</button>
 	</div>

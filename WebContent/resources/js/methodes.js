@@ -51,7 +51,6 @@ $jq311(document).ready(function($) {
 		conducteur.modeleVoiture = $("input[name='modeleVoiture']").val();
 		conducteur.nbrPassagers = $("input[name='nbrPassagers']").val();
 		conducteur.immatriculation = $("input[name='immatriculation']").val();
-
 		
 		if ($('#indisponible').prop("checked") == true)
 			conducteur.statut = false;
@@ -75,6 +74,23 @@ $jq311(document).ready(function($) {
 		})
 	}
 	
+	function disponibilite() {
+		
+		
+		statut = $("input[name='statut']").val();
+		console.log(statut);
+		if(statut == "false") {
+			$('#indisponible').prop("checked", true);
+		}
+		else {
+			$('#disponible').prop("checked", true);
+			
+		}
+	}
+	
+	//FIXME : call this method on driver page
+	//disponibilite();
+	
 	function passageCommande() {
 		
 		var course = {};
@@ -86,7 +102,7 @@ $jq311(document).ready(function($) {
 				method: 'POST',
 				dataType: 'json',
 				contentType: 'application/json',
-				url: 'api/courses',
+				url: 'http://localhost:8080/TransportME/api/courses',
 				data: JSON.stringify(course),
 				success: function() {
 					$("#messageAction").html("Le passage de la commande est effectué.");
@@ -98,15 +114,17 @@ $jq311(document).ready(function($) {
 	}
 	
 	function demarrerCourse() {
-
 		var course = {};
 		// TODO en cours
 		course.idCourse =  27; //$("input[name='idCourse']").val();	
+		
+		
 		$.ajax({
+			
 				method: 'PUT',
 				dataType: 'json',
-				contentType: 'application/json',
-				url: 'http://localhost:8080/TransportME/api/courses/'+course.idCourse+'/demarrer',
+				contesponseTextentType: 'application/json',
+				url: 'api/courses/'+course.idCourse+'/demarrer',
 				data: JSON.stringify(course),
 				success: function() {
 					$("#messageAction").html("La course est démarrée.");
@@ -115,19 +133,20 @@ $jq311(document).ready(function($) {
 					$("#messageAction").html("Echec démarrage course.");
 				}
 		});
-
 	}
 
 	function terminerCourse() {
-
+		
 		var course = {};
 		// TODO en cours
 		course.idCourse = 27; //$("input[name='idCourse']").val();	
+		
 		$.ajax({
+			
 				method: 'PUT',
 				dataType: 'json',
 				contentType: 'application/json',
-				url: 'http://localhost:8080/TransportME/api/courses/'+course.idCourse+'/terminer',
+				url: 'api/courses/'+course.idCourse+'/terminer',
 				data: JSON.stringify(course),
 				success: function() {
 					$("#messageAction").html("La course est terminée.");
@@ -135,10 +154,12 @@ $jq311(document).ready(function($) {
 				error: function() {
 					$("#messageAction").html("Echec fin de course.");
 				}
-
 		});
-
 	}
+	
+	$('#submitDemarrerCourse').on('click', demarrerCourse);
+	$('#submitTerminerCourse').on('click', terminerCourse);
 
 });
+
 
