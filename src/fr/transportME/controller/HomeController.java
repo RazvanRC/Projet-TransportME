@@ -22,7 +22,6 @@ import fr.transportME.DAO.DAO;
 import fr.transportME.model.Client;
 import fr.transportME.model.Conducteur;
 import fr.transportME.model.Utilisateur;
-import fr.transportME.validation.UtilisateurSubscribeValidator;
 
 @Controller
 public class HomeController {	

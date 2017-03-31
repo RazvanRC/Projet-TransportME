@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mysql.jdbc.jdbc2.optional.MysqlXid;
-
 import fr.transportME.DAO.ClientDAO;
-import fr.transportME.DAO.CourseDAO;
 import fr.transportME.model.Client;
 import fr.transportME.model.Course;
 
@@ -28,9 +25,6 @@ public class ClientRESTCont {
 	
 	@Autowired
 	private ClientDAO clientDAO;
-	
-	@Autowired
-	private CourseDAO courseDAO;
 	
 	/**
 	 * methode pour la recherche d'un client

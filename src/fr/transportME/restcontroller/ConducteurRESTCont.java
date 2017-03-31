@@ -1,6 +1,5 @@
 package fr.transportME.restcontroller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +25,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.transportME.DAO.ConducteurDAO;
 import fr.transportME.model.Conducteur;
 import fr.transportME.model.Course;
-import fr.transportME.model.Utilisateur;
 
 
 @RestController

@@ -3,8 +3,6 @@ package fr.transportME.restcontroller;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.NoResultException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.transportME.DAO.ConducteurDAO;
 import fr.transportME.DAO.CourseDAO;
-import fr.transportME.model.Client;
 import fr.transportME.model.Conducteur;
 import fr.transportME.model.Course;
 
