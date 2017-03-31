@@ -51,6 +51,7 @@ $jq311(document).ready(function($) {
 		conducteur.modeleVoiture = $("input[name='modeleVoiture']").val();
 		conducteur.nbrPassagers = $("input[name='nbrPassagers']").val();
 		conducteur.immatriculation = $("input[name='immatriculation']").val();
+
 		
 		if ($('#indisponible').prop("checked") == true)
 			conducteur.statut = false;
@@ -74,20 +75,6 @@ $jq311(document).ready(function($) {
 		})
 	}
 	
-	function disponibilite() {
-		
-		
-		statut = $("input[name='statut']").val();
-		console.log(statut);
-		if(statut == "false") {
-			$('#indisponible').prop("checked", true);
-		}
-		else {
-			$('#disponible').prop("checked", true);
-			
-		}
-	}	
-	
 	function passageCommande() {
 		
 		var course = {};
@@ -99,7 +86,7 @@ $jq311(document).ready(function($) {
 				method: 'POST',
 				dataType: 'json',
 				contentType: 'application/json',
-				url: 'http://localhost:8080/TransportME/api/courses',
+				url: 'api/courses',
 				data: JSON.stringify(course),
 				success: function() {
 					$("#messageAction").html("Le passage de la commande est effectué.");
