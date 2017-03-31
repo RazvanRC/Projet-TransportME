@@ -12,7 +12,7 @@
 	<div class="btnLogin">
 		<button id="submitDemarrerCourse"
 			class="btn waves-effect waves-light orange darken-4" type="submit"
-			onclick="demarrerCourse()" name="Demarrer Course">
+			name="Demarrer Course">
 			Démarrer course <i class="material-icons right">send</i>
 		</button>
 	</div>
