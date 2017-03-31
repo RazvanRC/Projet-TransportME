@@ -200,8 +200,8 @@ $jq311(document).ready(function($) {
 							},
 							dataType : "json",
 							success : function(data) {
-								console.log("dans appel ajax de recherchePosClient, data.idCourse= "+data.idCourse);
-								RecherchePosClient(data.idCourse);
+								console.log("dans appel ajax de recherchePosClient, data.idCourse= "+data.idcourse);
+								RecherchePosClient(data.idcourse);
 	
 	
 							}

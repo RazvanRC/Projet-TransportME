@@ -94,7 +94,8 @@ $jq311(document).ready(function($) {
 																				+ '<div class="btncommande">'
 																				+ '<button id="btncommande"'
 																				+ '	class="btn waves-effect waves-light orange darken-4" type="submit"'
-																				+ '	onclick="passageCommande()" name="PassageCommande">'
+																				//+ '	onclick="passageCommande()" '
+																				+ ' name="PassageCommande">'
 																				+ '	Passage Commande <i class="material-icons right">send</i>'
 																				+ '</button>'
 																				+ '</div>';
@@ -283,7 +284,7 @@ $jq311(document).ready(function($) {
 		        });
 		    }
 		    RefreshDisponibilitesConducteurs()();
-			//refresh des disponibilités toute les 3 secondes
+			//refresh des disponibilités toute les 3 secondes          TODO
 			//setInterval(RefreshDisponibilitesConducteurs(), 3000);
 	
 		});
