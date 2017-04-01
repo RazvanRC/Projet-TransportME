@@ -66,7 +66,11 @@ public class Course {
 	@JoinColumn(name="cou_conducteur")
 	private Conducteur conducteur;
 
+	@Column(name="cou_lieuDep")
+	private String lieuDepart;
 
+	@Column(name="cou_lieuArr")
+	private String lieuArrivee;
 
 	public int getIdcourse() {
 		return idcourse;
@@ -245,6 +249,31 @@ public class Course {
 
 	public void setStatutCourse(String statutCourse) {
 		this.statutCourse = statutCourse;
+	}
+
+	
+
+
+	public String getLieuDepart() {
+		return lieuDepart;
+	}
+
+
+
+	public void setLieuDepart(String lieuDepart) {
+		this.lieuDepart = lieuDepart;
+	}
+
+
+
+	public String getLieuArrivee() {
+		return lieuArrivee;
+	}
+
+
+
+	public void setLieuArrivee(String lieuArrivee) {
+		this.lieuArrivee = lieuArrivee;
 	}
 
 

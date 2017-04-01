@@ -31,13 +31,12 @@ $jq311(document).ready(function($) {
 							: 'Error: Your browser doesn\'t support geolocation.');
 		}
 	
-		function RefreshDisponibilitesConducteurs() {
+		function RefreshDisponibilitesConducteurs(lat, lng) {
 	
-			return function() {
+			//return function() {
 				$.ajax({
-							url : 'api/conducteurs/disponibilites?lat=50.6079121&lng=3.1672095', // TODO
-							// rendre
-							// dynamique
+							//url : 'api/conducteurs/disponibilites?lat=50.6079121&lng=3.1672095', 	
+							url : 'api/conducteurs/disponibilites?lat='+lat+'&lng='+lng, 	
 							error : function(request, error) {
 								console.log(request);
 							},
@@ -94,13 +93,19 @@ $jq311(document).ready(function($) {
 																				+ '<div class="btncommande">'
 																				+ '<button id="btncommande"'
 																				+ '	class="btn waves-effect waves-light orange darken-4" type="submit"'
-																				//+ '	onclick="passageCommande()" '
+																				+ '	onclick="passageCommande()" '
 																				+ ' name="PassageCommande">'
 																				+ '	Passage Commande <i class="material-icons right">send</i>'
 																				+ '</button>'
 																				+ '</div>';
 																			
-																			$('#infoConducteur').html(contentInfo);  // ajout SD
+																			// ajout SD	
+																			$('#infoConducteur').html(contentInfo);  																		
+																			// memorisation idConducteur sélectionné
+																			document.getElementById("idConducteur").value=item.idUtil;
+																			document.getElementById("posActuelleLat").value=item.posActuelleLat;
+																			document.getElementById("posActuelleLong").value=item.posActuelleLong;
+																			// fin ajout SD	
 																			
 																			// Affichage de la légende de chaque lieu
 																			infowindow
@@ -118,7 +123,7 @@ $jq311(document).ready(function($) {
 							}
 						});
 	
-			}
+			//}
 		}
 		
 		
@@ -139,7 +144,7 @@ $jq311(document).ready(function($) {
 						sensor : 'true'
 					},
 					success : function(data) {
-	
+						
 						var marker = new google.maps.Marker({
 							position : new google.maps.LatLng(pos.lat, pos.lng),
 							map : map
@@ -166,6 +171,7 @@ $jq311(document).ready(function($) {
 						}();
 	
 						console.log(data.results[0].formatted_address + "xyz");
+						console.log("inputDepart "+$('#inputDepart').val());
 	
 						map.setCenter(pos);
 	
@@ -271,6 +277,8 @@ $jq311(document).ready(function($) {
 			
 		    origin   = document.getElementById('inputDepart').value; // Le point dÃƒÂ©part
 		    destination = document.getElementById('inputDestination').value; // Le point d'arrivÃƒÂ©
+			console.log("SD origin "+origin);
+			console.log("SD destination "+destination);
 		    if(origin && destination){
 		        var request = {
 		            origin      : origin,
@@ -285,7 +293,9 @@ $jq311(document).ready(function($) {
 		            }
 		        });
 		    }
-		    RefreshDisponibilitesConducteurs()();
+			document.getElementById("posClientLat").value=place.geometry.location.lat();
+			document.getElementById("posClientLong").value=place.geometry.location.lng();
+		    RefreshDisponibilitesConducteurs(place.geometry.location.lat(), place.geometry.location.lng());
 			//refresh des disponibilités toute les 3 secondes          TODO
 			//setInterval(RefreshDisponibilitesConducteurs(), 3000);
 	

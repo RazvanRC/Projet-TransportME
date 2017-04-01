@@ -83,12 +83,45 @@ $jq311(document).ready(function($) {
 	}
 	
 	function modifStatutAccept() {
-// TODO à faire
+		var course = {};
+		course.idCourse =  $("input[id='courseId']").val();		
+		
+		$.ajax({
+			
+				method: 'PUT',
+				dataType: 'json',
+				contentType: 'application/json',
+				url: 'api/courses/'+course.idCourse+'/accepter',
+				data: JSON.stringify(course),
+				success: function() {
+					$("#messageAction").html("La course a été acceptée.");
+				},
+				error: function() {
+					$("#messageAction").html("Echec acceptation de course.");
+				}
+		});			
 	}
 	
 	function modifStatutRefus() {
-		// TODO à faire
-			}
+			
+			var course = {};
+			course.idCourse =  $("input[id='courseId']").val();		
+			
+			$.ajax({
+				
+					method: 'PUT',
+					dataType: 'json',
+					contentType: 'application/json',
+					url: 'api/courses/'+course.idCourse+'/refuser',
+					data: JSON.stringify(course),
+					success: function() {
+						$("#messageAction").html("La course a été refusée.");
+					},
+					error: function() {
+						$("#messageAction").html("Echec refus de course.");
+					}
+			});		
+	}
 	
 	$('#submitDemarrerCourse').on('click', demarrerCourse);
 	$('#submitTerminerCourse').on('click', terminerCourse);

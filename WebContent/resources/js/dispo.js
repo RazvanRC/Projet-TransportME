@@ -33,11 +33,9 @@ $jq311(document).ready(function($) {
 	
 													marker = new google.maps.Marker(
 															{
-																// TODO latitude et longitude en dur du client
-														
 																position : new google.maps.LatLng(
-																		50.605678999999995 ,//data.posDepartLat,
-																		3.1521624),	//data.posDepartLong),
+																		data.posDepartLat, //50.605678999999995 ,
+																		data.posDepartLong), // 3.1521624),	
 																map : map,
 																icon : image
 															});
@@ -60,8 +58,8 @@ $jq311(document).ready(function($) {
 																			var contentClient = 	
 																					"<input type='hidden' id='courseId' value='"+data.idcourse+"'>"
 																					+ "<p> passager "+ data.client.nomUtil+" "+data.client.prenomUtil+"</p>"
-																					+ "<p> depart: "+ data.posDepartLat+" "+data.posDepartLong+"</p>"
-																					+ "<p> destination: "+ data.posArretLat+" "+data.posArretLong+"</p>";
+																					+ "<p> depart: "+ data.lieuDepart+"</p>"
+																					+ "<p> destination: "+ data.lieuArrivee+"</p>";
 																			
 																			$('#infoClient').html(contentClient);
 																			
@@ -89,7 +87,7 @@ $jq311(document).ready(function($) {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
 				var pos = {
-						// TODO coordonnées en dur du conducteur
+						// TODO coordonnées en dur du conducteur a laisser en dur pour l'instant 
 					lat : 50.6082, //position.coords.latitude,
 					lng :  3.16806 // position.coords.longitude,
 				};

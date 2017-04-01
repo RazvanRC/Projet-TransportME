@@ -36,9 +36,22 @@ $jq311(document).ready(function($) {
 	function passageCommande() {
 		
 		var course = {};
-		// TODO en cours
-		course.idClient = $("input[name='idUtil']").val();	
 		
+		// TODO idClient voir de où on le prend
+		course.client.idUtil = document.getElementById("idClient").value;
+		
+		// idConducteur
+		course.conducteur.idUtil = document.getElementById("idConducteur").value;	
+		
+		course.lieuDepart =  document.getElementById('inputDepart').value;
+		course.lieuArrivee = document.getElementById('inputDestination').value;
+
+		// latitude et longitude de depart (client) et de destination (conducteur)
+		course.posDepartLat = document.getElementById("posClientLat").value;
+	    course.posDepartLong =  document.getElementById("posClientLong").value;
+	    course.posArretLat = document.getElementById("posActuelleLat").value;
+	    course.posArretLong = document.getElementById("posActuelleLong").value;
+	    
 		$.ajax({
 			
 				method: 'POST',

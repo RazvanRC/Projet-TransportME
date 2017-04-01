@@ -138,7 +138,39 @@ public class CourseRESTCont {
 	}
 	
 
+	/**
+	 * methode pour accepter une course
+	 * @param idCourse
+	 * @return
+	 */
+	@RequestMapping(value="/{idCourse}/accepter", method= RequestMethod.PUT)
+	@ResponseBody
+	public ResponseEntity<Course> accepterCourse(@PathVariable("idCourse") int idCourse) {
+		
+		System.out.println("accepter la course idCourse="+idCourse);
+		Course myCourse = this.courseDAO.find(idCourse);
+		myCourse.setStatutCourse("acceptation");
+		
+		System.out.println("sauvegarde");
+		return new ResponseEntity<Course>(courseDAO.save(myCourse),	HttpStatus.OK);
+	}	
 	
+	/**
+	 * methode pour refuser une course
+	 * @param idCourse
+	 * @return
+	 */
+	@RequestMapping(value="/{idCourse}/refuser", method= RequestMethod.PUT)
+	@ResponseBody
+	public ResponseEntity<Course> refuserCourse(@PathVariable("idCourse") int idCourse) {
+		
+		System.out.println("accepter la course idCourse="+idCourse);
+		Course myCourse = this.courseDAO.find(idCourse);
+		myCourse.setStatutCourse("refus");
+		
+		System.out.println("sauvegarde");
+		return new ResponseEntity<Course>(courseDAO.save(myCourse),	HttpStatus.OK);
+	}
 	
 	/**
 	 * methode pour recuperer l'historique pour un client
