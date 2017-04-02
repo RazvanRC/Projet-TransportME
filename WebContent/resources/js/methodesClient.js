@@ -70,6 +70,7 @@ $jq311(document).ready(function($) {
 	
 	$('#submitProfilClient').on('click', modifProfilClient);
 	$('#btncommande').on('click', passageCommande);
+	$('#submitCommande').on('click', passageCommande);
 });
 
 

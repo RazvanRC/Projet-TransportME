@@ -51,46 +51,39 @@
 				<div id="messageAction"></div>
 			</div>
 
+			<div class="inputLogin">
+						<div class="reset">
+							<button id="reset"
+								class="btn waves-effect waves-light orange darken-4" type="reset"
+								onclick="location.href='commande'"
+								name="Réinitialiser">
+								Commander  <i class="material-icons right">send</i>
+							</button>
+						</div>
+			</div>
+			<div class="reset">
+						<div class="btnLogin">
+							<button id="submitProfilClient"
+								class="btn waves-effect waves-light orange darken-4"
+								type="submit" name="Envoyer">
+								Modification <i class="material-icons right">send</i>
+							</button>
+						</div>
+			</div>
 			
-		
-		
-		
-		<div class="inputLogin">
-					<div class="reset">
-						<button id="reset"
-							class="btn waves-effect waves-light orange darken-4" type="reset"
-							onclick="location.href='commande'"
-							name="Réinitialiser">
-							Commander  <i class="material-icons right">send</i>
-						</button>
-					</div>
-				</div>
-				<div class="reset">
-					<div class="btnLogin">
-						<button id="submitProfilClient"
-							class="btn waves-effect waves-light orange darken-4"
-							type="submit" name="Envoyer">
-							Modification <i class="material-icons right">send</i>
-						</button>
-					</div>
-				</div>
-		
-<!-- 			<div class="comment"> -->
-<!-- 				<div class="btnLogin"> -->
-<!-- 					<button id="comment" -->
-<!-- 						class="btn waves-effect waves-light orange darken-4" type="submit" -->
-<!-- 						name="Envoyer"> -->
-<!-- 						Commentaires <i class="material-icons right">send</i> -->
-<!-- 					</button> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-			
+	<!-- 			<div class="comment"> -->
+	<!-- 				<div class="btnLogin"> -->
+	<!-- 					<button id="comment" -->
+	<!-- 						class="btn waves-effect waves-light orange darken-4" type="submit" -->
+	<!-- 						name="Envoyer"> -->
+	<!-- 						Commentaires <i class="material-icons right">send</i> -->
+	<!-- 					</button> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+				
 		</div>
-			<br>
+		<br>
 
-			
-
-		
 	</fieldset>
 </div>
 

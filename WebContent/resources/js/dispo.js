@@ -188,6 +188,7 @@ $jq311(document).ready(function($) {
 							error : function(request, error) {
 								console.log("Erreur dans courses attribuees - responseText: "
 										+ request.responseText);
+								document.getElementById("messageAction").value="aucune course attribuee";
 							},
 							dataType : "json",
 							success : function(data) {

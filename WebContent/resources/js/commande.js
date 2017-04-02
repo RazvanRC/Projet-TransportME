@@ -255,8 +255,7 @@ $jq311(document).ready(function($) {
 						.join(' ');
 			}
 	
-			infowindow.setContent('<div><strong>' + place.name + '</strong><br>'
-					+ address);
+			infowindow.setContent('<div><strong>' + address + '</strong><br>');
 			infowindow.open(map, marker);
 		});
 	

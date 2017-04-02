@@ -9,6 +9,7 @@
 <div id="map"></div>
 <!-- <input type="button" value="Calculer l'itinéraire" onclick="javascript:calculate()"> -->
 
+<input type="hidden" id="idClient" name="idClient" value="${client.idUtil }">
 <input type="hidden" id="idConducteur" name="idConducteur" >
 <input type="hidden" id="posActuelleLat" name="posActuelleLat" >
 <input type="hidden" id="posActuelleLong" name="posActuelleLong" >
@@ -21,6 +22,16 @@
 
 
  <div id="infoConducteur"></div>
+ 
+ <div class="commande">
+	<div class="btncommande2">
+		<button id="submitCommande"
+			class="btn waves-effect waves-light orange darken-4" type="submit"
+			name="commande">
+			Passage commande <i class="material-icons right">send</i>
+		</button>
+	</div>
+</div>
 
 	
 
