@@ -26,7 +26,7 @@
 		
     		<div class="nav-wrapper" >
     			<div class="brand-logo">
-    				<img src="resources/images/logo.PNG">
+    				<img src="${ pageContext.request.contextPath }/resources/images/logo.PNG">
     			</div>
     		
 				

@@ -17,10 +17,9 @@
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 	
 	<link href="http://fonts.googleapis.com/css?family=Verdana" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="resources/css/style.css">
-	<link rel="stylesheet" type="text/css" href="resources/css/style1.css">
-	<link rel="stylesheet" type="text/css" href="resources/css/slickmenu1.css">
-	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/style.css" />		
+	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/">
+	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/style1.css">
+	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/slickmenu1.css">	
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	
 <!-- 	<link rel="stylesheet" type="text/css" -->

@@ -239,9 +239,9 @@ public class HomeController {
 			}
 			else
 			{
-				System.out.println("affichage variable session client - login = "+client.getLoginUtil());
+				System.out.println("affichage variable session client avant appel login = "+client.getLoginUtil());
 				model.addAttribute("errormessage", null);
-				return "profilClient"; 
+				return "redirect:/login"; 
 				}
 		}
 	
@@ -313,7 +313,7 @@ public class HomeController {
 			{
 				System.out.println("affichage variable session client - login = "+conducteur.getLoginUtil());
 				model.addAttribute("errormessage", null);
-				return "profilConducteur"; 
+				return "redirect:/login"; 
 				}
 		}
 	

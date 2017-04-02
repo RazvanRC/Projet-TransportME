@@ -27,6 +27,14 @@ $jq311(document).ready(function($) {
 							},
 							dataType : "json",
 							success : function(data) {
+								
+													//On cache les boutons 
+													if (data != null)
+													$('#demarrercourse').show();
+													$('#terminercourse').show();
+													$('#acceptation').show();
+													$('#refus').show();
+													
 													var image = {
 														url : 'resources/images/client.png',   
 													};
@@ -79,6 +87,13 @@ $jq311(document).ready(function($) {
 						});
 	
 		}
+		
+		//On cache les boutons 
+		$('#demarrercourse').hide();
+		$('#terminercourse').hide();
+		$('#acceptation').hide();
+		$('#refus').hide();
+		
 		CoursesAttribuees();
 		//refresh des disponibilités toute les 3 secondes
 		////////////setInterval(CoursesAttribuees(), 30000);  // TODO a modifier

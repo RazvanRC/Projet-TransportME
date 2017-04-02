@@ -89,6 +89,7 @@
 						</button>
 						</div>
 			</div>
+			<div id="messageAction"></div>
 		</form:form>
 	</div>
 				<div class="reset">
@@ -102,15 +103,15 @@
 				</div>
 				<br>
 	
-			<div class="comment">
-					<div class="btnLogin">
-						<button id="submit"
-							class="btn waves-effect waves-light orange darken-4"
-							type="submit" name="Envoyer">
-							Commentaire <i class="material-icons right">send</i>
-						</button>
-					</div>
-			</div>
+<!-- 			<div class="comment"> -->
+<!-- 					<div class="btnComment"> -->
+<!-- 						<button id="submit" -->
+<!-- 							class="btn waves-effect waves-light orange darken-4" -->
+<!-- 							type="submit" name="Envoyer"> -->
+<!-- 							Commentaire <i class="material-icons right">send</i> -->
+<!-- 						</button> -->
+<!-- 					</div> -->
+<!-- 			</div> -->
 		<br>
 		
            
@@ -144,6 +145,7 @@
 
 </div>
 
+<script src="${ pageContext.request.contextPath }/resources/js/radioboutondispo.js"></script>
 <script src="${ pageContext.request.contextPath }/resources/js/methodesConducteur.js"></script>
 
 

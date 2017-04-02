@@ -7,17 +7,17 @@ $jq311(document).ready(function($) {
 	$("#divClient").hide();
 	$("#divConducteur").hide();
 
-	function disponibilite() {
-		statut = $("input[name='statut']").val();
-		console.log(statut);
-		if(statut == "false") {
-			$('#indisponible').prop("checked", true);
-		}
-		else {
-			$('#disponible').prop("checked", true);
-			
-		}
-	}
+//	function disponibilite() {
+//		statut = $("input[name='statut']").val();
+//		console.log(statut);
+//		if(statut == "false") {
+//			$('#indisponible').prop("checked", true);
+//		}
+//		else {
+//			$('#disponible').prop("checked", true);
+//			
+//		}
+//	}
 	
 	$("#mySelect").on('change', function() {
 		
@@ -26,7 +26,7 @@ $jq311(document).ready(function($) {
 			$("#divConducteur").show();
 			$("#divClient").hide();
 
-		    disponibilite();	
+		 //   disponibilite();	
 		} else if ($("#mySelect").val() == "client") {
 			$("#divConducteur").hide();
 			$("#divClient").show();
