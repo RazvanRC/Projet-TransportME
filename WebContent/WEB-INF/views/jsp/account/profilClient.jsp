@@ -75,15 +75,15 @@
 					</div>
 				</div>
 		
-			<div class="comment">
-				<div class="btnLogin">
-					<button id="comment"
-						class="btn waves-effect waves-light orange darken-4" type="submit"
-						name="Envoyer">
-						Commentaires <i class="material-icons right">send</i>
-					</button>
-				</div>
-			</div>
+<!-- 			<div class="comment"> -->
+<!-- 				<div class="btnLogin"> -->
+<!-- 					<button id="comment" -->
+<!-- 						class="btn waves-effect waves-light orange darken-4" type="submit" -->
+<!-- 						name="Envoyer"> -->
+<!-- 						Commentaires <i class="material-icons right">send</i> -->
+<!-- 					</button> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 			
 		</div>
 			<br>
