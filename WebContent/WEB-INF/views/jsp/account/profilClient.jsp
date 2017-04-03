@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 
 <div class="presentation">
@@ -11,7 +12,7 @@
 	<fieldset>
 		<div class="inscription">
 			<div id="divprofilclient">
-				<form method="post" class="inscription">
+				<form:form id="commande" action="commande" >
 
 					<input type="hidden" id="idUtil" name="idUtil" value="${ client.idUtil }"><br> <br>
 					
@@ -46,20 +47,24 @@
 					<input type="text" id="cryptogrammeCli" name="cryptogrammeCli" value="${ client.cryptogrammeCli }"><br> <br>
 					
 					<br> <br> <br>
-				</form>
-				
-				<div id="messageAction"></div>
-			</div>
 
-			<div class="inputLogin">
-						<div class="reset">
-							<button id="reset"
-								class="btn waves-effect waves-light orange darken-4" type="reset"
-								onclick="location.href='commande'"
-								name="Réinitialiser">
-								Commander  <i class="material-icons right">send</i>
-							</button>
-						</div>
+					<div class="inputLogin">
+								<div class="reset">
+<!-- 									<button id="reset" -->
+<!-- 										class="btn waves-effect waves-light orange darken-4" type="reset" -->
+<!-- 										onclick="location.href='commande'" -->
+<!-- 										name="Réinitialiser"> -->
+<!-- 										Commander  <i class="material-icons right">send</i> -->
+<!-- 									</button> -->
+									<button id="subcommande"
+									class="btn waves-effect waves-light orange darken-4"
+									type="submit"  name="Envoyer">
+									Commander <i class="material-icons right">send</i>
+								</button>
+								</div>
+					</div>
+					<div id="messageAction"></div>
+				</form:form>				
 			</div>
 			<div class="reset">
 						<div class="btnLogin">

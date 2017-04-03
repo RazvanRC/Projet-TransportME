@@ -37,7 +37,7 @@ $jq311(document).ready(function($) {
 		
 		var course = {};
 		
-		// TODO idClient voir de où on le prend
+		//  idClient 
 		course.client.idUtil = document.getElementById("idClient").value;
 		
 		// idConducteur

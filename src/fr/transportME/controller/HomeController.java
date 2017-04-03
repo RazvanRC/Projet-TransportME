@@ -324,10 +324,12 @@ public class HomeController {
 		return "redirect:login";
 	}
 	
-	@RequestMapping(value = "/commande", method = RequestMethod.GET)
-	public String commandeGet(Model model, HttpSession session) {
+	@RequestMapping(value = "/commande", method = RequestMethod.POST)
+	public String commandeGet(Model model, @ModelAttribute("commande") Client client, HttpSession session) {
 			
 			System.out.println(" acces ecran Commande");
+			model.addAttribute("client", client);
+			System.out.println(" idClient "+client.getIdUtil());
 			return "commande";
 		}
 	
@@ -336,6 +338,7 @@ public class HomeController {
 			
 			System.out.println(" acces ecran Disponibilité "+conducteur.getLoginUtil());
 			model.addAttribute("conducteur", conducteur);
+			System.out.println(" idConducteur "+conducteur.getIdUtil());
 			return "dispo";
 		}
 }
