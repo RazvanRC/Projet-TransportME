@@ -26,16 +26,27 @@
 		
     		<div class="nav-wrapper" >
     			<div class="brand-logo">
+    			
     				<img src="${ pageContext.request.contextPath }/resources/images/logo.PNG">
     			</div>
     		
-				
+				  	
    
     		<div class="barreLogin">
-    			
+  
+    			<c:if test="${ page == 'accueil' }">
 					<a href="/TransportME/login" class="brand-logo">Login</a>
+				</c:if>
 				
-				
+				<c:if test="${ page != 'accueil' }">
+					<a href="${ pageContext.request.contextPath }/accueil" class="brand-logo">Accueil</a>
+				</c:if>
+
+				<c:if test="${ (page != 'accueil') && (page != 'inscription') &&  (page != 'login')}">
+					
+	      					<a href="${ pageContext.request.contextPath }/logout">Deconnexion</a>
+	   		  		
+   		  		</c:if>
     		
     		</div>
 				
