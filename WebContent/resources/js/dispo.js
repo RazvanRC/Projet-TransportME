@@ -20,7 +20,7 @@ $jq311(document).ready(function($) {
 			//return function() {
 			console.log("idCourse "+idCourse);
 				$.ajax({
-							url : 'http://localhost:8080/TransportME/api/courses/'+idCourse+'/recuperer',   
+							url : 'api/courses/'+idCourse+'/recuperer',   
 							error : function(request, error) {
 								console.log("pbe recherchePosClient - responseText: "
 										+ request.responseText);
@@ -48,40 +48,166 @@ $jq311(document).ready(function($) {
 																icon : image
 															});
 	
-													google.maps.event
-															.addListener(
-																	marker,
-																	'click',
-																	(function(
-																			marker 
-																			) {
-																			var infoWindow = new google.maps.InfoWindow(
-																					{
-																						map : map
-																					});
-																			
-																			var contentInfo = 'Passager : '
-																				+ data.client.nomUtil;
-																			
-																			var contentClient = 	
-																					"<input type='hidden' id='courseId' value='"+data.idcourse+"'>"
-																					+ "<p> passager "+ data.client.nomUtil+" "+data.client.prenomUtil+"</p>"
-																					+ "<p> depart: "+ data.lieuDepart+"</p>"
-																					+ "<p> destination: "+ data.lieuArrivee+"</p>";
-																			
-																			$('#infoClient').html(contentClient);
-																			
-																			// Affichage de la légende de chaque lieu
-																			infowindow
-																					.setContent(contentInfo)
-	
-																			infowindow
-																					.open(
-																							map,
-																							marker);
+													(function(marker) {
+															var infoWindow = new google.maps.InfoWindow(
+																	{
+																		map : map
+																	});
+															
+
+															
+															
+															var contentInfo =  "<input type='hidden' id='courseId' value='"+data.idcourse+"'>"
+															+ "<h4> Passager: "+ data.client.prenomUtil+" "+data.client.nomUtil+"</h4>"
+															+ "<h4> Départ: "+ data.lieuDepart+"</h4>"
+															+ "<h4> Destination: "+ data.lieuArrivee+"</h4>"
+															+ '<div class="btnAcceptation">'
+															+	'<button id="submitAcceptation"'
+															+	'	class="btn waves-effect waves-light orange darken-4" type="submit"'
+															+ '		name="acceptation">'
+															+	'	Acceptation <i class="material-icons right">send</i>'
+															+	'</button>'
+															+'</div>'	
+															
+															+	'<div class="refus">'
+															+	'<div class="btnRefus">'
+															+	'	<button id="submitRefus"'
+															+	'		class="btn waves-effect waves-light orange darken-4" type="submit"'
+															+	'		name="refus">'
+															+	'		Refus <i class="material-icons right">send</i>'
+															+	'	</button>'
+															+	'</div>'
+															+	'</div>'
+															
+															+	'<div class="demarrercourse">'
+															+	'<div class="btnDemarrercourse">'
+															+	'	<button id="submitDemarrerCourse"'
+															+	'		class="btn waves-effect waves-light orange darken-4" type="submit"'
+															+	'		name="Demarrer Course">'
+															+	'		Démarrer course <i class="material-icons right">send</i>'
+															+	'	</button>'
+															+	'</div>'
+															+	'</div>'
+
+															+	'<div class="terminercourse">'
+															+	'<div class="btnTerminercourse">'
+															+	'	<button id="submitTerminerCourse"'
+															+	'		class="btn waves-effect waves-light orange darken-4" type="submit"'
+															+	'		name="Terminer Course">'
+															+	'		Terminer course <i class="material-icons right">send</i>'
+															+	'	</button>'
+															+	'</div>'
+															+	'</div>'
+															;
+															
+															
+															
+															
+															// Affichage de la légende de chaque lieu
+															infowindow.setContent(contentInfo);
+
+															google.maps.event.addListener(infowindow,'domready', function() {
+																//contentElement dom element manipulations, such as:
+																
+																function modifStatutAccept() {
+																	var course = {};
+																	course.idCourse =  $("input[id='courseId']").val();		
+																	
+																	$.ajax({
 																		
-																	})(marker));
-	
+																			method: 'PUT',
+																			dataType: 'json',
+																			contentType: 'application/json',
+																			url: 'api/courses/'+course.idCourse+'/accepter',
+																			data: JSON.stringify(course),
+																			success: function() {
+																				$("#messageAction").html("La course a été acceptée.");
+																			},
+																			error: function() {
+																				$("#messageAction").html("Echec acceptation de course.");
+																			}
+																	});			
+																}
+																$('#submitAcceptation').on('click', modifStatutAccept);
+																
+																function modifStatutRefus() {
+																	
+																	var course = {};
+																	course.idCourse =  $("input[id='courseId']").val();		
+																	
+																	$.ajax({
+																		
+																			method: 'PUT',
+																			dataType: 'json',
+																			contentType: 'application/json',
+																			url: 'api/courses/'+course.idCourse+'/refuser',
+																			data: JSON.stringify(course),
+																			success: function() {
+																				$("#messageAction").html("La course a été refusée.");
+																			},
+																			error: function() {
+																				$("#messageAction").html("Echec refus de course.");
+																			}
+																	});	
+																		
+																}
+																
+																$('#submitRefus').on('click', modifStatutRefus);
+																
+																function demarrerCourse() {
+																	var course = {};
+																	course.idCourse =  $("input[id='courseId']").val();	
+																	console.log("courseId = "+course.idCourse);
+																	
+																	$.ajax({
+																		
+																			method: 'PUT',
+																			dataType: 'json',
+																			contesponseTextentType: 'application/json',
+																			url: 'api/courses/'+course.idCourse+'/demarrer',
+																			data: JSON.stringify(course),
+																			success: function() {
+																				$("#messageAction").html("La course est démarrée.");
+																			},
+																			error: function() {
+																				$("#messageAction").html("Echec démarrage course.");
+																			}
+																	});
+																}
+																
+																$('#submitDemarrerCourse').on('click', demarrerCourse);
+
+																function terminerCourse() {
+																	
+																	var course = {};
+																	course.idCourse =  $("input[id='courseId']").val();		
+																	
+																	$.ajax({
+																		
+																			method: 'PUT',
+																			dataType: 'json',
+																			contentType: 'application/json',
+																			url: 'api/courses/'+course.idCourse+'/terminer',
+																			data: JSON.stringify(course),
+																			success: function() {
+																				$("#messageAction").html("La course est terminée.");
+																			},
+																			error: function() {
+																				$("#messageAction").html("Echec fin de course.");
+																			}
+																	});
+																}
+																
+																$('#submitTerminerCourse').on('click', terminerCourse);
+															
+															});
+															
+															infowindow.open(map, marker);
+																	
+															
+															
+																
+													})(marker);
 	
 							}
 						});
@@ -200,6 +326,7 @@ $jq311(document).ready(function($) {
 						});
 		}
 	}
+	
 	
 	$( "body" ).append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCMS6cNPjMWn-Q9uT2f5q_4T2aIrZx9H8&libraries=places&callback=initMap" async defer></script>');
 

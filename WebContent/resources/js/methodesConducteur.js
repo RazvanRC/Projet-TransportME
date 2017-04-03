@@ -56,88 +56,88 @@ $jq311(document).ready(function($) {
 		})
 	}
 	
-	function demarrerCourse() {
-		var course = {};
-		course.idCourse =  $("input[id='courseId']").val();	
-		console.log("courseId = "+course.idCourse);
-		
-		$.ajax({
-			
-				method: 'PUT',
-				dataType: 'json',
-				contesponseTextentType: 'application/json',
-				url: 'api/courses/'+course.idCourse+'/demarrer',
-				data: JSON.stringify(course),
-				success: function() {
-					$("#messageAction").html("La course est démarrée.");
-				},
-				error: function() {
-					$("#messageAction").html("Echec démarrage course.");
-				}
-		});
-	}
-
-	function terminerCourse() {
-		
-		var course = {};
-		course.idCourse =  $("input[id='courseId']").val();		
-		
-		$.ajax({
-			
-				method: 'PUT',
-				dataType: 'json',
-				contentType: 'application/json',
-				url: 'api/courses/'+course.idCourse+'/terminer',
-				data: JSON.stringify(course),
-				success: function() {
-					$("#messageAction").html("La course est terminée.");
-				},
-				error: function() {
-					$("#messageAction").html("Echec fin de course.");
-				}
-		});
-	}
+//	function demarrerCourse() {
+//		var course = {};
+//		course.idCourse =  $("input[id='courseId']").val();	
+//		console.log("courseId = "+course.idCourse);
+//		
+//		$.ajax({
+//			
+//				method: 'PUT',
+//				dataType: 'json',
+//				contesponseTextentType: 'application/json',
+//				url: 'api/courses/'+course.idCourse+'/demarrer',
+//				data: JSON.stringify(course),
+//				success: function() {
+//					$("#messageAction").html("La course est démarrée.");
+//				},
+//				error: function() {
+//					$("#messageAction").html("Echec démarrage course.");
+//				}
+//		});
+//	}
+//
+//	function terminerCourse() {
+//		
+//		var course = {};
+//		course.idCourse =  $("input[id='courseId']").val();		
+//		
+//		$.ajax({
+//			
+//				method: 'PUT',
+//				dataType: 'json',
+//				contentType: 'application/json',
+//				url: 'api/courses/'+course.idCourse+'/terminer',
+//				data: JSON.stringify(course),
+//				success: function() {
+//					$("#messageAction").html("La course est terminée.");
+//				},
+//				error: function() {
+//					$("#messageAction").html("Echec fin de course.");
+//				}
+//		});
+//	}
 	
-	function modifStatutAccept() {
-		var course = {};
-		course.idCourse =  $("input[id='courseId']").val();		
-		
-		$.ajax({
-			
-				method: 'PUT',
-				dataType: 'json',
-				contentType: 'application/json',
-				url: 'api/courses/'+course.idCourse+'/accepter',
-				data: JSON.stringify(course),
-				success: function() {
-					$("#messageAction").html("La course a été acceptée.");
-				},
-				error: function() {
-					$("#messageAction").html("Echec acceptation de course.");
-				}
-		});			
-	}
+//	function modifStatutAccept() {
+//		var course = {};
+//		course.idCourse =  $("input[id='courseId']").val();		
+//		
+//		$.ajax({
+//			
+//				method: 'PUT',
+//				dataType: 'json',
+//				contentType: 'application/json',
+//				url: 'api/courses/'+course.idCourse+'/accepter',
+//				data: JSON.stringify(course),
+//				success: function() {
+//					$("#messageAction").html("La course a été acceptée.");
+//				},
+//				error: function() {
+//					$("#messageAction").html("Echec acceptation de course.");
+//				}
+//		});			
+//	}
 	
-	function modifStatutRefus() {
-			
-			var course = {};
-			course.idCourse =  $("input[id='courseId']").val();		
-			
-			$.ajax({
-				
-					method: 'PUT',
-					dataType: 'json',
-					contentType: 'application/json',
-					url: 'api/courses/'+course.idCourse+'/refuser',
-					data: JSON.stringify(course),
-					success: function() {
-						$("#messageAction").html("La course a été refusée.");
-					},
-					error: function() {
-						$("#messageAction").html("Echec refus de course.");
-					}
-			});		
-	}
+//	function modifStatutRefus() {
+//			
+//			var course = {};
+//			course.idCourse =  $("input[id='courseId']").val();		
+//			
+//			$.ajax({
+//				
+//					method: 'PUT',
+//					dataType: 'json',
+//					contentType: 'application/json',
+//					url: 'api/courses/'+course.idCourse+'/refuser',
+//					data: JSON.stringify(course),
+//					success: function() {
+//						$("#messageAction").html("La course a été refusée.");
+//					},
+//					error: function() {
+//						$("#messageAction").html("Echec refus de course.");
+//					}
+//			});		
+//	}
 	
 	function disponibilite() {
 		var statut = $("input[name='statut']").val();
@@ -151,11 +151,11 @@ $jq311(document).ready(function($) {
 		}
 	}
 	
-	$('#submitDemarrerCourse').on('click', demarrerCourse);
-	$('#submitTerminerCourse').on('click', terminerCourse);
+//	$('#submitDemarrerCourse').on('click', demarrerCourse);
+//	$('#submitTerminerCourse').on('click', terminerCourse);
 	$('#submitModifProfilConducteur').on('click', modifProfilConducteur);
-	$('#submitAcceptation').on('click', modifStatutAccept);
-	$('#submitRefus').on('click', modifStatutRefus);
+	//$('#submitAcceptation').on('click', modifStatutAccept);
+	//$('#submitRefus').on('click', modifStatutRefus);
 	
 	disponibilite();
 });

@@ -17,9 +17,9 @@
 <input type="hidden" id="posClientLong" name="posClientLong" >
 
 
-  <div id="panel"></div>
+ <!--  <div id="panel"></div>
         <div id="map"></div>
-
+ -->
 
  <div id="infoConducteur"></div>
 
