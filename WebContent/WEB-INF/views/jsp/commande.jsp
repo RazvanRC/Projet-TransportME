@@ -22,18 +22,6 @@
 
 
  <div id="infoConducteur"></div>
- 
- <div class="commande">
-	<div class="btncommande2">
-		<button id="submitCommande"
-			class="btn waves-effect waves-light orange darken-4" type="submit"
-			name="commande">
-			Passage commande <i class="material-icons right">send</i>
-		</button>
-	</div>
-</div>
-
-	
 
 
 

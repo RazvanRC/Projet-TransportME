@@ -58,10 +58,10 @@
 					<div id="statut">
 						<h3> Statut :</h3> <br>
 			
-							<input type="radio" name="souhait" value="1" id="disponible" onload="disponibilite()"/> 
+							<input type="radio" name="souhait" value="1" id="disponible"/> 
 							<label for="disponible">Disponible</label><br>
 			           
-							<input type="radio" name="souhait" value="0" id="indisponible" onload="disponibilite()"/> 
+							<input type="radio" name="souhait" value="0" id="indisponible" checked="checked"/> 
 							<label for="indisponible">indisponible</label>
 					</div>
 			
@@ -138,7 +138,6 @@
 
 </div>
 
-<script src="${ pageContext.request.contextPath }/resources/js/radioboutondispo.js"></script>
 <script src="${ pageContext.request.contextPath }/resources/js/methodesConducteur.js"></script>
 
 

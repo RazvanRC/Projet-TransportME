@@ -18,24 +18,40 @@ $jq311(document).ready(function($) {
 		conducteur.nbrPassagers = $("input[name='nbrPassagers']").val();
 		conducteur.immatriculation = $("input[name='immatriculation']").val();
 		
-		if ($('#indisponible').prop("checked") == true)
+		if ($('#indisponible').prop("checked") == true) {
 			conducteur.statut = false;
-		else
+		} else {
 			conducteur.statut = true;
+		}
 		
+		$("#messageAction").hide();
 		
 		$.ajax({
 			
 				method: 'PUT',
 				dataType: 'json',
 				contentType: 'application/json',
-				url: 'http://localhost:8080/TransportME/api/conducteurs/' + conducteur.idUtil,
+				url: 'api/conducteurs/' + conducteur.idUtil,
 				data: JSON.stringify(conducteur),
+				beforeSend: function() {
+					$("#messageAction").html("En cours de modification...");
+					$("#messageAction").show();
+				},
 				success: function() {
+					$("#messageAction").hide();
 					$("#messageAction").html("Modification effectuée.");
+					$("#messageAction").show();
+					setTimeout(function() {
+						$("#messageAction").hide();
+					}, 3000);					
 				},
 				error: function() {
-					$("#messageAction").html("La modification a echouée.")
+					$("#messageAction").hide();
+					$("#messageAction").html("La modification a echouée.");
+					$("#messageAction").show();
+					setTimeout(function() {
+						$("#messageAction").hide();
+					}, 3000);	
 				}
 		})
 	}
@@ -123,11 +139,25 @@ $jq311(document).ready(function($) {
 			});		
 	}
 	
+	function disponibilite() {
+		var statut = $("input[name='statut']").val();
+		console.log(statut);
+		if(statut == "false") {
+			$('#indisponible').prop("checked", true);
+		}
+		else {
+			$('#disponible').prop("checked", true);
+			
+		}
+	}
+	
 	$('#submitDemarrerCourse').on('click', demarrerCourse);
 	$('#submitTerminerCourse').on('click', terminerCourse);
 	$('#submitModifProfilConducteur').on('click', modifProfilConducteur);
 	$('#submitAcceptation').on('click', modifStatutAccept);
 	$('#submitRefus').on('click', modifStatutRefus);
+	
+	disponibilite();
 });
 
 

@@ -90,17 +90,16 @@ $jq311(document).ready(function($) {
 																				+ '<br />'
 																				+ 'Nb Max de passagers : ' + item.nbrPassagers
 																				+ '<br />'
-																			//	+ '<div class="btncommande">'
-																			//	+ '<button id="btncommande"'
-																			//	+ '	class="btn waves-effect waves-light orange darken-4" type="submit"'
+																				+ '<div class="btncommande">'
+																				+ '<button id="btncommande"'
+																				+ '	class="btn waves-effect waves-light orange darken-4" type="submit"'
 																			//	+ '	onclick="passageCommande()" '
-																			//	+ ' name="PassageCommande">'
-																			//	+ '	Passage Commande <i class="material-icons right">send</i>'
-																			//	+ '</button>'
+																				+ ' name="PassageCommande">'
+																				+ '	Passage Commande <i class="material-icons right">send</i>'
+																				+ '</button>'
 																				+ '</div>';
 																			
-																			// ajout SD	
-																			$('#infoConducteur').html(contentInfo);  																		
+																		
 																			// memorisation idConducteur sélectionné
 																			document.getElementById("idConducteur").value=item.idUtil;
 																			document.getElementById("posActuelleLat").value=item.posActuelleLat;
@@ -115,6 +114,9 @@ $jq311(document).ready(function($) {
 																					.open(
 																							map,
 																							marker);
+																			
+																			$('#btncommande').on('click', passageCommande);
+																			
 																		}
 																	})(marker, i));
 	
@@ -307,6 +309,45 @@ $jq311(document).ready(function($) {
 	
 		}
 	}
+	
+	// ajout SD
+	function passageCommande() {
+		
+		var course = {};
+		
+		//  idClient 
+		course.client = {};
+		course.client.idUtil = document.getElementById("idClient").value;
+		
+		// idConducteur
+		course.conducteur = {};
+		course.conducteur.idUtil = document.getElementById("idConducteur").value;	
+		
+		course.lieuDepart =  document.getElementById('inputDepart').value;
+		course.lieuArrivee = document.getElementById('inputDestination').value;
+
+		// latitude et longitude de depart (client) et de destination (conducteur)
+		course.posDepartLat = document.getElementById("posClientLat").value;
+	    course.posDepartLong =  document.getElementById("posClientLong").value;
+	    course.posArretLat = document.getElementById("posActuelleLat").value;
+	    course.posArretLong = document.getElementById("posActuelleLong").value;
+	    
+		$.ajax({
+			
+				method: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				url: 'api/courses',
+				data: JSON.stringify(course),
+				success: function() {
+					$("#messageAction").html("Le passage de la commande est effectué.");
+				},
+				error: function() {
+					$("#messageAction").html("Le passage de la commande a echoué.");
+				}
+		});
+	}
+	//
 	
 	$( "body" ).append('<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCMS6cNPjMWn-Q9uT2f5q_4T2aIrZx9H8&libraries=places&callback=initMap" async defer></script>');
 });
