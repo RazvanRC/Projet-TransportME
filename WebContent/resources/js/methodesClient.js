@@ -38,9 +38,11 @@ $jq311(document).ready(function($) {
 		var course = {};
 		
 		//  idClient 
+		course.client = {};
 		course.client.idUtil = document.getElementById("idClient").value;
 		
 		// idConducteur
+		course.conducteur = {};
 		course.conducteur.idUtil = document.getElementById("idConducteur").value;	
 		
 		course.lieuDepart =  document.getElementById('inputDepart').value;

@@ -90,13 +90,13 @@ $jq311(document).ready(function($) {
 																				+ '<br />'
 																				+ 'Nb Max de passagers : ' + item.nbrPassagers
 																				+ '<br />'
-																				+ '<div class="btncommande">'
-																				+ '<button id="btncommande"'
-																				+ '	class="btn waves-effect waves-light orange darken-4" type="submit"'
-																				+ '	onclick="passageCommande()" '
-																				+ ' name="PassageCommande">'
-																				+ '	Passage Commande <i class="material-icons right">send</i>'
-																				+ '</button>'
+																			//	+ '<div class="btncommande">'
+																			//	+ '<button id="btncommande"'
+																			//	+ '	class="btn waves-effect waves-light orange darken-4" type="submit"'
+																			//	+ '	onclick="passageCommande()" '
+																			//	+ ' name="PassageCommande">'
+																			//	+ '	Passage Commande <i class="material-icons right">send</i>'
+																			//	+ '</button>'
 																				+ '</div>';
 																			
 																			// ajout SD	
