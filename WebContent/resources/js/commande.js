@@ -7,6 +7,7 @@ var autocompleteDepart;
 var autocompleteDestination;
 
 var initMap;
+var idIntervalDispo = false;
 
 $jq311(document).ready(function($) {
 
@@ -42,6 +43,13 @@ $jq311(document).ready(function($) {
 							},
 							dataType : "json",
 							success : function(data) {
+								
+								// si on veut stopper le timer, on decommente ce code
+//								if(data.length > 0 && idIntervalDispo) {
+//									clearInterval(idIntervalDispo);
+//									idIntervalDispo = false;
+//									console.log("STOP TIMER REFRESH DISPO")
+//								}
 								$.each(
 												data,
 												function(i, item) {
@@ -297,8 +305,9 @@ $jq311(document).ready(function($) {
 			document.getElementById("posClientLat").value=place.geometry.location.lat();
 			document.getElementById("posClientLong").value=place.geometry.location.lng();
 		    RefreshDisponibilitesConducteurs(place.geometry.location.lat(), place.geometry.location.lng());
-			//refresh des disponibilités toute les 3 secondes          TODO
-			//setInterval(RefreshDisponibilitesConducteurs(), 3000);
+			//refresh des disponibilités toute les 10 secondes          
+			idIntervalDispo = setInterval(RefreshDisponibilitesConducteurs, 10000);
+			
 	
 		});
 		

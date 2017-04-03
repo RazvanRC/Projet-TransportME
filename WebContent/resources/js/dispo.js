@@ -1,4 +1,5 @@
 var initMap;
+var idIntervalDispo = false;
 
 $jq311(document).ready(function($) {
 
@@ -27,6 +28,13 @@ $jq311(document).ready(function($) {
 							},
 							dataType : "json",
 							success : function(data) {
+								
+								// si on veut stopper le timer, on decommente ce code
+//								if(data.length > 0 && idIntervalDispo) {
+//									clearInterval(idIntervalDispo);
+//									idIntervalDispo = false;
+//									console.log("STOP TIMER REFRESH DISPO")
+//								}
 								
 													//On cache les boutons 
 													if (data != null)
@@ -221,8 +229,8 @@ $jq311(document).ready(function($) {
 		$('#refus').hide();
 		
 		CoursesAttribuees();
-		//refresh des disponibilités toute les 3 secondes
-		////////////setInterval(CoursesAttribuees(), 30000);  // TODO a modifier
+		//refresh des disponibilités toute les 10 secondes          
+		idIntervalDispo = setInterval(CoursesAttribuees, 10000);
 	
 		// Try HTML5 geolocation.
 		if (navigator.geolocation) {
